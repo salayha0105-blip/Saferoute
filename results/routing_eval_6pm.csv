@@ -1,0 +1,1396 @@
+start,goal,mode,length_m,extra_distance_pct,avg_risk,worst_risk,junctions_expanded
+Main Blvd / North curve,Main Blvd / L8,fastest,474,0.0,0.023,0.023,2
+Main Blvd / North curve,Main Blvd / L8,balanced,474,0.0,0.023,0.023,2
+Main Blvd / North curve,Main Blvd / L8,safety-first,474,0.0,0.023,0.023,2
+Main Blvd / North curve,Hafeez Centre,fastest,648,0.0,0.023,0.023,3
+Main Blvd / North curve,Hafeez Centre,balanced,648,0.0,0.023,0.023,3
+Main Blvd / North curve,Hafeez Centre,safety-first,648,0.0,0.023,0.023,3
+Main Blvd / North curve,Main Blvd / L9,fastest,768,0.0,0.022,0.023,4
+Main Blvd / North curve,Main Blvd / L9,balanced,768,0.0,0.022,0.023,4
+Main Blvd / North curve,Main Blvd / L9,safety-first,768,0.0,0.022,0.023,4
+Main Blvd / North curve,Main Blvd / Noor Jahan,fastest,1200,0.0,0.02,0.023,5
+Main Blvd / North curve,Main Blvd / Noor Jahan,balanced,1200,0.0,0.02,0.023,5
+Main Blvd / North curve,Main Blvd / Noor Jahan,safety-first,1200,0.0,0.02,0.023,5
+Main Blvd / North curve,Sir Syed / North curve,fastest,198,0.0,0.629,0.629,2
+Main Blvd / North curve,Sir Syed / North curve,balanced,198,0.0,0.629,0.629,2
+Main Blvd / North curve,Sir Syed / North curve,safety-first,198,0.0,0.629,0.629,3
+Main Blvd / North curve,Sir Syed / first side road,fastest,426,0.0,0.593,0.629,3
+Main Blvd / North curve,Sir Syed / first side road,balanced,426,0.0,0.593,0.629,4
+Main Blvd / North curve,Sir Syed / first side road,safety-first,426,0.0,0.593,0.629,23
+Main Blvd / North curve,Sir Syed / L8,fastest,666,0.0,0.272,0.887,3
+Main Blvd / North curve,Sir Syed / L8,balanced,666,0.0,0.272,0.887,7
+Main Blvd / North curve,Sir Syed / L8,safety-first,1020,53.2,0.072,0.332,9
+Main Blvd / North curve,Sir Syed / Hafeez road,fastest,840,0.0,0.284,0.887,4
+Main Blvd / North curve,Sir Syed / Hafeez road,balanced,846,0.7,0.018,0.023,4
+Main Blvd / North curve,Sir Syed / Hafeez road,safety-first,846,0.7,0.018,0.023,4
+Main Blvd / North curve,Sir Syed / L9,fastest,963,0.0,0.218,0.99,5
+Main Blvd / North curve,Sir Syed / L9,balanced,978,1.6,0.104,0.652,7
+Main Blvd / North curve,Sir Syed / L9,safety-first,978,1.6,0.104,0.652,12
+Main Blvd / North curve,Sir Syed south end,fastest,1119,0.0,0.278,0.99,6
+Main Blvd / North curve,Sir Syed south end,balanced,1134,1.3,0.179,0.652,14
+Main Blvd / North curve,Sir Syed south end,safety-first,1445,29.1,0.111,0.827,23
+Main Blvd / North curve,Crumble (MM Alam),fastest,448,0.0,0.611,0.629,3
+Main Blvd / North curve,Crumble (MM Alam),balanced,448,0.0,0.611,0.629,4
+Main Blvd / North curve,Crumble (MM Alam),safety-first,2174,385.3,0.011,0.023,16
+Main Blvd / North curve,Junaid Jamshed (MM Alam),fastest,575,0.0,0.866,0.99,3
+Main Blvd / North curve,Junaid Jamshed (MM Alam),balanced,622,8.2,0.441,0.629,5
+Main Blvd / North curve,Junaid Jamshed (MM Alam),safety-first,2001,248.0,0.012,0.023,14
+Main Blvd / North curve,MM Alam middle,fastest,822,0.0,0.608,0.99,4
+Main Blvd / North curve,MM Alam middle,balanced,869,5.7,0.318,0.629,13
+Main Blvd / North curve,MM Alam middle,safety-first,1754,113.4,0.012,0.023,12
+Main Blvd / North curve,Tehzeeb Bakers (MM Alam),fastest,1141,0.0,0.44,0.99,6
+Main Blvd / North curve,Tehzeeb Bakers (MM Alam),balanced,1435,25.8,0.014,0.023,8
+Main Blvd / North curve,Tehzeeb Bakers (MM Alam),safety-first,1435,25.8,0.014,0.023,7
+Main Blvd / North curve,MM Alam / Tariq Road,fastest,1424,0.0,0.353,0.99,10
+Main Blvd / North curve,MM Alam / Tariq Road,balanced,1717,20.6,0.012,0.023,12
+Main Blvd / North curve,MM Alam / Tariq Road,safety-first,1717,20.6,0.012,0.023,11
+Main Blvd / North curve,MM Alam roundabout,fastest,1724,0.0,0.293,0.99,13
+Main Blvd / North curve,MM Alam roundabout,balanced,2017,17.0,0.011,0.023,14
+Main Blvd / North curve,MM Alam roundabout,safety-first,2017,17.0,0.011,0.023,14
+Main Blvd / North curve,Tipu Road north,fastest,920,0.0,0.806,0.99,5
+Main Blvd / North curve,Tipu Road north,balanced,2297,149.7,0.014,0.023,21
+Main Blvd / North curve,Tipu Road north,safety-first,2297,149.7,0.014,0.023,18
+Main Blvd / North curve,Tipu Road middle,fastest,1034,0.0,0.925,1.0,4
+Main Blvd / North curve,Tipu Road middle,balanced,1985,92.0,0.015,0.023,19
+Main Blvd / North curve,Tipu Road middle,safety-first,1985,92.0,0.015,0.023,14
+Main Blvd / North curve,Tipu Road south,fastest,1246,0.0,0.738,0.99,5
+Main Blvd / North curve,Tipu Road south,balanced,1705,36.8,0.013,0.023,9
+Main Blvd / North curve,Tipu Road south,safety-first,1705,36.8,0.013,0.023,8
+Main Blvd / North curve,Dopatta Gali top,fastest,652,0.0,0.73,0.99,4
+Main Blvd / North curve,Dopatta Gali top,balanced,1345,106.3,0.014,0.023,9
+Main Blvd / North curve,Dopatta Gali top,safety-first,1345,106.3,0.014,0.023,7
+Main Blvd / North curve,Dopatta Gali / L11,fastest,893,0.0,0.535,0.99,7
+Main Blvd / North curve,Dopatta Gali / L11,balanced,1104,23.6,0.015,0.023,6
+Main Blvd / North curve,Dopatta Gali / L11,safety-first,1104,23.6,0.015,0.023,6
+Main Blvd / North curve,Dopatta Gali / Hafeez road,fastest,978,0.0,0.245,0.887,7
+Main Blvd / North curve,Dopatta Gali / Hafeez road,balanced,984,0.6,0.017,0.023,5
+Main Blvd / North curve,Dopatta Gali / Hafeez road,safety-first,984,0.6,0.017,0.023,5
+Main Blvd / North curve,Dopatta Gali / L10,fastest,1086,0.0,0.222,0.887,9
+Main Blvd / North curve,Dopatta Gali / L10,balanced,1092,0.6,0.016,0.023,6
+Main Blvd / North curve,Dopatta Gali / L10,safety-first,1092,0.6,0.016,0.023,6
+Main Blvd / North curve,Parking loop,fastest,1266,0.0,0.191,0.887,12
+Main Blvd / North curve,Parking loop,balanced,1272,0.5,0.014,0.023,8
+Main Blvd / North curve,Parking loop,safety-first,1272,0.5,0.014,0.023,8
+Main Blvd / North curve,Hafeez road bend,fastest,1212,0.0,0.2,0.887,13
+Main Blvd / North curve,Hafeez road bend,balanced,1218,0.5,0.016,0.023,6
+Main Blvd / North curve,Hafeez road bend,safety-first,1218,0.5,0.016,0.023,6
+Main Blvd / North curve,Lane junction (L10/L12),fastest,1346,0.0,0.35,0.887,15
+Main Blvd / North curve,Lane junction (L10/L12),balanced,1352,0.4,0.183,0.887,19
+Main Blvd / North curve,Lane junction (L10/L12),safety-first,1352,0.4,0.183,0.887,31
+Main Blvd / North curve,Tariq Road bend,fastest,1496,0.0,0.415,1.0,18
+Main Blvd / North curve,Tariq Road bend,balanced,1530,2.3,0.123,0.661,20
+Main Blvd / North curve,Tariq Road bend,safety-first,1968,31.6,0.073,0.49,26
+Main Blvd / North curve,Noor Jahan first junction,fastest,1398,0.0,0.087,0.491,10
+Main Blvd / North curve,Noor Jahan first junction,balanced,1398,0.0,0.087,0.491,11
+Main Blvd / North curve,Noor Jahan first junction,safety-first,1398,0.0,0.087,0.491,17
+Main Blvd / North curve,Dopatta Gali / Noor Jahan,fastest,1611,0.0,0.151,0.887,16
+Main Blvd / North curve,Dopatta Gali / Noor Jahan,balanced,1617,0.4,0.012,0.023,9
+Main Blvd / North curve,Dopatta Gali / Noor Jahan,safety-first,1617,0.4,0.012,0.023,9
+Main Blvd / North curve,Noor Jahan / L14,fastest,1767,0.0,0.185,0.887,20
+Main Blvd / North curve,Noor Jahan / L14,balanced,1773,0.3,0.059,0.546,16
+Main Blvd / North curve,Noor Jahan / L14,safety-first,1773,0.3,0.059,0.546,21
+Main Blvd / L8,Hafeez Centre,fastest,174,0.0,0.023,0.023,2
+Main Blvd / L8,Hafeez Centre,balanced,174,0.0,0.023,0.023,2
+Main Blvd / L8,Hafeez Centre,safety-first,174,0.0,0.023,0.023,2
+Main Blvd / L8,Main Blvd / L9,fastest,294,0.0,0.02,0.023,3
+Main Blvd / L8,Main Blvd / L9,balanced,294,0.0,0.02,0.023,3
+Main Blvd / L8,Main Blvd / L9,safety-first,294,0.0,0.02,0.023,3
+Main Blvd / L8,Main Blvd / Noor Jahan,fastest,726,0.0,0.018,0.023,4
+Main Blvd / L8,Main Blvd / Noor Jahan,balanced,726,0.0,0.018,0.023,4
+Main Blvd / L8,Main Blvd / Noor Jahan,safety-first,726,0.0,0.018,0.023,4
+Main Blvd / L8,Sir Syed / North curve,fastest,672,0.0,0.201,0.629,3
+Main Blvd / L8,Sir Syed / North curve,balanced,672,0.0,0.201,0.629,4
+Main Blvd / L8,Sir Syed / North curve,safety-first,672,0.0,0.201,0.629,16
+Main Blvd / L8,Sir Syed / first side road,fastest,486,0.0,0.551,0.887,3
+Main Blvd / L8,Sir Syed / first side road,balanced,486,0.0,0.551,0.887,11
+Main Blvd / L8,Sir Syed / first side road,safety-first,840,72.8,0.19,0.332,23
+Main Blvd / L8,Sir Syed / L8,fastest,192,0.0,0.887,0.887,2
+Main Blvd / L8,Sir Syed / L8,balanced,192,0.0,0.887,0.887,5
+Main Blvd / L8,Sir Syed / L8,safety-first,546,184.4,0.114,0.332,9
+Main Blvd / L8,Sir Syed / Hafeez road,fastest,366,0.0,0.623,0.887,3
+Main Blvd / L8,Sir Syed / Hafeez road,balanced,372,1.6,0.012,0.023,3
+Main Blvd / L8,Sir Syed / Hafeez road,safety-first,372,1.6,0.012,0.023,3
+Main Blvd / L8,Sir Syed / L9,fastest,489,0.0,0.407,0.99,4
+Main Blvd / L8,Sir Syed / L9,balanced,504,3.1,0.179,0.652,6
+Main Blvd / L8,Sir Syed / L9,safety-first,504,3.1,0.179,0.652,12
+Main Blvd / L8,Sir Syed south end,fastest,645,0.0,0.466,0.99,5
+Main Blvd / L8,Sir Syed south end,balanced,660,2.3,0.291,0.652,12
+Main Blvd / L8,Sir Syed south end,safety-first,971,50.5,0.155,0.827,22
+Main Blvd / L8,Crumble (MM Alam),fastest,923,0.0,0.309,0.629,6
+Main Blvd / L8,Crumble (MM Alam),balanced,1700,84.2,0.008,0.023,18
+Main Blvd / L8,Crumble (MM Alam),safety-first,1700,84.2,0.008,0.023,15
+Main Blvd / L8,Junaid Jamshed (MM Alam),fastest,1017,0.0,0.782,0.995,7
+Main Blvd / L8,Junaid Jamshed (MM Alam),balanced,1526,50.0,0.008,0.023,15
+Main Blvd / L8,Junaid Jamshed (MM Alam),safety-first,1526,50.0,0.008,0.023,13
+Main Blvd / L8,MM Alam middle,fastest,1033,0.0,0.784,0.99,8
+Main Blvd / L8,MM Alam middle,balanced,1279,23.8,0.008,0.023,13
+Main Blvd / L8,MM Alam middle,safety-first,1279,23.8,0.008,0.023,12
+Main Blvd / L8,Tehzeeb Bakers (MM Alam),fastest,955,0.0,0.243,0.887,7
+Main Blvd / L8,Tehzeeb Bakers (MM Alam),balanced,961,0.6,0.009,0.023,6
+Main Blvd / L8,Tehzeeb Bakers (MM Alam),safety-first,961,0.6,0.009,0.023,6
+Main Blvd / L8,MM Alam / Tariq Road,fastest,1237,0.0,0.188,0.887,13
+Main Blvd / L8,MM Alam / Tariq Road,balanced,1243,0.5,0.007,0.023,10
+Main Blvd / L8,MM Alam / Tariq Road,safety-first,1243,0.5,0.007,0.023,10
+Main Blvd / L8,MM Alam roundabout,fastest,1537,0.0,0.153,0.887,17
+Main Blvd / L8,MM Alam roundabout,balanced,1543,0.4,0.007,0.023,12
+Main Blvd / L8,MM Alam roundabout,safety-first,1543,0.4,0.007,0.023,13
+Main Blvd / L8,Tipu Road north,fastest,1362,0.0,0.763,0.995,11
+Main Blvd / L8,Tipu Road north,balanced,1823,33.8,0.011,0.023,18
+Main Blvd / L8,Tipu Road north,safety-first,1823,33.8,0.011,0.023,17
+Main Blvd / L8,Tipu Road middle,fastest,1356,0.0,0.743,0.99,11
+Main Blvd / L8,Tipu Road middle,balanced,1511,11.4,0.012,0.023,14
+Main Blvd / L8,Tipu Road middle,safety-first,1511,11.4,0.012,0.023,13
+Main Blvd / L8,Tipu Road south,fastest,1225,0.0,0.192,0.887,8
+Main Blvd / L8,Tipu Road south,balanced,1231,0.5,0.01,0.023,7
+Main Blvd / L8,Tipu Road south,safety-first,1231,0.5,0.01,0.023,7
+Main Blvd / L8,Dopatta Gali top,fastest,712,0.0,0.691,0.99,5
+Main Blvd / L8,Dopatta Gali top,balanced,871,22.3,0.008,0.023,6
+Main Blvd / L8,Dopatta Gali top,safety-first,871,22.3,0.008,0.023,6
+Main Blvd / L8,Dopatta Gali / L11,fastest,624,0.0,0.367,0.887,6
+Main Blvd / L8,Dopatta Gali / L11,balanced,630,1.0,0.009,0.023,5
+Main Blvd / L8,Dopatta Gali / L11,safety-first,630,1.0,0.009,0.023,5
+Main Blvd / L8,Dopatta Gali / Hafeez road,fastest,504,0.0,0.454,0.887,4
+Main Blvd / L8,Dopatta Gali / Hafeez road,balanced,510,1.2,0.011,0.023,4
+Main Blvd / L8,Dopatta Gali / Hafeez road,safety-first,510,1.2,0.011,0.023,4
+Main Blvd / L8,Dopatta Gali / L10,fastest,612,0.0,0.375,0.887,6
+Main Blvd / L8,Dopatta Gali / L10,balanced,618,1.0,0.01,0.023,5
+Main Blvd / L8,Dopatta Gali / L10,safety-first,618,1.0,0.01,0.023,5
+Main Blvd / L8,Parking loop,fastest,792,0.0,0.292,0.887,9
+Main Blvd / L8,Parking loop,balanced,798,0.8,0.009,0.023,7
+Main Blvd / L8,Parking loop,safety-first,798,0.8,0.009,0.023,7
+Main Blvd / L8,Hafeez road bend,fastest,738,0.0,0.314,0.887,5
+Main Blvd / L8,Hafeez road bend,balanced,744,0.8,0.011,0.023,5
+Main Blvd / L8,Hafeez road bend,safety-first,744,0.8,0.011,0.023,5
+Main Blvd / L8,Lane junction (L10/L12),fastest,872,0.0,0.528,0.887,7
+Main Blvd / L8,Lane junction (L10/L12),balanced,878,0.7,0.269,0.887,17
+Main Blvd / L8,Lane junction (L10/L12),safety-first,878,0.7,0.269,0.887,31
+Main Blvd / L8,Tariq Road bend,fastest,1022,0.0,0.597,1.0,10
+Main Blvd / L8,Tariq Road bend,balanced,1056,3.3,0.168,0.661,17
+Main Blvd / L8,Tariq Road bend,safety-first,1494,46.2,0.088,0.49,25
+Main Blvd / L8,Noor Jahan first junction,fastest,924,0.0,0.119,0.491,9
+Main Blvd / L8,Noor Jahan first junction,balanced,924,0.0,0.119,0.491,10
+Main Blvd / L8,Noor Jahan first junction,safety-first,924,0.0,0.119,0.491,17
+Main Blvd / L8,Dopatta Gali / Noor Jahan,fastest,1137,0.0,0.204,0.887,11
+Main Blvd / L8,Dopatta Gali / Noor Jahan,balanced,1143,0.5,0.007,0.023,8
+Main Blvd / L8,Dopatta Gali / Noor Jahan,safety-first,1143,0.5,0.007,0.023,8
+Main Blvd / L8,Noor Jahan / L14,fastest,1293,0.0,0.245,0.887,12
+Main Blvd / L8,Noor Jahan / L14,balanced,1299,0.5,0.072,0.546,14
+Main Blvd / L8,Noor Jahan / L14,safety-first,1299,0.5,0.072,0.546,20
+Hafeez Centre,Main Blvd / L9,fastest,120,0.0,0.016,0.016,2
+Hafeez Centre,Main Blvd / L9,balanced,120,0.0,0.016,0.016,2
+Hafeez Centre,Main Blvd / L9,safety-first,120,0.0,0.016,0.016,2
+Hafeez Centre,Main Blvd / Noor Jahan,fastest,552,0.0,0.016,0.016,3
+Hafeez Centre,Main Blvd / Noor Jahan,balanced,552,0.0,0.016,0.016,3
+Hafeez Centre,Main Blvd / Noor Jahan,safety-first,552,0.0,0.016,0.016,3
+Hafeez Centre,Sir Syed / North curve,fastest,846,0.0,0.165,0.629,4
+Hafeez Centre,Sir Syed / North curve,balanced,846,0.0,0.165,0.629,10
+Hafeez Centre,Sir Syed / North curve,safety-first,846,0.0,0.165,0.629,21
+Hafeez Centre,Sir Syed / first side road,fastest,660,0.0,0.412,0.887,4
+Hafeez Centre,Sir Syed / first side road,balanced,666,0.9,0.234,0.332,11
+Hafeez Centre,Sir Syed / first side road,safety-first,666,0.9,0.234,0.332,22
+Hafeez Centre,Sir Syed / L8,fastest,366,0.0,0.476,0.887,3
+Hafeez Centre,Sir Syed / L8,balanced,372,1.6,0.156,0.332,5
+Hafeez Centre,Sir Syed / L8,safety-first,372,1.6,0.156,0.332,8
+Hafeez Centre,Sir Syed / Hafeez road,fastest,198,0.0,0.002,0.002,2
+Hafeez Centre,Sir Syed / Hafeez road,balanced,198,0.0,0.002,0.002,2
+Hafeez Centre,Sir Syed / Hafeez road,safety-first,198,0.0,0.002,0.002,2
+Hafeez Centre,Sir Syed / L9,fastest,315,0.0,0.619,0.99,3
+Hafeez Centre,Sir Syed / L9,balanced,330,4.8,0.262,0.652,6
+Hafeez Centre,Sir Syed / L9,safety-first,330,4.8,0.262,0.652,11
+Hafeez Centre,Sir Syed south end,fastest,471,0.0,0.63,0.99,4
+Hafeez Centre,Sir Syed south end,balanced,486,3.2,0.387,0.652,12
+Hafeez Centre,Sir Syed south end,safety-first,797,69.2,0.183,0.827,22
+Hafeez Centre,Crumble (MM Alam),fastest,1097,0.0,0.263,0.629,12
+Hafeez Centre,Crumble (MM Alam),balanced,1526,39.1,0.006,0.012,18
+Hafeez Centre,Crumble (MM Alam),safety-first,1526,39.1,0.006,0.012,15
+Hafeez Centre,Junaid Jamshed (MM Alam),fastest,1002,0.0,0.306,0.995,8
+Hafeez Centre,Junaid Jamshed (MM Alam),balanced,1352,34.9,0.006,0.012,14
+Hafeez Centre,Junaid Jamshed (MM Alam),safety-first,1352,34.9,0.006,0.012,13
+Hafeez Centre,MM Alam middle,fastest,1018,0.0,0.315,0.99,11
+Hafeez Centre,MM Alam middle,balanced,1105,8.5,0.006,0.012,12
+Hafeez Centre,MM Alam middle,safety-first,1105,8.5,0.006,0.012,11
+Hafeez Centre,Tehzeeb Bakers (MM Alam),fastest,787,0.0,0.006,0.012,5
+Hafeez Centre,Tehzeeb Bakers (MM Alam),balanced,787,0.0,0.006,0.012,5
+Hafeez Centre,Tehzeeb Bakers (MM Alam),safety-first,787,0.0,0.006,0.012,5
+Hafeez Centre,MM Alam / Tariq Road,fastest,1069,0.0,0.005,0.012,11
+Hafeez Centre,MM Alam / Tariq Road,balanced,1069,0.0,0.005,0.012,9
+Hafeez Centre,MM Alam / Tariq Road,safety-first,1069,0.0,0.005,0.012,9
+Hafeez Centre,MM Alam roundabout,fastest,1369,0.0,0.005,0.012,17
+Hafeez Centre,MM Alam roundabout,balanced,1369,0.0,0.005,0.012,12
+Hafeez Centre,MM Alam roundabout,safety-first,1369,0.0,0.005,0.012,13
+Hafeez Centre,Tipu Road north,fastest,1346,0.0,0.409,0.995,10
+Hafeez Centre,Tipu Road north,balanced,1649,22.5,0.01,0.022,17
+Hafeez Centre,Tipu Road north,safety-first,1649,22.5,0.01,0.022,17
+Hafeez Centre,Tipu Road middle,fastest,1337,0.0,0.01,0.022,14
+Hafeez Centre,Tipu Road middle,balanced,1337,0.0,0.01,0.022,13
+Hafeez Centre,Tipu Road middle,safety-first,1337,0.0,0.01,0.022,12
+Hafeez Centre,Tipu Road south,fastest,1057,0.0,0.007,0.012,6
+Hafeez Centre,Tipu Road south,balanced,1057,0.0,0.007,0.012,6
+Hafeez Centre,Tipu Road south,safety-first,1057,0.0,0.007,0.012,6
+Hafeez Centre,Dopatta Gali top,fastest,697,0.0,0.005,0.007,7
+Hafeez Centre,Dopatta Gali top,balanced,697,0.0,0.005,0.007,6
+Hafeez Centre,Dopatta Gali top,safety-first,697,0.0,0.005,0.007,6
+Hafeez Centre,Dopatta Gali / L11,fastest,456,0.0,0.004,0.007,4
+Hafeez Centre,Dopatta Gali / L11,balanced,456,0.0,0.004,0.007,4
+Hafeez Centre,Dopatta Gali / L11,safety-first,456,0.0,0.004,0.007,4
+Hafeez Centre,Dopatta Gali / Hafeez road,fastest,336,0.0,0.004,0.007,3
+Hafeez Centre,Dopatta Gali / Hafeez road,balanced,336,0.0,0.004,0.007,3
+Hafeez Centre,Dopatta Gali / Hafeez road,safety-first,336,0.0,0.004,0.007,3
+Hafeez Centre,Dopatta Gali / L10,fastest,444,0.0,0.005,0.007,4
+Hafeez Centre,Dopatta Gali / L10,balanced,444,0.0,0.005,0.007,4
+Hafeez Centre,Dopatta Gali / L10,safety-first,444,0.0,0.005,0.007,4
+Hafeez Centre,Parking loop,fastest,624,0.0,0.005,0.007,7
+Hafeez Centre,Parking loop,balanced,624,0.0,0.005,0.007,6
+Hafeez Centre,Parking loop,safety-first,624,0.0,0.005,0.007,6
+Hafeez Centre,Hafeez road bend,fastest,570,0.0,0.007,0.012,4
+Hafeez Centre,Hafeez road bend,balanced,570,0.0,0.007,0.012,4
+Hafeez Centre,Hafeez road bend,safety-first,570,0.0,0.007,0.012,4
+Hafeez Centre,Lane junction (L10/L12),fastest,704,0.0,0.33,0.887,5
+Hafeez Centre,Lane junction (L10/L12),balanced,704,0.0,0.33,0.887,16
+Hafeez Centre,Lane junction (L10/L12),safety-first,704,0.0,0.33,0.887,30
+Hafeez Centre,Tariq Road bend,fastest,854,0.0,0.448,1.0,8
+Hafeez Centre,Tariq Road bend,balanced,882,3.3,0.197,0.661,17
+Hafeez Centre,Tariq Road bend,safety-first,1320,54.6,0.097,0.49,25
+Hafeez Centre,Noor Jahan first junction,fastest,750,0.0,0.141,0.491,6
+Hafeez Centre,Noor Jahan first junction,balanced,750,0.0,0.141,0.491,10
+Hafeez Centre,Noor Jahan first junction,safety-first,750,0.0,0.141,0.491,16
+Hafeez Centre,Dopatta Gali / Noor Jahan,fastest,969,0.0,0.004,0.007,9
+Hafeez Centre,Dopatta Gali / Noor Jahan,balanced,969,0.0,0.004,0.007,7
+Hafeez Centre,Dopatta Gali / Noor Jahan,safety-first,969,0.0,0.004,0.007,7
+Hafeez Centre,Noor Jahan / L14,fastest,1125,0.0,0.079,0.546,10
+Hafeez Centre,Noor Jahan / L14,balanced,1125,0.0,0.079,0.546,13
+Hafeez Centre,Noor Jahan / L14,safety-first,1125,0.0,0.079,0.546,19
+Main Blvd / L9,Main Blvd / Noor Jahan,fastest,432,0.0,0.016,0.016,2
+Main Blvd / L9,Main Blvd / Noor Jahan,balanced,432,0.0,0.016,0.016,2
+Main Blvd / L9,Main Blvd / Noor Jahan,safety-first,432,0.0,0.016,0.016,2
+Main Blvd / L9,Sir Syed / North curve,fastest,966,0.0,0.146,0.629,5
+Main Blvd / L9,Sir Syed / North curve,balanced,966,0.0,0.146,0.629,10
+Main Blvd / L9,Sir Syed / North curve,safety-first,966,0.0,0.146,0.629,21
+Main Blvd / L9,Sir Syed / first side road,fastest,780,0.0,0.351,0.887,5
+Main Blvd / L9,Sir Syed / first side road,balanced,786,0.8,0.201,0.332,11
+Main Blvd / L9,Sir Syed / first side road,safety-first,786,0.8,0.201,0.332,22
+Main Blvd / L9,Sir Syed / L8,fastest,486,0.0,0.363,0.887,4
+Main Blvd / L9,Sir Syed / L8,balanced,492,1.2,0.122,0.332,5
+Main Blvd / L9,Sir Syed / L8,safety-first,492,1.2,0.122,0.332,8
+Main Blvd / L9,Sir Syed / Hafeez road,fastest,318,0.0,0.007,0.016,3
+Main Blvd / L9,Sir Syed / Hafeez road,balanced,318,0.0,0.007,0.016,3
+Main Blvd / L9,Sir Syed / Hafeez road,safety-first,318,0.0,0.007,0.016,3
+Main Blvd / L9,Sir Syed / L9,fastest,195,0.0,0.99,0.99,2
+Main Blvd / L9,Sir Syed / L9,balanced,450,130.8,0.196,0.652,6
+Main Blvd / L9,Sir Syed / L9,safety-first,450,130.8,0.196,0.652,11
+Main Blvd / L9,Sir Syed south end,fastest,351,0.0,0.84,0.99,3
+Main Blvd / L9,Sir Syed south end,balanced,606,72.6,0.314,0.652,12
+Main Blvd / L9,Sir Syed south end,safety-first,917,161.3,0.161,0.827,22
+Main Blvd / L9,Crumble (MM Alam),fastest,1217,0.0,0.239,0.629,13
+Main Blvd / L9,Crumble (MM Alam),balanced,1646,35.3,0.007,0.016,18
+Main Blvd / L9,Crumble (MM Alam),safety-first,1646,35.3,0.007,0.016,15
+Main Blvd / L9,Junaid Jamshed (MM Alam),fastest,1122,0.0,0.275,0.995,10
+Main Blvd / L9,Junaid Jamshed (MM Alam),balanced,1472,31.2,0.007,0.016,14
+Main Blvd / L9,Junaid Jamshed (MM Alam),safety-first,1472,31.2,0.007,0.016,13
+Main Blvd / L9,MM Alam middle,fastest,1138,0.0,0.284,0.99,11
+Main Blvd / L9,MM Alam middle,balanced,1225,7.6,0.007,0.016,12
+Main Blvd / L9,MM Alam middle,safety-first,1225,7.6,0.007,0.016,11
+Main Blvd / L9,Tehzeeb Bakers (MM Alam),fastest,907,0.0,0.007,0.016,7
+Main Blvd / L9,Tehzeeb Bakers (MM Alam),balanced,907,0.0,0.007,0.016,6
+Main Blvd / L9,Tehzeeb Bakers (MM Alam),safety-first,907,0.0,0.007,0.016,6
+Main Blvd / L9,MM Alam / Tariq Road,fastest,1032,0.0,0.708,0.99,10
+Main Blvd / L9,MM Alam / Tariq Road,balanced,1189,15.2,0.006,0.016,9
+Main Blvd / L9,MM Alam / Tariq Road,safety-first,1189,15.2,0.006,0.016,9
+Main Blvd / L9,MM Alam roundabout,fastest,1298,0.0,0.518,0.99,14
+Main Blvd / L9,MM Alam roundabout,balanced,1489,14.7,0.006,0.016,13
+Main Blvd / L9,MM Alam roundabout,safety-first,1489,14.7,0.006,0.016,14
+Main Blvd / L9,Tipu Road north,fastest,1466,0.0,0.377,0.995,11
+Main Blvd / L9,Tipu Road north,balanced,1769,20.7,0.01,0.022,17
+Main Blvd / L9,Tipu Road north,safety-first,1769,20.7,0.01,0.022,17
+Main Blvd / L9,Tipu Road middle,fastest,1457,0.0,0.011,0.022,15
+Main Blvd / L9,Tipu Road middle,balanced,1457,0.0,0.011,0.022,13
+Main Blvd / L9,Tipu Road middle,safety-first,1457,0.0,0.011,0.022,12
+Main Blvd / L9,Tipu Road south,fastest,1177,0.0,0.008,0.016,8
+Main Blvd / L9,Tipu Road south,balanced,1177,0.0,0.008,0.016,7
+Main Blvd / L9,Tipu Road south,safety-first,1177,0.0,0.008,0.016,7
+Main Blvd / L9,Dopatta Gali top,fastest,817,0.0,0.006,0.016,9
+Main Blvd / L9,Dopatta Gali top,balanced,817,0.0,0.006,0.016,7
+Main Blvd / L9,Dopatta Gali top,safety-first,817,0.0,0.006,0.016,7
+Main Blvd / L9,Dopatta Gali / L11,fastest,576,0.0,0.006,0.016,6
+Main Blvd / L9,Dopatta Gali / L11,balanced,576,0.0,0.006,0.016,5
+Main Blvd / L9,Dopatta Gali / L11,safety-first,576,0.0,0.006,0.016,5
+Main Blvd / L9,Dopatta Gali / Hafeez road,fastest,456,0.0,0.007,0.016,5
+Main Blvd / L9,Dopatta Gali / Hafeez road,balanced,456,0.0,0.007,0.016,4
+Main Blvd / L9,Dopatta Gali / Hafeez road,safety-first,456,0.0,0.007,0.016,4
+Main Blvd / L9,Dopatta Gali / L10,fastest,564,0.0,0.007,0.016,6
+Main Blvd / L9,Dopatta Gali / L10,balanced,564,0.0,0.007,0.016,5
+Main Blvd / L9,Dopatta Gali / L10,safety-first,564,0.0,0.007,0.016,5
+Main Blvd / L9,Parking loop,fastest,523,0.0,0.836,0.99,4
+Main Blvd / L9,Parking loop,balanced,744,42.3,0.007,0.016,6
+Main Blvd / L9,Parking loop,safety-first,744,42.3,0.007,0.016,6
+Main Blvd / L9,Hafeez road bend,fastest,690,0.0,0.009,0.016,6
+Main Blvd / L9,Hafeez road bend,balanced,690,0.0,0.009,0.016,5
+Main Blvd / L9,Hafeez road bend,safety-first,690,0.0,0.009,0.016,5
+Main Blvd / L9,Lane junction (L10/L12),fastest,824,0.0,0.284,0.887,9
+Main Blvd / L9,Lane junction (L10/L12),balanced,824,0.0,0.284,0.887,16
+Main Blvd / L9,Lane junction (L10/L12),safety-first,824,0.0,0.284,0.887,30
+Main Blvd / L9,Tariq Road bend,fastest,781,0.0,0.778,0.99,5
+Main Blvd / L9,Tariq Road bend,balanced,1002,28.3,0.175,0.661,18
+Main Blvd / L9,Tariq Road bend,safety-first,1440,84.4,0.09,0.49,25
+Main Blvd / L9,Noor Jahan first junction,fastest,630,0.0,0.165,0.491,5
+Main Blvd / L9,Noor Jahan first junction,balanced,630,0.0,0.165,0.491,5
+Main Blvd / L9,Noor Jahan first junction,safety-first,630,0.0,0.165,0.491,12
+Main Blvd / L9,Dopatta Gali / Noor Jahan,fastest,868,0.0,0.504,0.99,6
+Main Blvd / L9,Dopatta Gali / Noor Jahan,balanced,1089,25.5,0.005,0.016,8
+Main Blvd / L9,Dopatta Gali / Noor Jahan,safety-first,1089,25.5,0.005,0.016,8
+Main Blvd / L9,Noor Jahan / L14,fastest,1024,0.0,0.511,0.99,7
+Main Blvd / L9,Noor Jahan / L14,balanced,1245,21.6,0.073,0.546,14
+Main Blvd / L9,Noor Jahan / L14,safety-first,1245,21.6,0.073,0.546,20
+Main Blvd / Noor Jahan,Sir Syed / North curve,fastest,1398,0.0,0.106,0.629,6
+Main Blvd / Noor Jahan,Sir Syed / North curve,balanced,1398,0.0,0.106,0.629,12
+Main Blvd / Noor Jahan,Sir Syed / North curve,safety-first,1398,0.0,0.106,0.629,22
+Main Blvd / Noor Jahan,Sir Syed / first side road,fastest,1212,0.0,0.232,0.887,6
+Main Blvd / Noor Jahan,Sir Syed / first side road,balanced,1218,0.5,0.135,0.332,13
+Main Blvd / Noor Jahan,Sir Syed / first side road,safety-first,1218,0.5,0.135,0.332,23
+Main Blvd / Noor Jahan,Sir Syed / L8,fastest,918,0.0,0.199,0.887,5
+Main Blvd / Noor Jahan,Sir Syed / L8,balanced,924,0.7,0.073,0.332,6
+Main Blvd / Noor Jahan,Sir Syed / L8,safety-first,924,0.7,0.073,0.332,9
+Main Blvd / Noor Jahan,Sir Syed / Hafeez road,fastest,750,0.0,0.012,0.016,4
+Main Blvd / Noor Jahan,Sir Syed / Hafeez road,balanced,750,0.0,0.012,0.016,4
+Main Blvd / Noor Jahan,Sir Syed / Hafeez road,safety-first,750,0.0,0.012,0.016,4
+Main Blvd / Noor Jahan,Sir Syed / L9,fastest,627,0.0,0.319,0.99,4
+Main Blvd / Noor Jahan,Sir Syed / L9,balanced,882,40.7,0.108,0.652,8
+Main Blvd / Noor Jahan,Sir Syed / L9,safety-first,882,40.7,0.108,0.652,12
+Main Blvd / Noor Jahan,Sir Syed south end,fastest,783,0.0,0.385,0.99,5
+Main Blvd / Noor Jahan,Sir Syed south end,balanced,1038,32.6,0.19,0.652,13
+Main Blvd / Noor Jahan,Sir Syed south end,safety-first,1349,72.3,0.115,0.827,22
+Main Blvd / Noor Jahan,Crumble (MM Alam),fastest,1649,0.0,0.181,0.629,15
+Main Blvd / Noor Jahan,Crumble (MM Alam),balanced,2078,26.0,0.009,0.016,20
+Main Blvd / Noor Jahan,Crumble (MM Alam),safety-first,2078,26.0,0.009,0.016,16
+Main Blvd / Noor Jahan,Junaid Jamshed (MM Alam),fastest,1554,0.0,0.203,0.995,12
+Main Blvd / Noor Jahan,Junaid Jamshed (MM Alam),balanced,1904,22.5,0.009,0.016,16
+Main Blvd / Noor Jahan,Junaid Jamshed (MM Alam),safety-first,1904,22.5,0.009,0.016,14
+Main Blvd / Noor Jahan,MM Alam middle,fastest,1570,0.0,0.21,0.99,14
+Main Blvd / Noor Jahan,MM Alam middle,balanced,1657,5.5,0.009,0.016,14
+Main Blvd / Noor Jahan,MM Alam middle,safety-first,1657,5.5,0.009,0.016,12
+Main Blvd / Noor Jahan,Tehzeeb Bakers (MM Alam),fastest,1339,0.0,0.01,0.016,11
+Main Blvd / Noor Jahan,Tehzeeb Bakers (MM Alam),balanced,1339,0.0,0.01,0.016,8
+Main Blvd / Noor Jahan,Tehzeeb Bakers (MM Alam),safety-first,1339,0.0,0.01,0.016,7
+Main Blvd / Noor Jahan,MM Alam / Tariq Road,fastest,1188,0.0,0.657,0.995,6
+Main Blvd / Noor Jahan,MM Alam / Tariq Road,balanced,1621,36.4,0.009,0.016,11
+Main Blvd / Noor Jahan,MM Alam / Tariq Road,safety-first,1621,36.4,0.009,0.016,10
+Main Blvd / Noor Jahan,MM Alam roundabout,fastest,934,0.0,0.569,0.651,5
+Main Blvd / Noor Jahan,MM Alam roundabout,balanced,1921,105.7,0.008,0.016,15
+Main Blvd / Noor Jahan,MM Alam roundabout,safety-first,1921,105.7,0.008,0.016,15
+Main Blvd / Noor Jahan,Tipu Road north,fastest,1898,0.0,0.294,0.995,14
+Main Blvd / Noor Jahan,Tipu Road north,balanced,2201,16.0,0.012,0.022,19
+Main Blvd / Noor Jahan,Tipu Road north,safety-first,2201,16.0,0.012,0.022,18
+Main Blvd / Noor Jahan,Tipu Road middle,fastest,1888,0.0,0.64,0.995,24
+Main Blvd / Noor Jahan,Tipu Road middle,balanced,1889,0.1,0.012,0.022,15
+Main Blvd / Noor Jahan,Tipu Road middle,safety-first,1889,0.1,0.012,0.022,13
+Main Blvd / Noor Jahan,Tipu Road south,fastest,1608,0.0,0.747,0.995,13
+Main Blvd / Noor Jahan,Tipu Road south,balanced,1609,0.1,0.01,0.016,9
+Main Blvd / Noor Jahan,Tipu Road south,safety-first,1609,0.1,0.01,0.016,8
+Main Blvd / Noor Jahan,Dopatta Gali top,fastest,1249,0.0,0.01,0.016,11
+Main Blvd / Noor Jahan,Dopatta Gali top,balanced,1249,0.0,0.01,0.016,8
+Main Blvd / Noor Jahan,Dopatta Gali top,safety-first,1249,0.0,0.01,0.016,8
+Main Blvd / Noor Jahan,Dopatta Gali / L11,fastest,1008,0.0,0.01,0.016,8
+Main Blvd / Noor Jahan,Dopatta Gali / L11,balanced,1008,0.0,0.01,0.016,6
+Main Blvd / Noor Jahan,Dopatta Gali / L11,safety-first,1008,0.0,0.01,0.016,6
+Main Blvd / Noor Jahan,Dopatta Gali / Hafeez road,fastest,888,0.0,0.011,0.016,7
+Main Blvd / Noor Jahan,Dopatta Gali / Hafeez road,balanced,888,0.0,0.011,0.016,5
+Main Blvd / Noor Jahan,Dopatta Gali / Hafeez road,safety-first,888,0.0,0.011,0.016,5
+Main Blvd / Noor Jahan,Dopatta Gali / L10,fastest,996,0.0,0.011,0.016,9
+Main Blvd / Noor Jahan,Dopatta Gali / L10,balanced,996,0.0,0.011,0.016,7
+Main Blvd / Noor Jahan,Dopatta Gali / L10,safety-first,996,0.0,0.011,0.016,6
+Main Blvd / Noor Jahan,Parking loop,fastest,849,0.0,0.35,0.651,6
+Main Blvd / Noor Jahan,Parking loop,balanced,1176,38.5,0.01,0.016,8
+Main Blvd / Noor Jahan,Parking loop,safety-first,1176,38.5,0.01,0.016,7
+Main Blvd / Noor Jahan,Hafeez road bend,fastest,1122,0.0,0.012,0.016,9
+Main Blvd / Noor Jahan,Hafeez road bend,balanced,1122,0.0,0.012,0.016,6
+Main Blvd / Noor Jahan,Hafeez road bend,safety-first,1122,0.0,0.012,0.016,6
+Main Blvd / Noor Jahan,Lane junction (L10/L12),fastest,1087,0.0,0.743,1.0,8
+Main Blvd / Noor Jahan,Lane junction (L10/L12),balanced,1256,15.5,0.192,0.887,18
+Main Blvd / Noor Jahan,Lane junction (L10/L12),safety-first,1256,15.5,0.192,0.887,30
+Main Blvd / Noor Jahan,Tariq Road bend,fastest,937,0.0,0.701,0.995,5
+Main Blvd / Noor Jahan,Tariq Road bend,balanced,1434,53.0,0.127,0.661,18
+Main Blvd / Noor Jahan,Tariq Road bend,safety-first,1872,99.8,0.073,0.49,25
+Main Blvd / Noor Jahan,Noor Jahan first junction,fastest,198,0.0,0.491,0.491,2
+Main Blvd / Noor Jahan,Noor Jahan first junction,balanced,198,0.0,0.491,0.491,2
+Main Blvd / Noor Jahan,Noor Jahan first junction,safety-first,198,0.0,0.491,0.491,3
+Main Blvd / Noor Jahan,Dopatta Gali / Noor Jahan,fastest,504,0.0,0.588,0.651,3
+Main Blvd / Noor Jahan,Dopatta Gali / Noor Jahan,balanced,504,0.0,0.588,0.651,5
+Main Blvd / Noor Jahan,Dopatta Gali / Noor Jahan,safety-first,1521,201.8,0.008,0.016,9
+Main Blvd / Noor Jahan,Noor Jahan / L14,fastest,660,0.0,0.578,0.651,4
+Main Blvd / Noor Jahan,Noor Jahan / L14,balanced,660,0.0,0.578,0.651,14
+Main Blvd / Noor Jahan,Noor Jahan / L14,safety-first,1677,154.1,0.058,0.546,20
+Sir Syed / North curve,Sir Syed / first side road,fastest,228,0.0,0.561,0.561,2
+Sir Syed / North curve,Sir Syed / first side road,balanced,228,0.0,0.561,0.561,2
+Sir Syed / North curve,Sir Syed / first side road,safety-first,228,0.0,0.561,0.561,2
+Sir Syed / North curve,Sir Syed / L8,fastest,522,0.0,0.432,0.561,3
+Sir Syed / North curve,Sir Syed / L8,balanced,522,0.0,0.432,0.561,4
+Sir Syed / North curve,Sir Syed / L8,safety-first,522,0.0,0.432,0.561,11
+Sir Syed / North curve,Sir Syed / Hafeez road,fastest,696,0.0,0.407,0.561,4
+Sir Syed / North curve,Sir Syed / Hafeez road,balanced,1044,50.0,0.134,0.629,7
+Sir Syed / North curve,Sir Syed / Hafeez road,safety-first,1044,50.0,0.134,0.629,6
+Sir Syed / North curve,Sir Syed / L9,fastest,828,0.0,0.446,0.652,5
+Sir Syed / North curve,Sir Syed / L9,balanced,1176,42.0,0.192,0.652,13
+Sir Syed / North curve,Sir Syed / L9,safety-first,1176,42.0,0.192,0.652,19
+Sir Syed / North curve,Sir Syed south end,fastest,984,0.0,0.479,0.652,6
+Sir Syed / North curve,Sir Syed south end,balanced,1332,35.4,0.246,0.652,21
+Sir Syed / North curve,Sir Syed south end,safety-first,1643,67.0,0.174,0.827,27
+Sir Syed / North curve,Crumble (MM Alam),fastest,251,0.0,0.596,0.596,2
+Sir Syed / North curve,Crumble (MM Alam),balanced,251,0.0,0.596,0.596,2
+Sir Syed / North curve,Crumble (MM Alam),safety-first,251,0.0,0.596,0.596,2
+Sir Syed / North curve,Junaid Jamshed (MM Alam),fastest,377,0.0,0.99,0.99,2
+Sir Syed / North curve,Junaid Jamshed (MM Alam),balanced,424,12.5,0.353,0.596,3
+Sir Syed / North curve,Junaid Jamshed (MM Alam),safety-first,424,12.5,0.353,0.596,4
+Sir Syed / North curve,MM Alam middle,fastest,624,0.0,0.601,0.99,3
+Sir Syed / North curve,MM Alam middle,balanced,671,7.5,0.226,0.596,5
+Sir Syed / North curve,MM Alam middle,safety-first,671,7.5,0.226,0.596,6
+Sir Syed / North curve,Tehzeeb Bakers (MM Alam),fastest,943,0.0,0.4,0.99,5
+Sir Syed / North curve,Tehzeeb Bakers (MM Alam),balanced,990,5.0,0.155,0.596,6
+Sir Syed / North curve,Tehzeeb Bakers (MM Alam),safety-first,990,5.0,0.155,0.596,7
+Sir Syed / North curve,MM Alam / Tariq Road,fastest,1226,0.0,0.309,0.99,7
+Sir Syed / North curve,MM Alam / Tariq Road,balanced,1272,3.8,0.121,0.596,7
+Sir Syed / North curve,MM Alam / Tariq Road,safety-first,1272,3.8,0.121,0.596,8
+Sir Syed / North curve,MM Alam roundabout,fastest,1526,0.0,0.249,0.99,9
+Sir Syed / North curve,MM Alam roundabout,balanced,1572,3.0,0.099,0.596,9
+Sir Syed / North curve,MM Alam roundabout,safety-first,1572,3.0,0.099,0.596,9
+Sir Syed / North curve,Tipu Road north,fastest,722,0.0,0.855,0.99,4
+Sir Syed / North curve,Tipu Road north,balanced,768,6.4,0.512,0.707,7
+Sir Syed / North curve,Tipu Road north,safety-first,1852,156.5,0.089,0.596,14
+Sir Syed / North curve,Tipu Road middle,fastest,836,0.0,0.995,1.0,3
+Sir Syed / North curve,Tipu Road middle,balanced,1540,84.2,0.106,0.596,9
+Sir Syed / North curve,Tipu Road middle,safety-first,1540,84.2,0.106,0.596,10
+Sir Syed / North curve,Tipu Road south,fastest,1048,0.0,0.758,0.99,4
+Sir Syed / North curve,Tipu Road south,balanced,1260,20.2,0.125,0.596,8
+Sir Syed / North curve,Tipu Road south,safety-first,1260,20.2,0.125,0.596,8
+Sir Syed / North curve,Dopatta Gali top,fastest,454,0.0,0.775,0.99,3
+Sir Syed / North curve,Dopatta Gali top,balanced,454,0.0,0.775,0.99,9
+Sir Syed / North curve,Dopatta Gali top,safety-first,1543,239.9,0.092,0.629,12
+Sir Syed / North curve,Dopatta Gali / L11,fastest,695,0.0,0.509,0.99,5
+Sir Syed / North curve,Dopatta Gali / L11,balanced,1302,87.3,0.108,0.629,12
+Sir Syed / North curve,Dopatta Gali / L11,safety-first,1302,87.3,0.108,0.629,11
+Sir Syed / North curve,Dopatta Gali / Hafeez road,fastest,815,0.0,0.434,0.99,6
+Sir Syed / North curve,Dopatta Gali / Hafeez road,balanced,1182,45.0,0.119,0.629,10
+Sir Syed / North curve,Dopatta Gali / Hafeez road,safety-first,1182,45.0,0.119,0.629,9
+Sir Syed / North curve,Dopatta Gali / L10,fastest,923,0.0,0.384,0.99,8
+Sir Syed / North curve,Dopatta Gali / L10,balanced,1290,39.8,0.11,0.629,12
+Sir Syed / North curve,Dopatta Gali / L10,safety-first,1290,39.8,0.11,0.629,10
+Sir Syed / North curve,Parking loop,fastest,1103,0.0,0.323,0.99,10
+Sir Syed / North curve,Parking loop,balanced,1470,33.3,0.097,0.629,14
+Sir Syed / North curve,Parking loop,safety-first,1470,33.3,0.097,0.629,12
+Sir Syed / North curve,Hafeez road bend,fastest,1049,0.0,0.34,0.99,11
+Sir Syed / North curve,Hafeez road bend,balanced,1206,15.0,0.128,0.596,10
+Sir Syed / North curve,Hafeez road bend,safety-first,1206,15.0,0.128,0.596,9
+Sir Syed / North curve,Lane junction (L10/L12),fastest,1183,0.0,0.494,0.99,13
+Sir Syed / North curve,Lane junction (L10/L12),balanced,1550,31.0,0.24,0.887,25
+Sir Syed / North curve,Lane junction (L10/L12),safety-first,1550,31.0,0.24,0.887,31
+Sir Syed / North curve,Tariq Road bend,fastest,1333,0.0,0.551,1.0,15
+Sir Syed / North curve,Tariq Road bend,balanced,1523,14.3,0.182,0.596,21
+Sir Syed / North curve,Tariq Road bend,safety-first,1523,14.3,0.182,0.596,26
+Sir Syed / North curve,Noor Jahan first junction,fastest,1596,0.0,0.154,0.629,19
+Sir Syed / North curve,Noor Jahan first junction,balanced,1596,0.0,0.154,0.629,18
+Sir Syed / North curve,Noor Jahan first junction,safety-first,1596,0.0,0.154,0.629,25
+Sir Syed / North curve,Dopatta Gali / Noor Jahan,fastest,1448,0.0,0.246,0.99,12
+Sir Syed / North curve,Dopatta Gali / Noor Jahan,balanced,1815,25.3,0.079,0.629,18
+Sir Syed / North curve,Dopatta Gali / Noor Jahan,safety-first,1815,25.3,0.079,0.629,15
+Sir Syed / North curve,Noor Jahan / L14,fastest,1604,0.0,0.275,0.99,18
+Sir Syed / North curve,Noor Jahan / L14,balanced,1971,22.9,0.116,0.629,26
+Sir Syed / North curve,Noor Jahan / L14,safety-first,1971,22.9,0.116,0.629,26
+Sir Syed / first side road,Sir Syed / L8,fastest,294,0.0,0.332,0.332,2
+Sir Syed / first side road,Sir Syed / L8,balanced,294,0.0,0.332,0.332,2
+Sir Syed / first side road,Sir Syed / L8,safety-first,294,0.0,0.332,0.332,2
+Sir Syed / first side road,Sir Syed / Hafeez road,fastest,468,0.0,0.332,0.332,3
+Sir Syed / first side road,Sir Syed / Hafeez road,balanced,468,0.0,0.332,0.332,3
+Sir Syed / first side road,Sir Syed / Hafeez road,safety-first,468,0.0,0.332,0.332,3
+Sir Syed / first side road,Sir Syed / L9,fastest,600,0.0,0.402,0.652,4
+Sir Syed / first side road,Sir Syed / L9,balanced,600,0.0,0.402,0.652,5
+Sir Syed / first side road,Sir Syed / L9,safety-first,600,0.0,0.402,0.652,14
+Sir Syed / first side road,Sir Syed south end,fastest,756,0.0,0.454,0.652,5
+Sir Syed / first side road,Sir Syed south end,balanced,756,0.0,0.454,0.652,13
+Sir Syed / first side road,Sir Syed south end,safety-first,1067,41.1,0.282,0.827,23
+Sir Syed / first side road,Crumble (MM Alam),fastest,479,0.0,0.579,0.596,3
+Sir Syed / first side road,Crumble (MM Alam),balanced,479,0.0,0.579,0.596,5
+Sir Syed / first side road,Crumble (MM Alam),safety-first,479,0.0,0.579,0.596,12
+Sir Syed / first side road,Junaid Jamshed (MM Alam),fastest,531,0.0,0.993,0.995,3
+Sir Syed / first side road,Junaid Jamshed (MM Alam),balanced,652,22.8,0.426,0.596,6
+Sir Syed / first side road,Junaid Jamshed (MM Alam),safety-first,1622,205.5,0.101,0.332,14
+Sir Syed / first side road,MM Alam middle,fastest,547,0.0,0.99,0.99,3
+Sir Syed / first side road,MM Alam middle,balanced,899,64.4,0.311,0.596,11
+Sir Syed / first side road,MM Alam middle,safety-first,1375,151.4,0.118,0.332,12
+Sir Syed / first side road,Tehzeeb Bakers (MM Alam),fastest,866,0.0,0.628,0.99,4
+Sir Syed / first side road,Tehzeeb Bakers (MM Alam),balanced,1057,22.1,0.151,0.332,8
+Sir Syed / first side road,Tehzeeb Bakers (MM Alam),safety-first,1057,22.1,0.151,0.332,7
+Sir Syed / first side road,MM Alam / Tariq Road,fastest,1148,0.0,0.474,0.99,9
+Sir Syed / first side road,MM Alam / Tariq Road,balanced,1339,16.6,0.12,0.332,11
+Sir Syed / first side road,MM Alam / Tariq Road,safety-first,1339,16.6,0.12,0.332,10
+Sir Syed / first side road,MM Alam roundabout,fastest,1448,0.0,0.377,0.99,14
+Sir Syed / first side road,MM Alam roundabout,balanced,1639,13.2,0.099,0.332,13
+Sir Syed / first side road,MM Alam roundabout,safety-first,1639,13.2,0.099,0.332,14
+Sir Syed / first side road,Tipu Road north,fastest,876,0.0,0.88,0.995,4
+Sir Syed / first side road,Tipu Road north,balanced,1919,119.1,0.089,0.332,20
+Sir Syed / first side road,Tipu Road north,safety-first,1919,119.1,0.089,0.332,19
+Sir Syed / first side road,Tipu Road middle,fastest,870,0.0,0.849,0.99,4
+Sir Syed / first side road,Tipu Road middle,balanced,1607,84.7,0.105,0.332,15
+Sir Syed / first side road,Tipu Road middle,safety-first,1607,84.7,0.105,0.332,12
+Sir Syed / first side road,Tipu Road south,fastest,971,0.0,0.99,0.99,4
+Sir Syed / first side road,Tipu Road south,balanced,1327,36.7,0.123,0.332,9
+Sir Syed / first side road,Tipu Road south,safety-first,1327,36.7,0.123,0.332,8
+Sir Syed / first side road,Dopatta Gali top,fastest,226,0.0,0.99,0.99,2
+Sir Syed / first side road,Dopatta Gali top,balanced,226,0.0,0.99,0.99,3
+Sir Syed / first side road,Dopatta Gali top,safety-first,226,0.0,0.99,0.99,5
+Sir Syed / first side road,Dopatta Gali / L11,fastest,467,0.0,0.483,0.99,4
+Sir Syed / first side road,Dopatta Gali / L11,balanced,467,0.0,0.483,0.99,5
+Sir Syed / first side road,Dopatta Gali / L11,safety-first,726,55.5,0.216,0.332,6
+Sir Syed / first side road,Dopatta Gali / Hafeez road,fastest,587,0.0,0.385,0.99,5
+Sir Syed / first side road,Dopatta Gali / Hafeez road,balanced,606,3.2,0.258,0.332,4
+Sir Syed / first side road,Dopatta Gali / Hafeez road,safety-first,606,3.2,0.258,0.332,4
+Sir Syed / first side road,Dopatta Gali / L10,fastest,695,0.0,0.326,0.99,7
+Sir Syed / first side road,Dopatta Gali / L10,balanced,714,2.7,0.22,0.332,5
+Sir Syed / first side road,Dopatta Gali / L10,safety-first,714,2.7,0.22,0.332,5
+Sir Syed / first side road,Parking loop,fastest,875,0.0,0.26,0.99,9
+Sir Syed / first side road,Parking loop,balanced,894,2.2,0.177,0.332,6
+Sir Syed / first side road,Parking loop,safety-first,894,2.2,0.177,0.332,6
+Sir Syed / first side road,Hafeez road bend,fastest,821,0.0,0.279,0.99,6
+Sir Syed / first side road,Hafeez road bend,balanced,840,2.3,0.189,0.332,6
+Sir Syed / first side road,Hafeez road bend,safety-first,840,2.3,0.189,0.332,6
+Sir Syed / first side road,Lane junction (L10/L12),fastest,955,0.0,0.478,0.99,8
+Sir Syed / first side road,Lane junction (L10/L12),balanced,974,2.0,0.398,0.887,17
+Sir Syed / first side road,Lane junction (L10/L12),safety-first,974,2.0,0.398,0.887,31
+Sir Syed / first side road,Tariq Road bend,fastest,1105,0.0,0.549,1.0,10
+Sir Syed / first side road,Tariq Road bend,balanced,1152,4.3,0.285,0.661,18
+Sir Syed / first side road,Tariq Road bend,safety-first,1590,43.9,0.178,0.49,27
+Sir Syed / first side road,Noor Jahan first junction,fastest,1410,0.0,0.268,0.887,15
+Sir Syed / first side road,Noor Jahan first junction,balanced,1416,0.4,0.185,0.491,18
+Sir Syed / first side road,Noor Jahan first junction,safety-first,1416,0.4,0.185,0.491,20
+Sir Syed / first side road,Dopatta Gali / Noor Jahan,fastest,1220,0.0,0.187,0.99,11
+Sir Syed / first side road,Dopatta Gali / Noor Jahan,balanced,1239,1.6,0.128,0.332,7
+Sir Syed / first side road,Dopatta Gali / Noor Jahan,safety-first,1239,1.6,0.128,0.332,8
+Sir Syed / first side road,Noor Jahan / L14,fastest,1376,0.0,0.228,0.99,12
+Sir Syed / first side road,Noor Jahan / L14,balanced,1395,1.4,0.175,0.546,15
+Sir Syed / first side road,Noor Jahan / L14,safety-first,1395,1.4,0.175,0.546,21
+Sir Syed / L8,Sir Syed / Hafeez road,fastest,174,0.0,0.332,0.332,2
+Sir Syed / L8,Sir Syed / Hafeez road,balanced,174,0.0,0.332,0.332,2
+Sir Syed / L8,Sir Syed / Hafeez road,safety-first,174,0.0,0.332,0.332,2
+Sir Syed / L8,Sir Syed / L9,fastest,306,0.0,0.47,0.652,3
+Sir Syed / L8,Sir Syed / L9,balanced,306,0.0,0.47,0.652,4
+Sir Syed / L8,Sir Syed / L9,safety-first,306,0.0,0.47,0.652,11
+Sir Syed / L8,Sir Syed south end,fastest,462,0.0,0.531,0.652,4
+Sir Syed / L8,Sir Syed south end,balanced,462,0.0,0.531,0.652,10
+Sir Syed / L8,Sir Syed south end,safety-first,773,67.3,0.263,0.827,22
+Sir Syed / L8,Crumble (MM Alam),fastest,773,0.0,0.485,0.596,4
+Sir Syed / L8,Crumble (MM Alam),balanced,1502,94.3,0.044,0.332,18
+Sir Syed / L8,Crumble (MM Alam),safety-first,1502,94.3,0.044,0.332,15
+Sir Syed / L8,Junaid Jamshed (MM Alam),fastest,825,0.0,0.757,0.995,4
+Sir Syed / L8,Junaid Jamshed (MM Alam),balanced,1328,61.0,0.05,0.332,13
+Sir Syed / L8,Junaid Jamshed (MM Alam),safety-first,1328,61.0,0.05,0.332,13
+Sir Syed / L8,MM Alam middle,fastest,841,0.0,0.76,0.99,6
+Sir Syed / L8,MM Alam middle,balanced,1081,28.5,0.059,0.332,10
+Sir Syed / L8,MM Alam middle,safety-first,1081,28.5,0.059,0.332,10
+Sir Syed / L8,Tehzeeb Bakers (MM Alam),fastest,763,0.0,0.081,0.332,5
+Sir Syed / L8,Tehzeeb Bakers (MM Alam),balanced,763,0.0,0.081,0.332,5
+Sir Syed / L8,Tehzeeb Bakers (MM Alam),safety-first,763,0.0,0.081,0.332,5
+Sir Syed / L8,MM Alam / Tariq Road,fastest,1045,0.0,0.06,0.332,10
+Sir Syed / L8,MM Alam / Tariq Road,balanced,1045,0.0,0.06,0.332,8
+Sir Syed / L8,MM Alam / Tariq Road,safety-first,1045,0.0,0.06,0.332,8
+Sir Syed / L8,MM Alam roundabout,fastest,1345,0.0,0.048,0.332,15
+Sir Syed / L8,MM Alam roundabout,balanced,1345,0.0,0.048,0.332,10
+Sir Syed / L8,MM Alam roundabout,safety-first,1345,0.0,0.048,0.332,12
+Sir Syed / L8,Tipu Road north,fastest,1170,0.0,0.743,0.995,6
+Sir Syed / L8,Tipu Road north,balanced,1625,38.9,0.045,0.332,16
+Sir Syed / L8,Tipu Road north,safety-first,1625,38.9,0.045,0.332,18
+Sir Syed / L8,Tipu Road middle,fastest,1164,0.0,0.719,0.99,9
+Sir Syed / L8,Tipu Road middle,balanced,1313,12.8,0.054,0.332,11
+Sir Syed / L8,Tipu Road middle,safety-first,1313,12.8,0.054,0.332,10
+Sir Syed / L8,Tipu Road south,fastest,1033,0.0,0.063,0.332,6
+Sir Syed / L8,Tipu Road south,balanced,1033,0.0,0.063,0.332,6
+Sir Syed / L8,Tipu Road south,safety-first,1033,0.0,0.063,0.332,6
+Sir Syed / L8,Dopatta Gali top,fastest,520,0.0,0.618,0.99,3
+Sir Syed / L8,Dopatta Gali top,balanced,673,29.4,0.09,0.332,6
+Sir Syed / L8,Dopatta Gali top,safety-first,673,29.4,0.09,0.332,5
+Sir Syed / L8,Dopatta Gali / L11,fastest,432,0.0,0.136,0.332,4
+Sir Syed / L8,Dopatta Gali / L11,balanced,432,0.0,0.136,0.332,4
+Sir Syed / L8,Dopatta Gali / L11,safety-first,432,0.0,0.136,0.332,4
+Sir Syed / L8,Dopatta Gali / Hafeez road,fastest,312,0.0,0.188,0.332,3
+Sir Syed / L8,Dopatta Gali / Hafeez road,balanced,312,0.0,0.188,0.332,3
+Sir Syed / L8,Dopatta Gali / Hafeez road,safety-first,312,0.0,0.188,0.332,3
+Sir Syed / L8,Dopatta Gali / L10,fastest,420,0.0,0.142,0.332,4
+Sir Syed / L8,Dopatta Gali / L10,balanced,420,0.0,0.142,0.332,4
+Sir Syed / L8,Dopatta Gali / L10,safety-first,420,0.0,0.142,0.332,4
+Sir Syed / L8,Parking loop,fastest,600,0.0,0.101,0.332,6
+Sir Syed / L8,Parking loop,balanced,600,0.0,0.101,0.332,5
+Sir Syed / L8,Parking loop,safety-first,600,0.0,0.101,0.332,5
+Sir Syed / L8,Hafeez road bend,fastest,546,0.0,0.113,0.332,4
+Sir Syed / L8,Hafeez road bend,balanced,546,0.0,0.113,0.332,4
+Sir Syed / L8,Hafeez road bend,safety-first,546,0.0,0.113,0.332,4
+Sir Syed / L8,Lane junction (L10/L12),fastest,680,0.0,0.426,0.887,5
+Sir Syed / L8,Lane junction (L10/L12),balanced,680,0.0,0.426,0.887,16
+Sir Syed / L8,Lane junction (L10/L12),safety-first,680,0.0,0.426,0.887,30
+Sir Syed / L8,Tariq Road bend,fastest,830,0.0,0.53,1.0,7
+Sir Syed / L8,Tariq Road bend,balanced,858,3.4,0.269,0.661,17
+Sir Syed / L8,Tariq Road bend,safety-first,1296,56.1,0.143,0.49,25
+Sir Syed / L8,Noor Jahan first junction,fastest,1116,0.0,0.251,0.887,12
+Sir Syed / L8,Noor Jahan first junction,balanced,1122,0.5,0.146,0.491,16
+Sir Syed / L8,Noor Jahan first junction,safety-first,1122,0.5,0.146,0.491,19
+Sir Syed / L8,Dopatta Gali / Noor Jahan,fastest,945,0.0,0.065,0.332,8
+Sir Syed / L8,Dopatta Gali / Noor Jahan,balanced,945,0.0,0.065,0.332,6
+Sir Syed / L8,Dopatta Gali / Noor Jahan,safety-first,945,0.0,0.065,0.332,6
+Sir Syed / L8,Noor Jahan / L14,fastest,1101,0.0,0.133,0.546,9
+Sir Syed / L8,Noor Jahan / L14,balanced,1101,0.0,0.133,0.546,12
+Sir Syed / L8,Noor Jahan / L14,safety-first,1101,0.0,0.133,0.546,20
+Sir Syed / Hafeez road,Sir Syed / L9,fastest,132,0.0,0.652,0.652,2
+Sir Syed / Hafeez road,Sir Syed / L9,balanced,132,0.0,0.652,0.652,3
+Sir Syed / Hafeez road,Sir Syed / L9,safety-first,132,0.0,0.652,0.652,10
+Sir Syed / Hafeez road,Sir Syed south end,fastest,288,0.0,0.652,0.652,3
+Sir Syed / Hafeez road,Sir Syed south end,balanced,288,0.0,0.652,0.652,10
+Sir Syed / Hafeez road,Sir Syed south end,safety-first,599,108.0,0.243,0.827,21
+Sir Syed / Hafeez road,Crumble (MM Alam),fastest,947,0.0,0.457,0.596,8
+Sir Syed / Hafeez road,Crumble (MM Alam),balanced,1328,40.2,0.006,0.012,17
+Sir Syed / Hafeez road,Crumble (MM Alam),safety-first,1328,40.2,0.006,0.012,14
+Sir Syed / Hafeez road,Junaid Jamshed (MM Alam),fastest,804,0.0,0.381,0.995,6
+Sir Syed / Hafeez road,Junaid Jamshed (MM Alam),balanced,1154,43.5,0.007,0.012,12
+Sir Syed / Hafeez road,Junaid Jamshed (MM Alam),safety-first,1154,43.5,0.007,0.012,11
+Sir Syed / Hafeez road,MM Alam middle,fastest,820,0.0,0.391,0.99,7
+Sir Syed / Hafeez road,MM Alam middle,balanced,907,10.6,0.007,0.012,9
+Sir Syed / Hafeez road,MM Alam middle,safety-first,907,10.6,0.007,0.012,9
+Sir Syed / Hafeez road,Tehzeeb Bakers (MM Alam),fastest,589,0.0,0.007,0.012,4
+Sir Syed / Hafeez road,Tehzeeb Bakers (MM Alam),balanced,589,0.0,0.007,0.012,4
+Sir Syed / Hafeez road,Tehzeeb Bakers (MM Alam),safety-first,589,0.0,0.007,0.012,4
+Sir Syed / Hafeez road,MM Alam / Tariq Road,fastest,871,0.0,0.005,0.012,9
+Sir Syed / Hafeez road,MM Alam / Tariq Road,balanced,871,0.0,0.005,0.012,7
+Sir Syed / Hafeez road,MM Alam / Tariq Road,safety-first,871,0.0,0.005,0.012,7
+Sir Syed / Hafeez road,MM Alam roundabout,fastest,1171,0.0,0.006,0.012,14
+Sir Syed / Hafeez road,MM Alam roundabout,balanced,1171,0.0,0.006,0.012,9
+Sir Syed / Hafeez road,MM Alam roundabout,safety-first,1171,0.0,0.006,0.012,11
+Sir Syed / Hafeez road,Tipu Road north,fastest,1148,0.0,0.479,0.995,7
+Sir Syed / Hafeez road,Tipu Road north,balanced,1451,26.4,0.011,0.022,15
+Sir Syed / Hafeez road,Tipu Road north,safety-first,1451,26.4,0.011,0.022,16
+Sir Syed / Hafeez road,Tipu Road middle,fastest,1139,0.0,0.012,0.022,11
+Sir Syed / Hafeez road,Tipu Road middle,balanced,1139,0.0,0.012,0.022,10
+Sir Syed / Hafeez road,Tipu Road middle,safety-first,1139,0.0,0.012,0.022,9
+Sir Syed / Hafeez road,Tipu Road south,fastest,859,0.0,0.009,0.012,5
+Sir Syed / Hafeez road,Tipu Road south,balanced,859,0.0,0.009,0.012,5
+Sir Syed / Hafeez road,Tipu Road south,safety-first,859,0.0,0.009,0.012,5
+Sir Syed / Hafeez road,Dopatta Gali top,fastest,499,0.0,0.006,0.007,5
+Sir Syed / Hafeez road,Dopatta Gali top,balanced,499,0.0,0.006,0.007,4
+Sir Syed / Hafeez road,Dopatta Gali top,safety-first,499,0.0,0.006,0.007,4
+Sir Syed / Hafeez road,Dopatta Gali / L11,fastest,258,0.0,0.005,0.007,3
+Sir Syed / Hafeez road,Dopatta Gali / L11,balanced,258,0.0,0.005,0.007,3
+Sir Syed / Hafeez road,Dopatta Gali / L11,safety-first,258,0.0,0.005,0.007,3
+Sir Syed / Hafeez road,Dopatta Gali / Hafeez road,fastest,138,0.0,0.007,0.007,2
+Sir Syed / Hafeez road,Dopatta Gali / Hafeez road,balanced,138,0.0,0.007,0.007,2
+Sir Syed / Hafeez road,Dopatta Gali / Hafeez road,safety-first,138,0.0,0.007,0.007,2
+Sir Syed / Hafeez road,Dopatta Gali / L10,fastest,246,0.0,0.007,0.007,3
+Sir Syed / Hafeez road,Dopatta Gali / L10,balanced,246,0.0,0.007,0.007,3
+Sir Syed / Hafeez road,Dopatta Gali / L10,safety-first,246,0.0,0.007,0.007,3
+Sir Syed / Hafeez road,Parking loop,fastest,426,0.0,0.007,0.007,5
+Sir Syed / Hafeez road,Parking loop,balanced,426,0.0,0.007,0.007,4
+Sir Syed / Hafeez road,Parking loop,safety-first,426,0.0,0.007,0.007,4
+Sir Syed / Hafeez road,Hafeez road bend,fastest,372,0.0,0.01,0.012,3
+Sir Syed / Hafeez road,Hafeez road bend,balanced,372,0.0,0.01,0.012,3
+Sir Syed / Hafeez road,Hafeez road bend,safety-first,372,0.0,0.01,0.012,3
+Sir Syed / Hafeez road,Lane junction (L10/L12),fastest,506,0.0,0.458,0.887,4
+Sir Syed / Hafeez road,Lane junction (L10/L12),balanced,506,0.0,0.458,0.887,15
+Sir Syed / Hafeez road,Lane junction (L10/L12),safety-first,506,0.0,0.458,0.887,30
+Sir Syed / Hafeez road,Tariq Road bend,fastest,656,0.0,0.582,1.0,6
+Sir Syed / Hafeez road,Tariq Road bend,balanced,684,4.3,0.253,0.661,16
+Sir Syed / Hafeez road,Tariq Road bend,safety-first,1122,71.0,0.114,0.49,24
+Sir Syed / Hafeez road,Noor Jahan first junction,fastest,948,0.0,0.112,0.491,12
+Sir Syed / Hafeez road,Noor Jahan first junction,balanced,948,0.0,0.112,0.491,15
+Sir Syed / Hafeez road,Noor Jahan first junction,safety-first,948,0.0,0.112,0.491,18
+Sir Syed / Hafeez road,Dopatta Gali / Noor Jahan,fastest,771,0.0,0.005,0.007,7
+Sir Syed / Hafeez road,Dopatta Gali / Noor Jahan,balanced,771,0.0,0.005,0.007,5
+Sir Syed / Hafeez road,Dopatta Gali / Noor Jahan,safety-first,771,0.0,0.005,0.007,5
+Sir Syed / Hafeez road,Noor Jahan / L14,fastest,927,0.0,0.096,0.546,8
+Sir Syed / Hafeez road,Noor Jahan / L14,balanced,927,0.0,0.096,0.546,11
+Sir Syed / Hafeez road,Noor Jahan / L14,safety-first,927,0.0,0.096,0.546,19
+Sir Syed / L9,Sir Syed south end,fastest,156,0.0,0.652,0.652,2
+Sir Syed / L9,Sir Syed south end,balanced,156,0.0,0.652,0.652,2
+Sir Syed / L9,Sir Syed south end,safety-first,156,0.0,0.652,0.652,2
+Sir Syed / L9,Crumble (MM Alam),fastest,1079,0.0,0.481,0.652,9
+Sir Syed / L9,Crumble (MM Alam),balanced,1460,35.3,0.065,0.652,18
+Sir Syed / L9,Crumble (MM Alam),safety-first,1460,35.3,0.065,0.652,16
+Sir Syed / L9,Junaid Jamshed (MM Alam),fastest,936,0.0,0.419,0.995,7
+Sir Syed / L9,Junaid Jamshed (MM Alam),balanced,1286,37.4,0.073,0.652,14
+Sir Syed / L9,Junaid Jamshed (MM Alam),safety-first,1286,37.4,0.073,0.652,13
+Sir Syed / L9,MM Alam middle,fastest,952,0.0,0.427,0.99,8
+Sir Syed / L9,MM Alam middle,balanced,1039,9.1,0.089,0.652,11
+Sir Syed / L9,MM Alam middle,safety-first,1039,9.1,0.089,0.652,10
+Sir Syed / L9,Tehzeeb Bakers (MM Alam),fastest,721,0.0,0.125,0.652,5
+Sir Syed / L9,Tehzeeb Bakers (MM Alam),balanced,721,0.0,0.125,0.652,5
+Sir Syed / L9,Tehzeeb Bakers (MM Alam),safety-first,721,0.0,0.125,0.652,5
+Sir Syed / L9,MM Alam / Tariq Road,fastest,837,0.0,0.642,0.827,7
+Sir Syed / L9,MM Alam / Tariq Road,balanced,1003,19.8,0.091,0.652,9
+Sir Syed / L9,MM Alam / Tariq Road,safety-first,1003,19.8,0.091,0.652,9
+Sir Syed / L9,MM Alam roundabout,fastest,1103,0.0,0.435,0.827,10
+Sir Syed / L9,MM Alam roundabout,balanced,1303,18.1,0.071,0.652,11
+Sir Syed / L9,MM Alam roundabout,safety-first,1303,18.1,0.071,0.652,13
+Sir Syed / L9,Tipu Road north,fastest,1280,0.0,0.497,0.995,8
+Sir Syed / L9,Tipu Road north,balanced,1583,23.7,0.065,0.652,16
+Sir Syed / L9,Tipu Road north,safety-first,1583,23.7,0.065,0.652,18
+Sir Syed / L9,Tipu Road middle,fastest,1271,0.0,0.078,0.652,12
+Sir Syed / L9,Tipu Road middle,balanced,1271,0.0,0.078,0.652,12
+Sir Syed / L9,Tipu Road middle,safety-first,1271,0.0,0.078,0.652,11
+Sir Syed / L9,Tipu Road south,fastest,991,0.0,0.094,0.652,6
+Sir Syed / L9,Tipu Road south,balanced,991,0.0,0.094,0.652,6
+Sir Syed / L9,Tipu Road south,safety-first,991,0.0,0.094,0.652,6
+Sir Syed / L9,Dopatta Gali top,fastest,631,0.0,0.141,0.652,6
+Sir Syed / L9,Dopatta Gali top,balanced,631,0.0,0.141,0.652,5
+Sir Syed / L9,Dopatta Gali top,safety-first,631,0.0,0.141,0.652,5
+Sir Syed / L9,Dopatta Gali / L11,fastest,390,0.0,0.224,0.652,4
+Sir Syed / L9,Dopatta Gali / L11,balanced,390,0.0,0.224,0.652,4
+Sir Syed / L9,Dopatta Gali / L11,safety-first,390,0.0,0.224,0.652,4
+Sir Syed / L9,Dopatta Gali / Hafeez road,fastest,270,0.0,0.322,0.652,3
+Sir Syed / L9,Dopatta Gali / Hafeez road,balanced,270,0.0,0.322,0.652,3
+Sir Syed / L9,Dopatta Gali / Hafeez road,safety-first,270,0.0,0.322,0.652,3
+Sir Syed / L9,Dopatta Gali / L10,fastest,378,0.0,0.232,0.652,4
+Sir Syed / L9,Dopatta Gali / L10,balanced,378,0.0,0.232,0.652,4
+Sir Syed / L9,Dopatta Gali / L10,safety-first,378,0.0,0.232,0.652,4
+Sir Syed / L9,Parking loop,fastest,329,0.0,0.744,0.827,3
+Sir Syed / L9,Parking loop,balanced,558,69.6,0.159,0.652,6
+Sir Syed / L9,Parking loop,safety-first,558,69.6,0.159,0.652,6
+Sir Syed / L9,Hafeez road bend,fastest,504,0.0,0.178,0.652,4
+Sir Syed / L9,Hafeez road bend,balanced,504,0.0,0.178,0.652,4
+Sir Syed / L9,Hafeez road bend,safety-first,504,0.0,0.178,0.652,4
+Sir Syed / L9,Lane junction (L10/L12),fastest,638,0.0,0.499,0.887,7
+Sir Syed / L9,Lane junction (L10/L12),balanced,638,0.0,0.499,0.887,16
+Sir Syed / L9,Lane junction (L10/L12),safety-first,638,0.0,0.499,0.887,30
+Sir Syed / L9,Tariq Road bend,fastest,586,0.0,0.707,0.827,4
+Sir Syed / L9,Tariq Road bend,balanced,816,39.2,0.318,0.661,17
+Sir Syed / L9,Tariq Road bend,safety-first,1254,114.0,0.17,0.652,25
+Sir Syed / L9,Noor Jahan first junction,fastest,825,0.0,0.36,0.99,7
+Sir Syed / L9,Noor Jahan first junction,balanced,1080,30.9,0.178,0.652,15
+Sir Syed / L9,Noor Jahan first junction,safety-first,1080,30.9,0.178,0.652,19
+Sir Syed / L9,Dopatta Gali / Noor Jahan,fastest,674,0.0,0.364,0.827,4
+Sir Syed / L9,Dopatta Gali / Noor Jahan,balanced,903,34.0,0.099,0.652,7
+Sir Syed / L9,Dopatta Gali / Noor Jahan,safety-first,903,34.0,0.099,0.652,7
+Sir Syed / L9,Noor Jahan / L14,fastest,830,0.0,0.398,0.827,5
+Sir Syed / L9,Noor Jahan / L14,balanced,1059,27.6,0.165,0.652,12
+Sir Syed / L9,Noor Jahan / L14,safety-first,1059,27.6,0.165,0.652,20
+Sir Syed south end,Crumble (MM Alam),fastest,1235,0.0,0.503,0.652,12
+Sir Syed south end,Crumble (MM Alam),balanced,1650,33.6,0.092,0.827,16
+Sir Syed south end,Crumble (MM Alam),safety-first,1650,33.6,0.092,0.827,14
+Sir Syed south end,Junaid Jamshed (MM Alam),fastest,1092,0.0,0.453,0.995,10
+Sir Syed south end,Junaid Jamshed (MM Alam),balanced,1477,35.3,0.103,0.827,15
+Sir Syed south end,Junaid Jamshed (MM Alam),safety-first,1477,35.3,0.103,0.827,12
+Sir Syed south end,MM Alam middle,fastest,1108,0.0,0.459,0.99,13
+Sir Syed south end,MM Alam middle,balanced,1230,11.0,0.122,0.827,11
+Sir Syed south end,MM Alam middle,safety-first,1230,11.0,0.122,0.827,11
+Sir Syed south end,Tehzeeb Bakers (MM Alam),fastest,877,0.0,0.219,0.652,10
+Sir Syed south end,Tehzeeb Bakers (MM Alam),balanced,912,4.0,0.162,0.827,7
+Sir Syed south end,Tehzeeb Bakers (MM Alam),safety-first,912,4.0,0.162,0.827,7
+Sir Syed south end,MM Alam / Tariq Road,fastest,681,0.0,0.64,0.827,4
+Sir Syed south end,MM Alam / Tariq Road,balanced,1194,75.3,0.124,0.827,12
+Sir Syed south end,MM Alam / Tariq Road,safety-first,1194,75.3,0.124,0.827,10
+Sir Syed south end,MM Alam roundabout,fastest,947,0.0,0.399,0.827,6
+Sir Syed south end,MM Alam roundabout,balanced,1494,57.8,0.101,0.827,14
+Sir Syed south end,MM Alam roundabout,safety-first,1494,57.8,0.101,0.827,12
+Sir Syed south end,Tipu Road north,fastest,1436,0.0,0.514,0.995,11
+Sir Syed south end,Tipu Road north,balanced,1774,23.5,0.09,0.827,16
+Sir Syed south end,Tipu Road north,safety-first,1774,23.5,0.09,0.827,16
+Sir Syed south end,Tipu Road middle,fastest,1427,0.0,0.141,0.652,16
+Sir Syed south end,Tipu Road middle,balanced,1462,2.5,0.108,0.827,12
+Sir Syed south end,Tipu Road middle,safety-first,1462,2.5,0.108,0.827,12
+Sir Syed south end,Tipu Road south,fastest,1147,0.0,0.17,0.652,12
+Sir Syed south end,Tipu Road south,balanced,1182,3.1,0.128,0.827,8
+Sir Syed south end,Tipu Road south,safety-first,1182,3.1,0.128,0.827,8
+Sir Syed south end,Dopatta Gali top,fastest,787,0.0,0.242,0.652,7
+Sir Syed south end,Dopatta Gali top,balanced,822,4.4,0.179,0.827,8
+Sir Syed south end,Dopatta Gali top,safety-first,822,4.4,0.179,0.827,7
+Sir Syed south end,Dopatta Gali / L11,fastest,546,0.0,0.346,0.652,5
+Sir Syed south end,Dopatta Gali / L11,balanced,581,6.4,0.25,0.827,6
+Sir Syed south end,Dopatta Gali / L11,safety-first,581,6.4,0.25,0.827,6
+Sir Syed south end,Dopatta Gali / Hafeez road,fastest,426,0.0,0.443,0.652,4
+Sir Syed south end,Dopatta Gali / Hafeez road,balanced,461,8.2,0.314,0.827,5
+Sir Syed south end,Dopatta Gali / Hafeez road,safety-first,461,8.2,0.314,0.827,5
+Sir Syed south end,Dopatta Gali / L10,fastest,353,0.0,0.408,0.827,4
+Sir Syed south end,Dopatta Gali / L10,balanced,353,0.0,0.408,0.827,4
+Sir Syed south end,Dopatta Gali / L10,safety-first,353,0.0,0.408,0.827,4
+Sir Syed south end,Parking loop,fastest,173,0.0,0.827,0.827,2
+Sir Syed south end,Parking loop,balanced,173,0.0,0.827,0.827,2
+Sir Syed south end,Parking loop,safety-first,173,0.0,0.827,0.827,3
+Sir Syed south end,Hafeez road bend,fastest,660,0.0,0.29,0.652,7
+Sir Syed south end,Hafeez road bend,balanced,695,5.3,0.212,0.827,6
+Sir Syed south end,Hafeez road bend,safety-first,695,5.3,0.212,0.827,6
+Sir Syed south end,Lane junction (L10/L12),fastest,580,0.0,0.798,1.0,5
+Sir Syed south end,Lane junction (L10/L12),balanced,612,5.5,0.611,0.887,14
+Sir Syed south end,Lane junction (L10/L12),safety-first,612,5.5,0.611,0.887,28
+Sir Syed south end,Tariq Road bend,fastest,430,0.0,0.728,0.827,3
+Sir Syed south end,Tariq Road bend,balanced,430,0.0,0.728,0.827,8
+Sir Syed south end,Tariq Road bend,safety-first,430,0.0,0.728,0.827,22
+Sir Syed south end,Noor Jahan first junction,fastest,824,0.0,0.416,0.827,7
+Sir Syed south end,Noor Jahan first junction,balanced,824,0.0,0.416,0.827,14
+Sir Syed south end,Noor Jahan first junction,safety-first,1547,87.7,0.163,0.827,23
+Sir Syed south end,Dopatta Gali / Noor Jahan,fastest,518,0.0,0.277,0.827,3
+Sir Syed south end,Dopatta Gali / Noor Jahan,balanced,518,0.0,0.277,0.827,3
+Sir Syed south end,Dopatta Gali / Noor Jahan,safety-first,518,0.0,0.277,0.827,4
+Sir Syed south end,Noor Jahan / L14,fastest,674,0.0,0.339,0.827,4
+Sir Syed south end,Noor Jahan / L14,balanced,674,0.0,0.339,0.827,6
+Sir Syed south end,Noor Jahan / L14,safety-first,674,0.0,0.339,0.827,10
+Crumble (MM Alam),Junaid Jamshed (MM Alam),fastest,173,0.0,0.002,0.002,2
+Crumble (MM Alam),Junaid Jamshed (MM Alam),balanced,173,0.0,0.002,0.002,2
+Crumble (MM Alam),Junaid Jamshed (MM Alam),safety-first,173,0.0,0.002,0.002,2
+Crumble (MM Alam),MM Alam middle,fastest,420,0.0,0.005,0.007,3
+Crumble (MM Alam),MM Alam middle,balanced,420,0.0,0.005,0.007,3
+Crumble (MM Alam),MM Alam middle,safety-first,420,0.0,0.005,0.007,3
+Crumble (MM Alam),Tehzeeb Bakers (MM Alam),fastest,739,0.0,0.006,0.007,4
+Crumble (MM Alam),Tehzeeb Bakers (MM Alam),balanced,739,0.0,0.006,0.007,4
+Crumble (MM Alam),Tehzeeb Bakers (MM Alam),safety-first,739,0.0,0.006,0.007,4
+Crumble (MM Alam),MM Alam / Tariq Road,fastest,1021,0.0,0.005,0.007,5
+Crumble (MM Alam),MM Alam / Tariq Road,balanced,1021,0.0,0.005,0.007,5
+Crumble (MM Alam),MM Alam / Tariq Road,safety-first,1021,0.0,0.005,0.007,5
+Crumble (MM Alam),MM Alam roundabout,fastest,1321,0.0,0.005,0.007,6
+Crumble (MM Alam),MM Alam roundabout,balanced,1321,0.0,0.005,0.007,6
+Crumble (MM Alam),MM Alam roundabout,safety-first,1321,0.0,0.005,0.007,6
+Crumble (MM Alam),Tipu Road north,fastest,517,0.0,0.471,0.707,3
+Crumble (MM Alam),Tipu Road north,balanced,517,0.0,0.471,0.707,4
+Crumble (MM Alam),Tipu Road north,safety-first,1601,209.7,0.01,0.022,7
+Crumble (MM Alam),Tipu Road middle,fastest,632,0.0,0.726,1.0,3
+Crumble (MM Alam),Tipu Road middle,balanced,1289,104.0,0.011,0.022,6
+Crumble (MM Alam),Tipu Road middle,safety-first,1289,104.0,0.011,0.022,6
+Crumble (MM Alam),Tipu Road south,fastest,844,0.0,0.499,0.99,4
+Crumble (MM Alam),Tipu Road south,balanced,1009,19.5,0.007,0.012,5
+Crumble (MM Alam),Tipu Road south,safety-first,1009,19.5,0.007,0.012,5
+Crumble (MM Alam),Dopatta Gali top,fastest,478,0.0,0.635,0.995,3
+Crumble (MM Alam),Dopatta Gali top,balanced,478,0.0,0.635,0.995,7
+Crumble (MM Alam),Dopatta Gali top,safety-first,1550,224.3,0.006,0.012,8
+Crumble (MM Alam),Dopatta Gali / L11,fastest,719,0.0,0.425,0.995,4
+Crumble (MM Alam),Dopatta Gali / L11,balanced,1310,82.2,0.006,0.012,8
+Crumble (MM Alam),Dopatta Gali / L11,safety-first,1310,82.2,0.006,0.012,7
+Crumble (MM Alam),Dopatta Gali / Hafeez road,fastest,839,0.0,0.364,0.995,5
+Crumble (MM Alam),Dopatta Gali / Hafeez road,balanced,1190,41.8,0.006,0.012,6
+Crumble (MM Alam),Dopatta Gali / Hafeez road,safety-first,1190,41.8,0.006,0.012,6
+Crumble (MM Alam),Dopatta Gali / L10,fastest,947,0.0,0.324,0.995,6
+Crumble (MM Alam),Dopatta Gali / L10,balanced,1298,37.1,0.006,0.012,7
+Crumble (MM Alam),Dopatta Gali / L10,safety-first,1298,37.1,0.006,0.012,7
+Crumble (MM Alam),Parking loop,fastest,1127,0.0,0.273,0.995,7
+Crumble (MM Alam),Parking loop,balanced,1478,31.1,0.006,0.012,8
+Crumble (MM Alam),Parking loop,safety-first,1478,31.1,0.006,0.012,9
+Crumble (MM Alam),Hafeez road bend,fastest,955,0.0,0.005,0.007,6
+Crumble (MM Alam),Hafeez road bend,balanced,955,0.0,0.005,0.007,5
+Crumble (MM Alam),Hafeez road bend,safety-first,955,0.0,0.005,0.007,5
+Crumble (MM Alam),Lane junction (L10/L12),fastest,1206,0.0,0.445,0.995,12
+Crumble (MM Alam),Lane junction (L10/L12),balanced,1422,17.9,0.195,1.0,24
+Crumble (MM Alam),Lane junction (L10/L12),safety-first,1557,29.1,0.153,0.887,29
+Crumble (MM Alam),Tariq Road bend,fastest,1272,0.0,0.1,0.49,11
+Crumble (MM Alam),Tariq Road bend,balanced,1272,0.0,0.1,0.49,9
+Crumble (MM Alam),Tariq Road bend,safety-first,1272,0.0,0.1,0.49,19
+Crumble (MM Alam),Noor Jahan first junction,fastest,1778,0.0,0.285,0.995,24
+Crumble (MM Alam),Noor Jahan first junction,balanced,2276,28.0,0.051,0.491,29
+Crumble (MM Alam),Noor Jahan first junction,safety-first,2276,28.0,0.051,0.491,27
+Crumble (MM Alam),Dopatta Gali / Noor Jahan,fastest,1472,0.0,0.209,0.995,10
+Crumble (MM Alam),Dopatta Gali / Noor Jahan,balanced,1823,23.8,0.006,0.012,11
+Crumble (MM Alam),Dopatta Gali / Noor Jahan,safety-first,1823,23.8,0.006,0.012,11
+Crumble (MM Alam),Noor Jahan / L14,fastest,1549,0.0,0.26,0.995,13
+Crumble (MM Alam),Noor Jahan / L14,balanced,1595,3.0,0.098,0.546,15
+Crumble (MM Alam),Noor Jahan / L14,safety-first,1979,27.8,0.048,0.546,22
+Junaid Jamshed (MM Alam),MM Alam middle,fastest,247,0.0,0.007,0.007,2
+Junaid Jamshed (MM Alam),MM Alam middle,balanced,247,0.0,0.007,0.007,2
+Junaid Jamshed (MM Alam),MM Alam middle,safety-first,247,0.0,0.007,0.007,2
+Junaid Jamshed (MM Alam),Tehzeeb Bakers (MM Alam),fastest,566,0.0,0.007,0.007,3
+Junaid Jamshed (MM Alam),Tehzeeb Bakers (MM Alam),balanced,566,0.0,0.007,0.007,3
+Junaid Jamshed (MM Alam),Tehzeeb Bakers (MM Alam),safety-first,566,0.0,0.007,0.007,3
+Junaid Jamshed (MM Alam),MM Alam / Tariq Road,fastest,848,0.0,0.005,0.007,4
+Junaid Jamshed (MM Alam),MM Alam / Tariq Road,balanced,848,0.0,0.005,0.007,4
+Junaid Jamshed (MM Alam),MM Alam / Tariq Road,safety-first,848,0.0,0.005,0.007,4
+Junaid Jamshed (MM Alam),MM Alam roundabout,fastest,1148,0.0,0.006,0.007,5
+Junaid Jamshed (MM Alam),MM Alam roundabout,balanced,1148,0.0,0.006,0.007,5
+Junaid Jamshed (MM Alam),MM Alam roundabout,safety-first,1148,0.0,0.006,0.007,5
+Junaid Jamshed (MM Alam),Tipu Road north,fastest,344,0.0,0.707,0.707,2
+Junaid Jamshed (MM Alam),Tipu Road north,balanced,344,0.0,0.707,0.707,4
+Junaid Jamshed (MM Alam),Tipu Road north,safety-first,1428,315.1,0.011,0.022,7
+Junaid Jamshed (MM Alam),Tipu Road middle,fastest,458,0.0,1.0,1.0,2
+Junaid Jamshed (MM Alam),Tipu Road middle,balanced,1116,143.7,0.012,0.022,6
+Junaid Jamshed (MM Alam),Tipu Road middle,safety-first,1116,143.7,0.012,0.022,6
+Junaid Jamshed (MM Alam),Tipu Road south,fastest,671,0.0,0.628,0.99,3
+Junaid Jamshed (MM Alam),Tipu Road south,balanced,836,24.6,0.009,0.012,4
+Junaid Jamshed (MM Alam),Tipu Road south,safety-first,836,24.6,0.009,0.012,4
+Junaid Jamshed (MM Alam),Dopatta Gali top,fastest,305,0.0,0.995,0.995,2
+Junaid Jamshed (MM Alam),Dopatta Gali top,balanced,305,0.0,0.995,0.995,6
+Junaid Jamshed (MM Alam),Dopatta Gali top,safety-first,1377,351.5,0.007,0.012,8
+Junaid Jamshed (MM Alam),Dopatta Gali / L11,fastest,546,0.0,0.559,0.995,3
+Junaid Jamshed (MM Alam),Dopatta Gali / L11,balanced,1137,108.2,0.007,0.012,7
+Junaid Jamshed (MM Alam),Dopatta Gali / L11,safety-first,1137,108.2,0.007,0.012,7
+Junaid Jamshed (MM Alam),Dopatta Gali / Hafeez road,fastest,666,0.0,0.459,0.995,4
+Junaid Jamshed (MM Alam),Dopatta Gali / Hafeez road,balanced,1016,52.6,0.007,0.012,6
+Junaid Jamshed (MM Alam),Dopatta Gali / Hafeez road,safety-first,1016,52.6,0.007,0.012,6
+Junaid Jamshed (MM Alam),Dopatta Gali / L10,fastest,774,0.0,0.395,0.995,5
+Junaid Jamshed (MM Alam),Dopatta Gali / L10,balanced,1125,45.3,0.007,0.012,7
+Junaid Jamshed (MM Alam),Dopatta Gali / L10,safety-first,1125,45.3,0.007,0.012,7
+Junaid Jamshed (MM Alam),Parking loop,fastest,954,0.0,0.322,0.995,6
+Junaid Jamshed (MM Alam),Parking loop,balanced,1305,36.8,0.007,0.012,8
+Junaid Jamshed (MM Alam),Parking loop,safety-first,1305,36.8,0.007,0.012,9
+Junaid Jamshed (MM Alam),Hafeez road bend,fastest,782,0.0,0.006,0.007,5
+Junaid Jamshed (MM Alam),Hafeez road bend,balanced,782,0.0,0.006,0.007,4
+Junaid Jamshed (MM Alam),Hafeez road bend,safety-first,782,0.0,0.006,0.007,4
+Junaid Jamshed (MM Alam),Lane junction (L10/L12),fastest,1033,0.0,0.519,0.995,9
+Junaid Jamshed (MM Alam),Lane junction (L10/L12),balanced,1249,20.9,0.222,1.0,22
+Junaid Jamshed (MM Alam),Lane junction (L10/L12),safety-first,1384,34.0,0.172,0.887,29
+Junaid Jamshed (MM Alam),Tariq Road bend,fastest,1099,0.0,0.116,0.49,10
+Junaid Jamshed (MM Alam),Tariq Road bend,balanced,1099,0.0,0.116,0.49,9
+Junaid Jamshed (MM Alam),Tariq Road bend,safety-first,1099,0.0,0.116,0.49,19
+Junaid Jamshed (MM Alam),Noor Jahan first junction,fastest,1605,0.0,0.316,0.995,21
+Junaid Jamshed (MM Alam),Noor Jahan first junction,balanced,2102,31.0,0.055,0.491,27
+Junaid Jamshed (MM Alam),Noor Jahan first junction,safety-first,2102,31.0,0.055,0.491,27
+Junaid Jamshed (MM Alam),Dopatta Gali / Noor Jahan,fastest,1299,0.0,0.237,0.995,9
+Junaid Jamshed (MM Alam),Dopatta Gali / Noor Jahan,balanced,1650,27.0,0.006,0.012,11
+Junaid Jamshed (MM Alam),Dopatta Gali / Noor Jahan,safety-first,1650,27.0,0.006,0.012,11
+Junaid Jamshed (MM Alam),Noor Jahan / L14,fastest,1376,0.0,0.293,0.995,12
+Junaid Jamshed (MM Alam),Noor Jahan / L14,balanced,1422,3.3,0.11,0.546,14
+Junaid Jamshed (MM Alam),Noor Jahan / L14,safety-first,1806,31.2,0.053,0.546,22
+MM Alam middle,Tehzeeb Bakers (MM Alam),fastest,319,0.0,0.007,0.007,2
+MM Alam middle,Tehzeeb Bakers (MM Alam),balanced,319,0.0,0.007,0.007,2
+MM Alam middle,Tehzeeb Bakers (MM Alam),safety-first,319,0.0,0.007,0.007,2
+MM Alam middle,MM Alam / Tariq Road,fastest,601,0.0,0.005,0.007,3
+MM Alam middle,MM Alam / Tariq Road,balanced,601,0.0,0.005,0.007,3
+MM Alam middle,MM Alam / Tariq Road,safety-first,601,0.0,0.005,0.007,3
+MM Alam middle,MM Alam roundabout,fastest,901,0.0,0.005,0.007,4
+MM Alam middle,MM Alam roundabout,balanced,901,0.0,0.005,0.007,4
+MM Alam middle,MM Alam roundabout,safety-first,901,0.0,0.005,0.007,4
+MM Alam middle,Tipu Road north,fastest,591,0.0,0.415,0.707,3
+MM Alam middle,Tipu Road north,balanced,1181,99.8,0.012,0.022,7
+MM Alam middle,Tipu Road north,safety-first,1181,99.8,0.012,0.022,7
+MM Alam middle,Tipu Road middle,fastest,323,0.0,0.611,0.611,2
+MM Alam middle,Tipu Road middle,balanced,869,169.0,0.013,0.022,5
+MM Alam middle,Tipu Road middle,safety-first,869,169.0,0.013,0.022,5
+MM Alam middle,Tipu Road south,fastest,424,0.0,0.99,0.99,2
+MM Alam middle,Tipu Road south,balanced,589,38.9,0.009,0.012,3
+MM Alam middle,Tipu Road south,safety-first,589,38.9,0.009,0.012,3
+MM Alam middle,Dopatta Gali top,fastest,321,0.0,0.99,0.99,2
+MM Alam middle,Dopatta Gali top,balanced,1130,252.0,0.007,0.012,8
+MM Alam middle,Dopatta Gali top,safety-first,1130,252.0,0.007,0.012,8
+MM Alam middle,Dopatta Gali / L11,fastest,562,0.0,0.569,0.99,3
+MM Alam middle,Dopatta Gali / L11,balanced,890,58.4,0.006,0.012,6
+MM Alam middle,Dopatta Gali / L11,safety-first,890,58.4,0.006,0.012,6
+MM Alam middle,Dopatta Gali / Hafeez road,fastest,682,0.0,0.469,0.99,4
+MM Alam middle,Dopatta Gali / Hafeez road,balanced,769,12.8,0.007,0.012,4
+MM Alam middle,Dopatta Gali / Hafeez road,safety-first,769,12.8,0.007,0.012,4
+MM Alam middle,Dopatta Gali / L10,fastest,790,0.0,0.406,0.99,5
+MM Alam middle,Dopatta Gali / L10,balanced,878,11.1,0.007,0.012,5
+MM Alam middle,Dopatta Gali / L10,safety-first,878,11.1,0.007,0.012,5
+MM Alam middle,Parking loop,fastest,970,0.0,0.332,0.99,8
+MM Alam middle,Parking loop,balanced,1058,9.1,0.007,0.012,6
+MM Alam middle,Parking loop,safety-first,1058,9.1,0.007,0.012,7
+MM Alam middle,Hafeez road bend,fastest,535,0.0,0.005,0.007,3
+MM Alam middle,Hafeez road bend,balanced,535,0.0,0.005,0.007,3
+MM Alam middle,Hafeez road bend,safety-first,535,0.0,0.005,0.007,3
+MM Alam middle,Lane junction (L10/L12),fastest,1002,0.0,0.275,1.0,11
+MM Alam middle,Lane junction (L10/L12),balanced,1002,0.0,0.275,1.0,20
+MM Alam middle,Lane junction (L10/L12),safety-first,1137,13.5,0.208,0.887,29
+MM Alam middle,Tariq Road bend,fastest,852,0.0,0.147,0.49,5
+MM Alam middle,Tariq Road bend,balanced,852,0.0,0.147,0.49,8
+MM Alam middle,Tariq Road bend,safety-first,852,0.0,0.147,0.49,19
+MM Alam middle,Noor Jahan first junction,fastest,1591,0.0,0.431,0.995,21
+MM Alam middle,Noor Jahan first junction,balanced,1855,16.6,0.061,0.491,26
+MM Alam middle,Noor Jahan first junction,safety-first,1855,16.6,0.061,0.491,26
+MM Alam middle,Dopatta Gali / Noor Jahan,fastest,1285,0.0,0.379,0.995,12
+MM Alam middle,Dopatta Gali / Noor Jahan,balanced,1403,9.2,0.006,0.012,10
+MM Alam middle,Dopatta Gali / Noor Jahan,safety-first,1403,9.2,0.006,0.012,10
+MM Alam middle,Noor Jahan / L14,fastest,1129,0.0,0.355,0.995,6
+MM Alam middle,Noor Jahan / L14,balanced,1175,4.1,0.131,0.546,13
+MM Alam middle,Noor Jahan / L14,safety-first,1559,38.1,0.06,0.546,22
+Tehzeeb Bakers (MM Alam),MM Alam / Tariq Road,fastest,282,0.0,0.002,0.002,2
+Tehzeeb Bakers (MM Alam),MM Alam / Tariq Road,balanced,282,0.0,0.002,0.002,2
+Tehzeeb Bakers (MM Alam),MM Alam / Tariq Road,safety-first,282,0.0,0.002,0.002,2
+Tehzeeb Bakers (MM Alam),MM Alam roundabout,fastest,582,0.0,0.005,0.007,3
+Tehzeeb Bakers (MM Alam),MM Alam roundabout,balanced,582,0.0,0.005,0.007,3
+Tehzeeb Bakers (MM Alam),MM Alam roundabout,safety-first,582,0.0,0.005,0.007,3
+Tehzeeb Bakers (MM Alam),Tipu Road north,fastest,862,0.0,0.014,0.022,5
+Tehzeeb Bakers (MM Alam),Tipu Road north,balanced,862,0.0,0.014,0.022,5
+Tehzeeb Bakers (MM Alam),Tipu Road north,safety-first,862,0.0,0.014,0.022,6
+Tehzeeb Bakers (MM Alam),Tipu Road middle,fastest,550,0.0,0.017,0.022,3
+Tehzeeb Bakers (MM Alam),Tipu Road middle,balanced,550,0.0,0.017,0.022,3
+Tehzeeb Bakers (MM Alam),Tipu Road middle,safety-first,550,0.0,0.017,0.022,3
+Tehzeeb Bakers (MM Alam),Tipu Road south,fastest,270,0.0,0.012,0.012,2
+Tehzeeb Bakers (MM Alam),Tipu Road south,balanced,270,0.0,0.012,0.012,2
+Tehzeeb Bakers (MM Alam),Tipu Road south,safety-first,270,0.0,0.012,0.012,2
+Tehzeeb Bakers (MM Alam),Dopatta Gali top,fastest,640,0.0,0.5,0.99,4
+Tehzeeb Bakers (MM Alam),Dopatta Gali top,balanced,811,26.7,0.006,0.012,6
+Tehzeeb Bakers (MM Alam),Dopatta Gali top,safety-first,811,26.7,0.006,0.012,6
+Tehzeeb Bakers (MM Alam),Dopatta Gali / L11,fastest,434,0.0,1.0,1.0,2
+Tehzeeb Bakers (MM Alam),Dopatta Gali / L11,balanced,571,31.6,0.006,0.012,4
+Tehzeeb Bakers (MM Alam),Dopatta Gali / L11,safety-first,571,31.6,0.006,0.012,4
+Tehzeeb Bakers (MM Alam),Dopatta Gali / Hafeez road,fastest,451,0.0,0.007,0.012,3
+Tehzeeb Bakers (MM Alam),Dopatta Gali / Hafeez road,balanced,451,0.0,0.007,0.012,3
+Tehzeeb Bakers (MM Alam),Dopatta Gali / Hafeez road,safety-first,451,0.0,0.007,0.012,3
+Tehzeeb Bakers (MM Alam),Dopatta Gali / L10,fastest,559,0.0,0.007,0.012,4
+Tehzeeb Bakers (MM Alam),Dopatta Gali / L10,balanced,559,0.0,0.007,0.012,4
+Tehzeeb Bakers (MM Alam),Dopatta Gali / L10,safety-first,559,0.0,0.007,0.012,4
+Tehzeeb Bakers (MM Alam),Parking loop,fastest,739,0.0,0.007,0.012,5
+Tehzeeb Bakers (MM Alam),Parking loop,balanced,739,0.0,0.007,0.012,5
+Tehzeeb Bakers (MM Alam),Parking loop,safety-first,739,0.0,0.007,0.012,6
+Tehzeeb Bakers (MM Alam),Hafeez road bend,fastest,216,0.0,0.002,0.002,2
+Tehzeeb Bakers (MM Alam),Hafeez road bend,balanced,216,0.0,0.002,0.002,2
+Tehzeeb Bakers (MM Alam),Hafeez road bend,safety-first,216,0.0,0.002,0.002,2
+Tehzeeb Bakers (MM Alam),Lane junction (L10/L12),fastest,683,0.0,0.4,1.0,5
+Tehzeeb Bakers (MM Alam),Lane junction (L10/L12),balanced,683,0.0,0.4,1.0,19
+Tehzeeb Bakers (MM Alam),Lane junction (L10/L12),safety-first,818,19.8,0.286,0.887,28
+Tehzeeb Bakers (MM Alam),Tariq Road bend,fastest,533,0.0,0.231,0.49,4
+Tehzeeb Bakers (MM Alam),Tariq Road bend,balanced,533,0.0,0.231,0.49,6
+Tehzeeb Bakers (MM Alam),Tariq Road bend,safety-first,533,0.0,0.231,0.49,18
+Tehzeeb Bakers (MM Alam),Noor Jahan first junction,fastest,1272,0.0,0.537,0.995,15
+Tehzeeb Bakers (MM Alam),Noor Jahan first junction,balanced,1537,20.8,0.072,0.491,25
+Tehzeeb Bakers (MM Alam),Noor Jahan first junction,safety-first,1537,20.8,0.072,0.491,26
+Tehzeeb Bakers (MM Alam),Dopatta Gali / Noor Jahan,fastest,966,0.0,0.501,0.995,6
+Tehzeeb Bakers (MM Alam),Dopatta Gali / Noor Jahan,balanced,1084,12.2,0.005,0.012,8
+Tehzeeb Bakers (MM Alam),Dopatta Gali / Noor Jahan,safety-first,1084,12.2,0.005,0.012,8
+Tehzeeb Bakers (MM Alam),Noor Jahan / L14,fastest,810,0.0,0.493,0.995,5
+Tehzeeb Bakers (MM Alam),Noor Jahan / L14,balanced,856,5.7,0.178,0.546,12
+Tehzeeb Bakers (MM Alam),Noor Jahan / L14,safety-first,1240,53.1,0.073,0.546,22
+MM Alam / Tariq Road,MM Alam roundabout,fastest,300,0.0,0.007,0.007,2
+MM Alam / Tariq Road,MM Alam roundabout,balanced,300,0.0,0.007,0.007,2
+MM Alam / Tariq Road,MM Alam roundabout,safety-first,300,0.0,0.007,0.007,2
+MM Alam / Tariq Road,Tipu Road north,fastest,1145,0.0,0.011,0.022,6
+MM Alam / Tariq Road,Tipu Road north,balanced,1145,0.0,0.011,0.022,6
+MM Alam / Tariq Road,Tipu Road north,safety-first,1145,0.0,0.011,0.022,7
+MM Alam / Tariq Road,Tipu Road middle,fastest,833,0.0,0.012,0.022,4
+MM Alam / Tariq Road,Tipu Road middle,balanced,833,0.0,0.012,0.022,4
+MM Alam / Tariq Road,Tipu Road middle,safety-first,833,0.0,0.012,0.022,4
+MM Alam / Tariq Road,Tipu Road south,fastest,553,0.0,0.007,0.012,3
+MM Alam / Tariq Road,Tipu Road south,balanced,553,0.0,0.007,0.012,3
+MM Alam / Tariq Road,Tipu Road south,safety-first,553,0.0,0.007,0.012,3
+MM Alam / Tariq Road,Dopatta Gali top,fastest,922,0.0,0.348,0.99,5
+MM Alam / Tariq Road,Dopatta Gali top,balanced,1094,18.7,0.005,0.012,7
+MM Alam / Tariq Road,Dopatta Gali top,safety-first,1094,18.7,0.005,0.012,7
+MM Alam / Tariq Road,Dopatta Gali / L11,fastest,716,0.0,0.607,1.0,3
+MM Alam / Tariq Road,Dopatta Gali / L11,balanced,853,19.1,0.005,0.012,5
+MM Alam / Tariq Road,Dopatta Gali / L11,safety-first,853,19.1,0.005,0.012,5
+MM Alam / Tariq Road,Dopatta Gali / Hafeez road,fastest,733,0.0,0.005,0.012,6
+MM Alam / Tariq Road,Dopatta Gali / Hafeez road,balanced,733,0.0,0.005,0.012,4
+MM Alam / Tariq Road,Dopatta Gali / Hafeez road,safety-first,733,0.0,0.005,0.012,4
+MM Alam / Tariq Road,Dopatta Gali / L10,fastest,660,0.0,0.762,1.0,4
+MM Alam / Tariq Road,Dopatta Gali / L10,balanced,841,27.4,0.005,0.012,5
+MM Alam / Tariq Road,Dopatta Gali / L10,safety-first,841,27.4,0.005,0.012,5
+MM Alam / Tariq Road,Parking loop,fastest,508,0.0,0.577,0.661,3
+MM Alam / Tariq Road,Parking loop,balanced,1021,101.0,0.006,0.012,8
+MM Alam / Tariq Road,Parking loop,safety-first,1021,101.0,0.006,0.012,7
+MM Alam / Tariq Road,Hafeez road bend,fastest,499,0.0,0.002,0.002,3
+MM Alam / Tariq Road,Hafeez road bend,balanced,499,0.0,0.002,0.002,3
+MM Alam / Tariq Road,Hafeez road bend,safety-first,499,0.0,0.002,0.002,3
+MM Alam / Tariq Road,Lane junction (L10/L12),fastest,401,0.0,0.681,1.0,3
+MM Alam / Tariq Road,Lane junction (L10/L12),balanced,401,0.0,0.681,1.0,10
+MM Alam / Tariq Road,Lane junction (L10/L12),safety-first,401,0.0,0.681,1.0,28
+MM Alam / Tariq Road,Tariq Road bend,fastest,251,0.0,0.49,0.49,2
+MM Alam / Tariq Road,Tariq Road bend,balanced,251,0.0,0.49,0.49,2
+MM Alam / Tariq Road,Tariq Road bend,safety-first,251,0.0,0.49,0.49,12
+MM Alam / Tariq Road,Noor Jahan first junction,fastest,990,0.0,0.69,0.995,8
+MM Alam / Tariq Road,Noor Jahan first junction,balanced,1819,83.7,0.061,0.491,26
+MM Alam / Tariq Road,Noor Jahan first junction,safety-first,1819,83.7,0.061,0.491,26
+MM Alam / Tariq Road,Dopatta Gali / Noor Jahan,fastest,684,0.0,0.707,0.995,4
+MM Alam / Tariq Road,Dopatta Gali / Noor Jahan,balanced,1366,99.7,0.005,0.012,10
+MM Alam / Tariq Road,Dopatta Gali / Noor Jahan,safety-first,1366,99.7,0.005,0.012,8
+MM Alam / Tariq Road,Noor Jahan / L14,fastest,528,0.0,0.755,0.995,3
+MM Alam / Tariq Road,Noor Jahan / L14,balanced,574,8.7,0.264,0.546,5
+MM Alam / Tariq Road,Noor Jahan / L14,safety-first,574,8.7,0.264,0.546,18
+MM Alam roundabout,Tipu Road north,fastest,1266,0.0,0.536,0.995,6
+MM Alam roundabout,Tipu Road north,balanced,1445,14.1,0.01,0.022,7
+MM Alam roundabout,Tipu Road north,safety-first,1445,14.1,0.01,0.022,8
+MM Alam roundabout,Tipu Road middle,fastest,954,0.0,0.709,0.995,3
+MM Alam roundabout,Tipu Road middle,balanced,1133,18.8,0.011,0.022,5
+MM Alam roundabout,Tipu Road middle,safety-first,1133,18.8,0.011,0.022,5
+MM Alam roundabout,Tipu Road south,fastest,674,0.0,0.995,0.995,2
+MM Alam roundabout,Tipu Road south,balanced,853,26.6,0.007,0.012,4
+MM Alam roundabout,Tipu Road south,safety-first,853,26.6,0.007,0.012,4
+MM Alam roundabout,Dopatta Gali top,fastest,1222,0.0,0.264,0.99,6
+MM Alam roundabout,Dopatta Gali top,balanced,1394,14.1,0.006,0.012,8
+MM Alam roundabout,Dopatta Gali top,safety-first,1394,14.1,0.006,0.012,8
+MM Alam roundabout,Dopatta Gali / L11,fastest,1016,0.0,0.43,1.0,5
+MM Alam roundabout,Dopatta Gali / L11,balanced,1153,13.5,0.005,0.012,6
+MM Alam roundabout,Dopatta Gali / L11,safety-first,1153,13.5,0.005,0.012,6
+MM Alam roundabout,Dopatta Gali / Hafeez road,fastest,1033,0.0,0.006,0.012,9
+MM Alam roundabout,Dopatta Gali / Hafeez road,balanced,1033,0.0,0.006,0.012,5
+MM Alam roundabout,Dopatta Gali / Hafeez road,safety-first,1033,0.0,0.006,0.012,5
+MM Alam roundabout,Dopatta Gali / L10,fastest,955,0.0,0.248,0.546,7
+MM Alam roundabout,Dopatta Gali / L10,balanced,1141,19.5,0.006,0.012,6
+MM Alam roundabout,Dopatta Gali / L10,safety-first,1141,19.5,0.006,0.012,6
+MM Alam roundabout,Parking loop,fastest,775,0.0,0.304,0.546,4
+MM Alam roundabout,Parking loop,balanced,1321,70.5,0.006,0.012,9
+MM Alam roundabout,Parking loop,safety-first,1321,70.5,0.006,0.012,7
+MM Alam roundabout,Hafeez road bend,fastest,799,0.0,0.004,0.007,4
+MM Alam roundabout,Hafeez road bend,balanced,799,0.0,0.004,0.007,4
+MM Alam roundabout,Hafeez road bend,safety-first,799,0.0,0.004,0.007,4
+MM Alam roundabout,Lane junction (L10/L12),fastest,701,0.0,0.821,1.0,5
+MM Alam roundabout,Lane junction (L10/L12),balanced,701,0.0,0.392,1.0,11
+MM Alam roundabout,Lane junction (L10/L12),safety-first,701,0.0,0.392,1.0,28
+MM Alam roundabout,Tariq Road bend,fastest,551,0.0,0.772,0.995,3
+MM Alam roundabout,Tariq Road bend,balanced,551,0.0,0.227,0.49,3
+MM Alam roundabout,Tariq Road bend,safety-first,551,0.0,0.227,0.49,12
+MM Alam roundabout,Noor Jahan first junction,fastest,736,0.0,0.59,0.651,4
+MM Alam roundabout,Noor Jahan first junction,balanced,736,0.0,0.59,0.651,18
+MM Alam roundabout,Noor Jahan first junction,safety-first,2119,187.9,0.053,0.491,26
+MM Alam roundabout,Dopatta Gali / Noor Jahan,fastest,430,0.0,0.546,0.546,3
+MM Alam roundabout,Dopatta Gali / Noor Jahan,balanced,430,0.0,0.546,0.546,4
+MM Alam roundabout,Dopatta Gali / Noor Jahan,safety-first,1666,287.4,0.005,0.012,8
+MM Alam roundabout,Noor Jahan / L14,fastest,274,0.0,0.546,0.546,2
+MM Alam roundabout,Noor Jahan / L14,balanced,274,0.0,0.546,0.546,3
+MM Alam roundabout,Noor Jahan / L14,safety-first,274,0.0,0.546,0.546,8
+Tipu Road north,Tipu Road middle,fastest,312,0.0,0.008,0.008,2
+Tipu Road north,Tipu Road middle,balanced,312,0.0,0.008,0.008,2
+Tipu Road north,Tipu Road middle,safety-first,312,0.0,0.008,0.008,2
+Tipu Road north,Tipu Road south,fastest,592,0.0,0.015,0.022,3
+Tipu Road north,Tipu Road south,balanced,592,0.0,0.015,0.022,3
+Tipu Road north,Tipu Road south,safety-first,592,0.0,0.015,0.022,3
+Tipu Road north,Dopatta Gali top,fastest,649,0.0,0.842,0.995,3
+Tipu Road north,Dopatta Gali top,balanced,1674,157.9,0.01,0.022,11
+Tipu Road north,Dopatta Gali top,safety-first,1674,157.9,0.01,0.022,9
+Tipu Road north,Dopatta Gali / L11,fastest,890,0.0,0.616,0.995,4
+Tipu Road north,Dopatta Gali / L11,balanced,1433,61.0,0.011,0.022,7
+Tipu Road north,Dopatta Gali / L11,safety-first,1433,61.0,0.011,0.022,7
+Tipu Road north,Dopatta Gali / Hafeez road,fastest,1010,0.0,0.543,0.995,5
+Tipu Road north,Dopatta Gali / Hafeez road,balanced,1313,30.0,0.012,0.022,6
+Tipu Road north,Dopatta Gali / Hafeez road,safety-first,1313,30.0,0.012,0.022,6
+Tipu Road north,Dopatta Gali / L10,fastest,1118,0.0,0.491,0.995,6
+Tipu Road north,Dopatta Gali / L10,balanced,1421,27.1,0.011,0.022,7
+Tipu Road north,Dopatta Gali / L10,safety-first,1421,27.1,0.011,0.022,7
+Tipu Road north,Parking loop,fastest,1298,0.0,0.424,0.995,8
+Tipu Road north,Parking loop,balanced,1601,23.3,0.011,0.022,8
+Tipu Road north,Parking loop,safety-first,1601,23.3,0.011,0.022,9
+Tipu Road north,Hafeez road bend,fastest,1079,0.0,0.011,0.022,8
+Tipu Road north,Hafeez road bend,balanced,1079,0.0,0.011,0.022,5
+Tipu Road north,Hafeez road bend,safety-first,1079,0.0,0.011,0.022,5
+Tipu Road north,Lane junction (L10/L12),fastest,1378,0.0,0.566,0.995,12
+Tipu Road north,Lane junction (L10/L12),balanced,1546,12.2,0.185,1.0,21
+Tipu Road north,Lane junction (L10/L12),safety-first,1681,22.0,0.146,0.887,28
+Tipu Road north,Tariq Road bend,fastest,1396,0.0,0.097,0.49,11
+Tipu Road north,Tariq Road bend,balanced,1396,0.0,0.097,0.49,9
+Tipu Road north,Tariq Road bend,safety-first,1396,0.0,0.097,0.49,19
+Tipu Road north,Noor Jahan first junction,fastest,1949,0.0,0.385,0.995,24
+Tipu Road north,Noor Jahan first junction,balanced,2399,23.1,0.051,0.491,27
+Tipu Road north,Noor Jahan first junction,safety-first,2399,23.1,0.051,0.491,26
+Tipu Road north,Dopatta Gali / Noor Jahan,fastest,1643,0.0,0.336,0.995,13
+Tipu Road north,Dopatta Gali / Noor Jahan,balanced,1946,18.4,0.009,0.022,11
+Tipu Road north,Dopatta Gali / Noor Jahan,safety-first,1946,18.4,0.009,0.022,11
+Tipu Road north,Noor Jahan / L14,fastest,1540,0.0,0.538,0.995,8
+Tipu Road north,Noor Jahan / L14,balanced,1718,11.6,0.095,0.546,14
+Tipu Road north,Noor Jahan / L14,safety-first,2102,36.5,0.049,0.546,23
+Tipu Road middle,Tipu Road south,fastest,280,0.0,0.022,0.022,2
+Tipu Road middle,Tipu Road south,balanced,280,0.0,0.022,0.022,2
+Tipu Road middle,Tipu Road south,safety-first,280,0.0,0.022,0.022,2
+Tipu Road middle,Dopatta Gali top,fastest,644,0.0,0.8,0.99,3
+Tipu Road middle,Dopatta Gali top,balanced,1362,111.5,0.011,0.022,9
+Tipu Road middle,Dopatta Gali top,safety-first,1362,111.5,0.011,0.022,9
+Tipu Road middle,Dopatta Gali / L11,fastest,884,0.0,0.584,0.99,4
+Tipu Road middle,Dopatta Gali / L11,balanced,1121,26.8,0.011,0.022,7
+Tipu Road middle,Dopatta Gali / L11,safety-first,1121,26.8,0.011,0.022,7
+Tipu Road middle,Dopatta Gali / Hafeez road,fastest,1001,0.0,0.013,0.022,6
+Tipu Road middle,Dopatta Gali / Hafeez road,balanced,1001,0.0,0.013,0.022,5
+Tipu Road middle,Dopatta Gali / Hafeez road,safety-first,1001,0.0,0.013,0.022,5
+Tipu Road middle,Dopatta Gali / L10,fastest,1109,0.0,0.012,0.022,7
+Tipu Road middle,Dopatta Gali / L10,balanced,1109,0.0,0.012,0.022,6
+Tipu Road middle,Dopatta Gali / L10,safety-first,1109,0.0,0.012,0.022,6
+Tipu Road middle,Parking loop,fastest,1289,0.0,0.011,0.022,8
+Tipu Road middle,Parking loop,balanced,1289,0.0,0.011,0.022,7
+Tipu Road middle,Parking loop,safety-first,1289,0.0,0.011,0.022,8
+Tipu Road middle,Hafeez road bend,fastest,767,0.0,0.013,0.022,5
+Tipu Road middle,Hafeez road bend,balanced,767,0.0,0.013,0.022,4
+Tipu Road middle,Hafeez road bend,safety-first,767,0.0,0.013,0.022,4
+Tipu Road middle,Lane junction (L10/L12),fastest,1234,0.0,0.229,1.0,11
+Tipu Road middle,Lane junction (L10/L12),balanced,1234,0.0,0.229,1.0,20
+Tipu Road middle,Lane junction (L10/L12),safety-first,1369,10.9,0.178,0.887,28
+Tipu Road middle,Tariq Road bend,fastest,1084,0.0,0.123,0.49,7
+Tipu Road middle,Tariq Road bend,balanced,1084,0.0,0.123,0.49,9
+Tipu Road middle,Tariq Road bend,safety-first,1084,0.0,0.123,0.49,19
+Tipu Road middle,Noor Jahan first junction,fastest,1690,0.0,0.657,0.995,17
+Tipu Road middle,Noor Jahan first junction,balanced,2087,23.5,0.058,0.491,26
+Tipu Road middle,Noor Jahan first junction,safety-first,2087,23.5,0.058,0.491,26
+Tipu Road middle,Dopatta Gali / Noor Jahan,fastest,1384,0.0,0.659,0.995,10
+Tipu Road middle,Dopatta Gali / Noor Jahan,balanced,1634,18.1,0.009,0.022,11
+Tipu Road middle,Dopatta Gali / Noor Jahan,safety-first,1634,18.1,0.009,0.022,11
+Tipu Road middle,Noor Jahan / L14,fastest,1228,0.0,0.673,0.995,5
+Tipu Road middle,Noor Jahan / L14,balanced,1406,14.5,0.115,0.546,14
+Tipu Road middle,Noor Jahan / L14,safety-first,1790,45.8,0.056,0.546,23
+Tipu Road south,Dopatta Gali top,fastest,744,0.0,0.99,0.99,3
+Tipu Road south,Dopatta Gali top,balanced,1082,45.4,0.008,0.012,8
+Tipu Road south,Dopatta Gali top,safety-first,1082,45.4,0.008,0.012,8
+Tipu Road south,Dopatta Gali / L11,fastest,704,0.0,0.621,1.0,3
+Tipu Road south,Dopatta Gali / L11,balanced,841,19.5,0.008,0.012,5
+Tipu Road south,Dopatta Gali / L11,safety-first,841,19.5,0.008,0.012,5
+Tipu Road south,Dopatta Gali / Hafeez road,fastest,721,0.0,0.009,0.012,4
+Tipu Road south,Dopatta Gali / Hafeez road,balanced,721,0.0,0.009,0.012,4
+Tipu Road south,Dopatta Gali / Hafeez road,safety-first,721,0.0,0.009,0.012,4
+Tipu Road south,Dopatta Gali / L10,fastest,829,0.0,0.009,0.012,5
+Tipu Road south,Dopatta Gali / L10,balanced,829,0.0,0.009,0.012,5
+Tipu Road south,Dopatta Gali / L10,safety-first,829,0.0,0.009,0.012,5
+Tipu Road south,Parking loop,fastest,1009,0.0,0.008,0.012,6
+Tipu Road south,Parking loop,balanced,1009,0.0,0.008,0.012,6
+Tipu Road south,Parking loop,safety-first,1009,0.0,0.008,0.012,7
+Tipu Road south,Hafeez road bend,fastest,487,0.0,0.008,0.012,3
+Tipu Road south,Hafeez road bend,balanced,487,0.0,0.008,0.012,3
+Tipu Road south,Hafeez road bend,safety-first,487,0.0,0.008,0.012,3
+Tipu Road south,Lane junction (L10/L12),fastest,953,0.0,0.29,1.0,7
+Tipu Road south,Lane junction (L10/L12),balanced,953,0.0,0.29,1.0,20
+Tipu Road south,Lane junction (L10/L12),safety-first,1088,14.2,0.218,0.887,28
+Tipu Road south,Tariq Road bend,fastest,803,0.0,0.158,0.49,5
+Tipu Road south,Tariq Road bend,balanced,803,0.0,0.158,0.49,8
+Tipu Road south,Tariq Road bend,safety-first,803,0.0,0.158,0.49,19
+Tipu Road south,Noor Jahan first junction,fastest,1410,0.0,0.783,0.995,13
+Tipu Road south,Noor Jahan first junction,balanced,1807,28.2,0.063,0.491,26
+Tipu Road south,Noor Jahan first junction,safety-first,1807,28.2,0.063,0.491,26
+Tipu Road south,Dopatta Gali / Noor Jahan,fastest,1104,0.0,0.82,0.995,8
+Tipu Road south,Dopatta Gali / Noor Jahan,balanced,1354,22.6,0.007,0.012,9
+Tipu Road south,Dopatta Gali / Noor Jahan,safety-first,1354,22.6,0.007,0.012,9
+Tipu Road south,Noor Jahan / L14,fastest,948,0.0,0.865,0.995,4
+Tipu Road south,Noor Jahan / L14,balanced,1126,18.8,0.138,0.546,13
+Tipu Road south,Noor Jahan / L14,safety-first,1510,59.3,0.062,0.546,23
+Dopatta Gali top,Dopatta Gali / L11,fastest,241,0.0,0.007,0.007,2
+Dopatta Gali top,Dopatta Gali / L11,balanced,241,0.0,0.007,0.007,2
+Dopatta Gali top,Dopatta Gali / L11,safety-first,241,0.0,0.007,0.007,2
+Dopatta Gali top,Dopatta Gali / Hafeez road,fastest,361,0.0,0.005,0.007,3
+Dopatta Gali top,Dopatta Gali / Hafeez road,balanced,361,0.0,0.005,0.007,3
+Dopatta Gali top,Dopatta Gali / Hafeez road,safety-first,361,0.0,0.005,0.007,3
+Dopatta Gali top,Dopatta Gali / L10,fastest,469,0.0,0.006,0.007,4
+Dopatta Gali top,Dopatta Gali / L10,balanced,469,0.0,0.006,0.007,4
+Dopatta Gali top,Dopatta Gali / L10,safety-first,469,0.0,0.006,0.007,4
+Dopatta Gali top,Parking loop,fastest,649,0.0,0.006,0.007,5
+Dopatta Gali top,Parking loop,balanced,649,0.0,0.006,0.007,5
+Dopatta Gali top,Parking loop,safety-first,649,0.0,0.006,0.007,5
+Dopatta Gali top,Hafeez road bend,fastest,595,0.0,0.008,0.012,4
+Dopatta Gali top,Hafeez road bend,balanced,595,0.0,0.008,0.012,4
+Dopatta Gali top,Hafeez road bend,safety-first,595,0.0,0.008,0.012,4
+Dopatta Gali top,Lane junction (L10/L12),fastest,728,0.0,0.32,0.887,5
+Dopatta Gali top,Lane junction (L10/L12),balanced,728,0.0,0.32,0.887,13
+Dopatta Gali top,Lane junction (L10/L12),safety-first,728,0.0,0.32,0.887,28
+Dopatta Gali top,Tariq Road bend,fastest,878,0.0,0.436,1.0,6
+Dopatta Gali top,Tariq Road bend,balanced,907,3.3,0.192,0.661,13
+Dopatta Gali top,Tariq Road bend,safety-first,1344,53.1,0.096,0.49,24
+Dopatta Gali top,Noor Jahan first junction,fastest,1300,0.0,0.157,0.651,15
+Dopatta Gali top,Noor Jahan first junction,balanced,1447,11.3,0.076,0.491,17
+Dopatta Gali top,Noor Jahan first junction,safety-first,1447,11.3,0.076,0.491,21
+Dopatta Gali top,Dopatta Gali / Noor Jahan,fastest,994,0.0,0.005,0.007,6
+Dopatta Gali top,Dopatta Gali / Noor Jahan,balanced,994,0.0,0.005,0.007,6
+Dopatta Gali top,Dopatta Gali / Noor Jahan,safety-first,994,0.0,0.005,0.007,6
+Dopatta Gali top,Noor Jahan / L14,fastest,1150,0.0,0.078,0.546,7
+Dopatta Gali top,Noor Jahan / L14,balanced,1150,0.0,0.078,0.546,9
+Dopatta Gali top,Noor Jahan / L14,safety-first,1150,0.0,0.078,0.546,17
+Dopatta Gali / L11,Dopatta Gali / Hafeez road,fastest,120,0.0,0.002,0.002,2
+Dopatta Gali / L11,Dopatta Gali / Hafeez road,balanced,120,0.0,0.002,0.002,2
+Dopatta Gali / L11,Dopatta Gali / Hafeez road,safety-first,120,0.0,0.002,0.002,2
+Dopatta Gali / L11,Dopatta Gali / L10,fastest,228,0.0,0.004,0.007,3
+Dopatta Gali / L11,Dopatta Gali / L10,balanced,228,0.0,0.004,0.007,3
+Dopatta Gali / L11,Dopatta Gali / L10,safety-first,228,0.0,0.004,0.007,3
+Dopatta Gali / L11,Parking loop,fastest,408,0.0,0.006,0.007,4
+Dopatta Gali / L11,Parking loop,balanced,408,0.0,0.006,0.007,4
+Dopatta Gali / L11,Parking loop,safety-first,408,0.0,0.006,0.007,4
+Dopatta Gali / L11,Hafeez road bend,fastest,354,0.0,0.009,0.012,3
+Dopatta Gali / L11,Hafeez road bend,balanced,354,0.0,0.009,0.012,3
+Dopatta Gali / L11,Hafeez road bend,safety-first,354,0.0,0.009,0.012,3
+Dopatta Gali / L11,Lane junction (L10/L12),fastest,488,0.0,0.474,0.887,4
+Dopatta Gali / L11,Lane junction (L10/L12),balanced,488,0.0,0.474,0.887,13
+Dopatta Gali / L11,Lane junction (L10/L12),safety-first,488,0.0,0.474,0.887,28
+Dopatta Gali / L11,Tariq Road bend,fastest,638,0.0,0.598,1.0,5
+Dopatta Gali / L11,Tariq Road bend,balanced,666,4.4,0.259,0.661,13
+Dopatta Gali / L11,Tariq Road bend,safety-first,1104,73.0,0.115,0.49,24
+Dopatta Gali / L11,Noor Jahan first junction,fastest,1059,0.0,0.191,0.651,12
+Dopatta Gali / L11,Noor Jahan first junction,balanced,1206,13.9,0.089,0.491,17
+Dopatta Gali / L11,Noor Jahan first junction,safety-first,1206,13.9,0.089,0.491,21
+Dopatta Gali / L11,Dopatta Gali / Noor Jahan,fastest,753,0.0,0.004,0.007,5
+Dopatta Gali / L11,Dopatta Gali / Noor Jahan,balanced,753,0.0,0.004,0.007,5
+Dopatta Gali / L11,Dopatta Gali / Noor Jahan,safety-first,753,0.0,0.004,0.007,5
+Dopatta Gali / L11,Noor Jahan / L14,fastest,909,0.0,0.097,0.546,6
+Dopatta Gali / L11,Noor Jahan / L14,balanced,909,0.0,0.097,0.546,8
+Dopatta Gali / L11,Noor Jahan / L14,safety-first,909,0.0,0.097,0.546,17
+Dopatta Gali / Hafeez road,Dopatta Gali / L10,fastest,108,0.0,0.007,0.007,2
+Dopatta Gali / Hafeez road,Dopatta Gali / L10,balanced,108,0.0,0.007,0.007,2
+Dopatta Gali / Hafeez road,Dopatta Gali / L10,safety-first,108,0.0,0.007,0.007,2
+Dopatta Gali / Hafeez road,Parking loop,fastest,288,0.0,0.007,0.007,3
+Dopatta Gali / Hafeez road,Parking loop,balanced,288,0.0,0.007,0.007,3
+Dopatta Gali / Hafeez road,Parking loop,safety-first,288,0.0,0.007,0.007,3
+Dopatta Gali / Hafeez road,Hafeez road bend,fastest,234,0.0,0.012,0.012,2
+Dopatta Gali / Hafeez road,Hafeez road bend,balanced,234,0.0,0.012,0.012,2
+Dopatta Gali / Hafeez road,Hafeez road bend,safety-first,234,0.0,0.012,0.012,2
+Dopatta Gali / Hafeez road,Lane junction (L10/L12),fastest,368,0.0,0.628,0.887,3
+Dopatta Gali / Hafeez road,Lane junction (L10/L12),balanced,368,0.0,0.628,0.887,13
+Dopatta Gali / Hafeez road,Lane junction (L10/L12),safety-first,368,0.0,0.628,0.887,28
+Dopatta Gali / Hafeez road,Tariq Road bend,fastest,518,0.0,0.736,1.0,4
+Dopatta Gali / Hafeez road,Tariq Road bend,balanced,546,5.4,0.316,0.661,13
+Dopatta Gali / Hafeez road,Tariq Road bend,safety-first,984,90.0,0.129,0.49,24
+Dopatta Gali / Hafeez road,Noor Jahan first junction,fastest,939,0.0,0.215,0.651,12
+Dopatta Gali / Hafeez road,Noor Jahan first junction,balanced,1086,15.7,0.099,0.491,17
+Dopatta Gali / Hafeez road,Noor Jahan first junction,safety-first,1086,15.7,0.099,0.491,21
+Dopatta Gali / Hafeez road,Dopatta Gali / Noor Jahan,fastest,633,0.0,0.004,0.007,4
+Dopatta Gali / Hafeez road,Dopatta Gali / Noor Jahan,balanced,633,0.0,0.004,0.007,4
+Dopatta Gali / Hafeez road,Dopatta Gali / Noor Jahan,safety-first,633,0.0,0.004,0.007,4
+Dopatta Gali / Hafeez road,Noor Jahan / L14,fastest,789,0.0,0.111,0.546,5
+Dopatta Gali / Hafeez road,Noor Jahan / L14,balanced,789,0.0,0.111,0.546,8
+Dopatta Gali / Hafeez road,Noor Jahan / L14,safety-first,789,0.0,0.111,0.546,17
+Dopatta Gali / L10,Parking loop,fastest,180,0.0,0.007,0.007,2
+Dopatta Gali / L10,Parking loop,balanced,180,0.0,0.007,0.007,2
+Dopatta Gali / L10,Parking loop,safety-first,180,0.0,0.007,0.007,2
+Dopatta Gali / L10,Hafeez road bend,fastest,342,0.0,0.01,0.012,3
+Dopatta Gali / L10,Hafeez road bend,balanced,342,0.0,0.01,0.012,3
+Dopatta Gali / L10,Hafeez road bend,safety-first,342,0.0,0.01,0.012,3
+Dopatta Gali / L10,Lane junction (L10/L12),fastest,259,0.0,0.887,0.887,2
+Dopatta Gali / L10,Lane junction (L10/L12),balanced,259,0.0,0.887,0.887,8
+Dopatta Gali / L10,Lane junction (L10/L12),safety-first,259,0.0,0.887,0.887,28
+Dopatta Gali / L10,Tariq Road bend,fastest,409,0.0,0.928,1.0,3
+Dopatta Gali / L10,Tariq Road bend,balanced,438,7.1,0.392,0.661,8
+Dopatta Gali / L10,Tariq Road bend,safety-first,438,7.1,0.392,0.661,23
+Dopatta Gali / L10,Noor Jahan first junction,fastest,831,0.0,0.242,0.651,8
+Dopatta Gali / L10,Noor Jahan first junction,balanced,831,0.0,0.242,0.651,18
+Dopatta Gali / L10,Noor Jahan first junction,safety-first,1194,43.7,0.091,0.491,22
+Dopatta Gali / L10,Dopatta Gali / Noor Jahan,fastest,525,0.0,0.004,0.007,3
+Dopatta Gali / L10,Dopatta Gali / Noor Jahan,balanced,525,0.0,0.004,0.007,3
+Dopatta Gali / L10,Dopatta Gali / Noor Jahan,safety-first,525,0.0,0.004,0.007,3
+Dopatta Gali / L10,Noor Jahan / L14,fastest,681,0.0,0.128,0.546,4
+Dopatta Gali / L10,Noor Jahan / L14,balanced,681,0.0,0.128,0.546,6
+Dopatta Gali / L10,Noor Jahan / L14,safety-first,681,0.0,0.128,0.546,14
+Parking loop,Hafeez road bend,fastest,523,0.0,0.009,0.012,4
+Parking loop,Hafeez road bend,balanced,523,0.0,0.009,0.012,4
+Parking loop,Hafeez road bend,safety-first,523,0.0,0.009,0.012,4
+Parking loop,Lane junction (L10/L12),fastest,408,0.0,0.786,1.0,3
+Parking loop,Lane junction (L10/L12),balanced,440,7.8,0.526,0.887,11
+Parking loop,Lane junction (L10/L12),safety-first,440,7.8,0.526,0.887,28
+Parking loop,Tariq Road bend,fastest,258,0.0,0.661,0.661,2
+Parking loop,Tariq Road bend,balanced,258,0.0,0.661,0.661,5
+Parking loop,Tariq Road bend,safety-first,258,0.0,0.661,0.661,21
+Parking loop,Noor Jahan first junction,fastest,651,0.0,0.307,0.651,5
+Parking loop,Noor Jahan first junction,balanced,651,0.0,0.307,0.651,13
+Parking loop,Noor Jahan first junction,safety-first,1374,111.1,0.08,0.491,23
+Parking loop,Dopatta Gali / Noor Jahan,fastest,345,0.0,0.002,0.002,2
+Parking loop,Dopatta Gali / Noor Jahan,balanced,345,0.0,0.002,0.002,2
+Parking loop,Dopatta Gali / Noor Jahan,safety-first,345,0.0,0.002,0.002,2
+Parking loop,Noor Jahan / L14,fastest,501,0.0,0.171,0.546,3
+Parking loop,Noor Jahan / L14,balanced,501,0.0,0.171,0.546,4
+Parking loop,Noor Jahan / L14,safety-first,501,0.0,0.171,0.546,8
+Hafeez road bend,Lane junction (L10/L12),fastest,602,0.0,0.388,0.887,5
+Hafeez road bend,Lane junction (L10/L12),balanced,602,0.0,0.388,0.887,17
+Hafeez road bend,Lane junction (L10/L12),safety-first,602,0.0,0.388,0.887,28
+Hafeez road bend,Tariq Road bend,fastest,749,0.0,0.165,0.49,6
+Hafeez road bend,Tariq Road bend,balanced,749,0.0,0.165,0.49,9
+Hafeez road bend,Tariq Road bend,safety-first,749,0.0,0.165,0.49,22
+Hafeez road bend,Noor Jahan first junction,fastest,1174,0.0,0.174,0.651,13
+Hafeez road bend,Noor Jahan first junction,balanced,1320,12.4,0.083,0.491,22
+Hafeez road bend,Noor Jahan first junction,safety-first,1320,12.4,0.083,0.491,24
+Hafeez road bend,Dopatta Gali / Noor Jahan,fastest,868,0.0,0.006,0.012,5
+Hafeez road bend,Dopatta Gali / Noor Jahan,balanced,868,0.0,0.006,0.012,5
+Hafeez road bend,Dopatta Gali / Noor Jahan,safety-first,868,0.0,0.006,0.012,6
+Hafeez road bend,Noor Jahan / L14,fastest,1024,0.0,0.089,0.546,8
+Hafeez road bend,Noor Jahan / L14,balanced,1024,0.0,0.089,0.546,11
+Hafeez road bend,Noor Jahan / L14,safety-first,1024,0.0,0.089,0.546,19
+Lane junction (L10/L12),Tariq Road bend,fastest,150,0.0,1.0,1.0,2
+Lane junction (L10/L12),Tariq Road bend,balanced,150,0.0,1.0,1.0,2
+Lane junction (L10/L12),Tariq Road bend,safety-first,150,0.0,1.0,1.0,2
+Lane junction (L10/L12),Noor Jahan first junction,fastest,889,0.0,0.799,1.0,8
+Lane junction (L10/L12),Noor Jahan first junction,balanced,1090,22.6,0.395,0.887,22
+Lane junction (L10/L12),Noor Jahan first junction,safety-first,1454,63.6,0.233,0.887,24
+Lane junction (L10/L12),Dopatta Gali / Noor Jahan,fastest,583,0.0,0.876,1.0,4
+Lane junction (L10/L12),Dopatta Gali / Noor Jahan,balanced,784,34.5,0.296,0.887,5
+Lane junction (L10/L12),Dopatta Gali / Noor Jahan,safety-first,784,34.5,0.296,0.887,5
+Lane junction (L10/L12),Noor Jahan / L14,fastest,427,0.0,0.997,1.0,3
+Lane junction (L10/L12),Noor Jahan / L14,balanced,427,0.0,0.997,1.0,8
+Lane junction (L10/L12),Noor Jahan / L14,safety-first,940,120.1,0.337,0.887,16
+Tariq Road bend,Noor Jahan first junction,fastest,739,0.0,0.758,0.995,7
+Tariq Road bend,Noor Jahan first junction,balanced,909,23.0,0.407,0.661,18
+Tariq Road bend,Noor Jahan first junction,safety-first,2070,180.1,0.113,0.491,28
+Tariq Road bend,Dopatta Gali / Noor Jahan,fastest,433,0.0,0.833,0.995,3
+Tariq Road bend,Dopatta Gali / Noor Jahan,balanced,603,39.3,0.284,0.661,5
+Tariq Road bend,Dopatta Gali / Noor Jahan,safety-first,603,39.3,0.284,0.661,6
+Tariq Road bend,Noor Jahan / L14,fastest,277,0.0,0.995,0.995,2
+Tariq Road bend,Noor Jahan / L14,balanced,277,0.0,0.995,0.995,4
+Tariq Road bend,Noor Jahan / L14,safety-first,277,0.0,0.995,0.995,12
+Noor Jahan first junction,Dopatta Gali / Noor Jahan,fastest,306,0.0,0.651,0.651,2
+Noor Jahan first junction,Dopatta Gali / Noor Jahan,balanced,306,0.0,0.651,0.651,2
+Noor Jahan first junction,Dopatta Gali / Noor Jahan,safety-first,306,0.0,0.651,0.651,3
+Noor Jahan first junction,Noor Jahan / L14,fastest,462,0.0,0.616,0.651,3
+Noor Jahan first junction,Noor Jahan / L14,balanced,462,0.0,0.616,0.651,4
+Noor Jahan first junction,Noor Jahan / L14,safety-first,462,0.0,0.616,0.651,14
+Dopatta Gali / Noor Jahan,Noor Jahan / L14,fastest,156,0.0,0.546,0.546,2
+Dopatta Gali / Noor Jahan,Noor Jahan / L14,balanced,156,0.0,0.546,0.546,2
+Dopatta Gali / Noor Jahan,Noor Jahan / L14,safety-first,156,0.0,0.546,0.546,3

@@ -1,0 +1,48 @@
+{
+  "tree_depth": 4,
+  "depth_search_macro_f1": {
+    "2": 0.664,
+    "3": 0.702,
+    "4": 0.777,
+    "5": 0.755,
+    "6": 0.762,
+    "7": 0.775,
+    "8": 0.776
+  },
+  "models": {
+    "Rule-based baseline": {
+      "accuracy": 0.579,
+      "macro_f1": 0.577,
+      "risky_recall": 0.294,
+      "risky_called_safe": 2
+    },
+    "Decision tree": {
+      "accuracy": 0.819,
+      "macro_f1": 0.781,
+      "risky_recall": 0.847,
+      "risky_called_safe": 3
+    },
+    "Naive Bayes": {
+      "accuracy": 0.802,
+      "macro_f1": 0.777,
+      "risky_recall": 0.764,
+      "risky_called_safe": 0
+    }
+  },
+  "feature_importance": {
+    "per_minute": 0.654,
+    "dead_frontage_yn": 0.135,
+    "shops_open": 0.092,
+    "lighting_0to2": 0.06,
+    "ride_stand_yn": 0.041,
+    "women_per_minute": 0.013,
+    "hour": 0.005,
+    "guards_yn": 0.0,
+    "police_yn": 0.0,
+    "safe_city_camera_yn": 0.0,
+    "footpath_yn": 0.0,
+    "weekend_yn": 0.0,
+    "private_cctv_count": 0.0,
+    "isolated_spot_yn": 0.0
+  }
+}
