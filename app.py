@@ -25,6 +25,7 @@ from streamlit_folium import st_folium
 
 from road_graph import build_graph
 from routing import MODES, a_star, attach_risk, describe_route
+from safety_tools import battery_warning, checkin_panel, panic_button, start_checkin
 
 st.set_page_config(page_title="Safe Route Lahore", page_icon="🛡️", layout="wide")
 
@@ -78,6 +79,25 @@ def compute_routes(start, goal, slot):
 
 
 routes, start_pos, goal_pos, centre = compute_routes(start, goal, SLOT_NAMES[slot_label])
+
+# ---------------- safety tools (simulated) ----------------
+# "Last known location" for the demo: halfway along the balanced route.
+balanced_shape = routes["balanced"]["shape"]
+last_location = tuple(balanced_shape[len(balanced_shape) // 2])
+
+st.sidebar.divider()
+st.sidebar.markdown("**🛟 Safety tools (demo)**")
+with st.sidebar:
+    panic_button(last_location)
+contacts_text = st.sidebar.text_input("Trusted contacts", "Ammi, Best friend")
+st.session_state.contacts = [c.strip() for c in contacts_text.split(",") if c.strip()]
+battery = st.sidebar.slider("Phone battery (simulated)", 0, 100, 80, format="%d%%")
+fast = st.sidebar.toggle("Fast demo (10 s instead of 60 s)", value=True)
+if st.sidebar.button("Simulate going off route"):
+    start_checkin(fast)
+
+battery_warning(battery, last_location)
+checkin_panel(last_location)
 
 # ---------------- map ----------------
 # All three routes are drawn as separate layers. The tick boxes in the
