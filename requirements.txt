@@ -6,4 +6,4 @@ matplotlib
 networkx
 streamlit
 folium
-streamlit-folium
+streamlit-folium>=0.27
