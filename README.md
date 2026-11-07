@@ -24,6 +24,8 @@ python generate_data.py      # -> safe_route_synthetic.csv
 python train_models.py       # -> results/, models/, segment_risk.csv
 python fuzzy_labels.py       # adds fuzzy words to segment_risk.csv
 python routing.py            # -> results/routing_*.csv/json
+# (only to rebuild real street shapes: pip install osmnx, then)
+# python tools/build_road_shapes.py   # -> data/road_shapes.json
 streamlit run app.py         # opens the app in your browser
 ```
 
@@ -43,11 +45,11 @@ Routing results are averaged over all 465 start/goal pairs:
 
 | 11 PM | Extra distance vs fastest | Average risk on route |
 |---|---|---|
-| Fastest | 0% | 0.48 |
-| Balanced | +10% | 0.30 |
-| Safety-first | +18% | 0.28 |
+| Fastest | 0% | 0.41 |
+| Balanced | +7% | 0.30 |
+| Safety-first | +14% | 0.27 |
 
-On average, A\* expanded **10 junctions vs Dijkstra's 16** and found routes of identical cost (checked automatically for every pair).
+On average, A\* expanded **10.5 junctions vs Dijkstra's 16** and found routes of identical cost (checked automatically for every pair).
 
 ## Dataset
 
@@ -57,5 +59,5 @@ The columns match our field-audit sheet (`audit-sheet.csv`): footpath, Safe City
 ## Limitations
 
 - The data is synthetic, so the models learn **our assumptions**, not the real world.
-- Junction positions were traced by hand from our map and are accurate to roughly ±50 m. OpenStreetMap could not be downloaded in the build environment.
+- Street shapes come from **OpenStreetMap** (© OpenStreetMap contributors, ODbL), downloaded by a GitHub Action (`.github/workflows/fetch-osm.yml`) and snapped to our segments by `tools/build_road_shapes.py`. Which real lane each L1–L15 matches is approximate, because the lanes were traced from a phone map.
 - Covers only one neighbourhood (43 segments) and three time slots.
