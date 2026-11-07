@@ -11,15 +11,17 @@ WHAT THIS FILE DOES:
   up its predicted risk later.
 
 WHERE THE COORDINATES COME FROM (be honest about this in the report):
-  OpenStreetMap could not be downloaded from our build environment, so the
-  junctions were traced by hand from our segment map
-  (pilot-map-segments.png). Pixel positions were converted to latitude and
-  longitude using Hafeez Centre as the anchor point and a scale of about
-  1.2 metres per pixel. Positions are APPROXIMATE (roughly +/- 50 m).
-  Future work: replace with the real OSM network using the osmnx library.
+  1. Our 31 junctions were first traced by hand from our segment map
+     (pilot-map-segments.png), as pixel positions.
+  2. tools/build_road_shapes.py then snaps them onto the REAL OpenStreetMap
+     street network and makes each segment follow the real road shape.
+     The result is saved in data/road_shapes.json, which build_graph() uses.
+  The hand-traced straight lines below are only a fallback.
 """
 
+import json
 import math
+import os
 
 import networkx as nx
 
@@ -147,9 +149,27 @@ def distance_m(a, b):
     return math.hypot(dx, dy)
 
 
+ROAD_SHAPES_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "road_shapes.json")
+
+
 def build_graph():
     """Create the networkx graph. Streets are two-way for pedestrians, so the
-    graph is undirected."""
+    graph is undirected.
+
+    If data/road_shapes.json exists (made by tools/build_road_shapes.py), each
+    street follows its REAL OpenStreetMap shape and length, so routes stay on
+    the roads. Otherwise we fall back to the hand-traced straight lines."""
+    if os.path.exists(ROAD_SHAPES_FILE):
+        with open(ROAD_SHAPES_FILE) as f:
+            real = json.load(f)
+        G = nx.Graph()
+        for name, (lat, lon) in real["junctions"].items():
+            G.add_node(name, pos=(lat, lon))
+        for seg in real["segments"]:
+            G.add_edge(seg["u"], seg["v"], segment_id=seg["segment_id"],
+                       length=seg["length"], shape=[tuple(p) for p in seg["shape"]])
+        return G
+
     G = nx.Graph()
     for name, (x, y) in JUNCTIONS.items():
         G.add_node(name, pos=pixel_to_latlon(x, y))

@@ -26,7 +26,7 @@ Read this when you're feeling better. Each part has a **one-line summary**, then
 ## 3. `road_graph.py`: the map as a graph
 **In one line:** 31 junctions (nodes) and 50 street pieces (edges) covering our 43 segments, with each edge storing its length and segment ID.
 
-- **"Why not OpenStreetMap?"** It couldn't be downloaded in the build environment, so the junctions were traced from our segment map and converted to latitude/longitude with Hafeez Centre as the anchor. They're accurate to about ±50 m. Using real OSM via `osmnx` is future work.
+- **"Do the routes follow real roads?"** Yes. The real street network was downloaded from **OpenStreetMap** with `osmnx`, using a GitHub Action. `tools/build_road_shapes.py` lines up our hand-drawn map with OSM using 8 known crossings (an *affine transform*, about 20 m error), snaps each junction onto its real road, and makes every segment follow the real street shape (*shortest path along OSM streets*).
 
 ## 4. `fuzzy_labels.py`: fuzzy logic
 **In one line:** it turns a risk number into words like "risky after 9 PM" without hard cut-offs.
@@ -39,9 +39,10 @@ Read this when you're feeling better. Each part has a **one-line summary**, then
 
 - **"Is your heuristic admissible?"** Yes. h = straight-line distance, and every street's cost is at least its length, which is at least the straight-line distance, so h never overestimates. That means A\* is optimal.
 - **"How do you know your A\* is correct?"** For every one of the 465 start/goal pairs, the code checks that our A\* cost equals networkx's Dijkstra cost.
-- **"Is A\* better than Dijkstra here?"** Same answer, less work: A\* expanded about 10 junctions on average vs 16 for Dijkstra.
+- **"Is A\* better than Dijkstra here?"** Same answer, less work: A\* expanded about 10.5 junctions on average vs 16 for Dijkstra.
 - **"Why not the genetic algorithm from your plan?"** On a 31-node map, A\* is exact and instant. A GA gives good but not guaranteed answers and needs tuning. We kept the GA plan's idea of 3 preference weights.
-- **The best demo example (11 PM, Main Blvd/L8 → MM Alam middle):** the fastest route is 1,033 m through lanes L8, L1 and L2, with average risk 0.91. The balanced route is 1,279 m via Hafeez Centre road, with average risk 0.13. That's 246 m more walking for a much safer route.
+- **The best demo example (11 PM, Hafeez Centre → Tipu Road north, the app's default; tick all three boxes):** the fastest route is 1,499 m through lane L4 (risk 0.46). The balanced route is 1,790 m via Ghalib Road and MM Alam (risk 0.21). The safety-first route is 1,928 m via Tipu Road (risk 0.18). More safety costs more walking, and that's the **trade-off**.
+- **"Why can't one route be fastest AND safest?"** Sometimes it is: then all ticked routes overlap and the app says so. When the shortcut uses a risky street, no route can be both, so the user picks the trade-off.
 
 ## 6. `app.py`: the demo
 **In one line:** pick From, To, time and mode, and the app shows a map with coloured streets, the route, and why it was chosen.

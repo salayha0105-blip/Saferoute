@@ -37,19 +37,19 @@ We chose the decision tree because the app must *explain* its recommendations, a
 
 | Slot | Mode | Extra distance | Avg. risk |
 |---|---|---|---|
-| 11 PM | Fastest | 0% | 0.48 |
-| 11 PM | Balanced | +10% | 0.30 |
-| 11 PM | Safety-first | +18% | 0.28 |
-| 6 PM | Balanced | +15% | 0.14 (fastest: 0.35) |
+| 11 PM | Fastest | 0% | 0.41 |
+| 11 PM | Balanced | +7% | 0.30 |
+| 11 PM | Safety-first | +14% | 0.27 |
+| 6 PM | Balanced | +10% | 0.14 (fastest: 0.27) |
 
 A\* matched Dijkstra's optimal cost on every pair while expanding 10 junctions on average instead of 16.
-**Worked example (11 PM):** the fastest route from Main Blvd/L8 to MM Alam is 1,033 m through three lanes, with average risk 0.91. The balanced route is 1,279 m via Hafeez Centre road, with average risk 0.13.
+**Worked example (11 PM, Hafeez Centre → Tipu Road north):** *fastest* is 1,499 m through Dopatta Gali and lane L4 (average risk 0.46). *Balanced* is 1,790 m along Ghalib (Hafeez Centre) Road and MM Alam Road (risk 0.21). *Safety-first* is 1,928 m and also avoids the northern road CR3 by using Tipu Road (risk 0.18).
 
 ## 5. Failure cases and limitations
 1. **Synthetic data:** the model learns our assumptions. High accuracy shows the pipeline works, not that it is accurate in real life.
 2. **Shortcut feature:** people per minute carries 65% of the tree's importance. It acts as a stand-in for street type, so cameras and police got zero importance even though the generator uses them. With real data, correlated features would need careful analysis.
 3. **The tree called a truly risky street-time "safe" 3 times out of 555**, while Naive Bayes never did. In a safety app this error matters most, so a cautious ensemble is worth testing.
-4. **Map accuracy:** junctions were traced by hand (about ±50 m) because OpenStreetMap could not be downloaded in the build environment.
+4. **Map accuracy:** street shapes come from OpenStreetMap, but our segment junctions were traced from a phone map and snapped onto OSM, so which real lane each L1–L15 refers to is approximate. OSM also had small gaps (e.g. Ghalib Road where it crosses MM Alam's dual carriageway), which we bridged along the same named street.
 5. **Coverage:** one neighbourhood and three time slots. There is no weekday/weekend toggle in the app yet.
 
 ## 6. Ethics
@@ -59,4 +59,4 @@ A\* matched Dijkstra's optimal cost on every pair while expanding 10 junctions o
 - **Responsibility:** safety is the duty of the city and of harassers, not of women's route choices. The tool supports choice and does not shift blame.
 
 ## 7. Future work
-Real field-audit and survey data; the real OpenStreetMap network via osmnx; a weekday/weekend toggle; an SOS/emergency feature; expansion beyond Gulberg III.
+Real field-audit and survey data; matching every OSM street (not only our 43 segments); a weekday/weekend toggle; an SOS/emergency feature; expansion beyond Gulberg III.
