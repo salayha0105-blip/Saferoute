@@ -189,8 +189,8 @@ if __name__ == "__main__":
 
     # one worked example for the report / presentation
     G = attach_risk(build_graph(), seg_risk, "11pm")
-    print("\nExample at 11 PM: Hafeez Centre -> Tipu Road north")
+    print("\nExample at 11 PM: Sir Syed / first side road -> Tehzeeb Bakers (MM Alam)")
     for mode, w in MODES.items():
-        path, _ = a_star(G, "Hafeez Centre", "Tipu Road north", w)
+        path, _ = a_star(G, "Sir Syed / first side road", "Tehzeeb Bakers (MM Alam)", w)
         info = describe_route(G, path)
         print(f"  {mode:13s} {info['length_m']:5d} m  avg risk {info['avg_risk']:.2f}  via {' > '.join(info['segments'])}")
