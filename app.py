@@ -8,15 +8,14 @@ Live version:         deployed on share.streamlit.io from the GitHub repo.
 WHAT THE USER DOES:
   1. Picks where they start and where they're going.
   2. Picks the time (6, 9 or 11 PM).
-  3. Ticks one or more route options. Each option has its own colour, and
-     ONLY the ticked routes are drawn on the map:
+  3. Ticks one or more route options in the map's corner. Each has its own
+     colour, and only ticked routes are shown:
         Fastest       (black)  - shortest distance, ignores safety
         Balanced      (blue)   - a risky street counts as up to 4x longer
         Safety-first  (purple) - a risky street counts as up to 11x longer
 
-The map is drawn ONCE. When the user ticks or unticks a route, only the
-route lines are added or removed (st_folium's feature_group_to_add), so the
-map does not reload or jump.
+Ticking a route is handled by the map itself (a Leaflet layer control), so
+it is instant. Only changing From / To / time recomputes the routes.
 """
 
 import folium
@@ -52,73 +51,79 @@ start = st.sidebar.selectbox("From", nodes, index=nodes.index("Hafeez Centre"))
 goal = st.sidebar.selectbox("To", nodes, index=nodes.index("Tipu Road north"))
 slot_label = st.sidebar.radio("Time of night", list(SLOT_NAMES), index=2, horizontal=True)
 
-st.sidebar.markdown("**Show routes**")
-selected = [mode for mode, (_, emoji, _) in ROUTE_STYLE.items()
-            if st.sidebar.checkbox(f"{emoji} {mode.capitalize()}", value=(mode == "balanced"), key=mode)]
-
 segment_risk = load_risk()
-G = attach_risk(build_graph(), segment_risk, SLOT_NAMES[slot_label])
 
 if start == goal:
     st.info("Pick two different places.")
     st.stop()
 
-# ---------------- compute every route (cheap: the map is small) ----------------
-routes = {}
-for mode, weight in MODES.items():
-    path, _ = a_star(G, start, goal, weight)
-    routes[mode] = (path, describe_route(G, path))
+
+# ---------------- compute every route ----------------
+# Cached: the same From / To / time is only computed once.
+@st.cache_data
+def compute_routes(start, goal, slot):
+    G = attach_risk(build_graph(), load_risk(), slot)
+    out = {}
+    for mode, weight in MODES.items():
+        path, _ = a_star(G, start, goal, weight)
+        info = describe_route(G, path)
+        shape = []
+        for a, b in zip(path, path[1:]):
+            pts = list(G[a][b]["shape"])
+            if pts and pts[0] != G.nodes[a]["pos"] and pts[-1] == G.nodes[a]["pos"]:
+                pts = pts[::-1]                   # make the street run in walking direction
+            shape += pts
+        out[mode] = {"path": path, "info": info, "shape": shape}
+    return out, G.nodes[start]["pos"], G.nodes[goal]["pos"], G.nodes["Hafeez road bend"]["pos"]
+
+
+routes, start_pos, goal_pos, centre = compute_routes(start, goal, SLOT_NAMES[slot_label])
 
 # ---------------- map ----------------
-# The base map never changes, so Streamlit keeps it on screen. Routes and
-# markers go in a FeatureGroup that is swapped in and out on each click.
-@st.cache_resource
-def base_map():
-    return folium.Map(location=MAP_CENTRE, zoom_start=16, tiles="OpenStreetMap")
-
-
-MAP_CENTRE = tuple(G.nodes["Hafeez road bend"]["pos"])
-layer = folium.FeatureGroup(name="routes")
+# All three routes are drawn as separate layers. The tick boxes in the
+# map's corner (a Leaflet "layer control") show or hide them INSIDE THE
+# BROWSER, so ticking a box is instant: no reloading, no "running...".
+fmap = folium.Map(location=centre, zoom_start=16, tiles=None)
+folium.TileLayer("OpenStreetMap", control=False).add_to(fmap)   # base map, not a tick box
 # Widest line first, so when routes share a street you still see every colour.
-for mode in sorted(selected, key=lambda m: -ROUTE_STYLE[m][2]):
+for mode in sorted(ROUTE_STYLE, key=lambda m: -ROUTE_STYLE[m][2]):
     colour, _, width = ROUTE_STYLE[mode]
-    path, info = routes[mode]
-    shape = []
-    for a, b in zip(path, path[1:]):
-        pts = list(G[a][b]["shape"])
-        if pts and pts[0] != G.nodes[a]["pos"] and pts[-1] == G.nodes[a]["pos"]:
-            pts = pts[::-1]                       # make the street run in walking direction
-        shape += pts
-    folium.PolyLine(shape, color=colour, weight=width, opacity=0.9,
-                    tooltip=f"{mode}: {info['length_m']} m").add_to(layer)
-folium.Marker(G.nodes[start]["pos"], tooltip="Start", icon=folium.Icon(color="green", icon="play")).add_to(layer)
-folium.Marker(G.nodes[goal]["pos"], tooltip="Destination", icon=folium.Icon(color="red", icon="flag")).add_to(layer)
+    label = (f'<span style="color:{colour};font-size:18px">&#9632;</span> '
+             f'{mode.capitalize()}')
+    layer = folium.FeatureGroup(name=label, show=(mode == "balanced"))
+    folium.PolyLine(routes[mode]["shape"], color=colour, weight=width, opacity=0.9,
+                    tooltip=f"{mode}: {routes[mode]['info']['length_m']} m").add_to(layer)
+    layer.add_to(fmap)
+folium.Marker(start_pos, tooltip="Start", icon=folium.Icon(color="green", icon="play")).add_to(fmap)
+folium.Marker(goal_pos, tooltip="Destination", icon=folium.Icon(color="red", icon="flag")).add_to(fmap)
+folium.LayerControl(collapsed=False, position="topright").add_to(fmap)
+all_points = [pt for r in routes.values() for pt in r["shape"]]
+fmap.fit_bounds([[min(p[0] for p in all_points), min(p[1] for p in all_points)],
+                 [max(p[0] for p in all_points), max(p[1] for p in all_points)]], padding=(30, 30))
 
 left, right = st.columns([3, 2])
 with left:
-    st_folium(base_map(), key="map", feature_group_to_add=layer, center=MAP_CENTRE, zoom=16,
-              height=580, use_container_width=True, returned_objects=[])
+    st_folium(fmap, key="map", height=580, use_container_width=True, returned_objects=[])
+    st.caption("Tick the boxes on the map to show or hide each route.")
 
 # ---------------- explanation ----------------
 with right:
-    if not selected:
-        st.info("Tick at least one route option in the sidebar to see a route.")
-        st.stop()
     st.subheader(f"Routes at {slot_label}")
-    fastest = routes["fastest"][1]
+    selected = list(ROUTE_STYLE)
+    fastest = routes["fastest"]["info"]
     table = pd.DataFrame([{
         "Route": f"{ROUTE_STYLE[m][1]} {m.capitalize()}",
-        "Distance (m)": routes[m][1]["length_m"],
-        "Extra vs fastest": f"+{routes[m][1]['length_m'] - fastest['length_m']} m",
-        "Average risk (0-1)": f"{routes[m][1]['avg_risk']:.2f}",
+        "Distance (m)": routes[m]["info"]["length_m"],
+        "Extra vs fastest": f"+{routes[m]['info']['length_m'] - fastest['length_m']} m",
+        "Average risk (0-1)": f"{routes[m]['info']['avg_risk']:.2f}",
     } for m in selected])
     st.dataframe(table, hide_index=True, use_container_width=True)
 
-    same = [m for m in selected if m != "fastest" and routes[m][0] == routes["fastest"][0]]
+    same = [m for m in selected if m != "fastest" and routes[m]["path"] == routes["fastest"]["path"]]
     if same:
         st.success(f"{', '.join(x.capitalize() for x in same)} = fastest here.")
     for m in selected:
-        st.markdown(f"**{ROUTE_STYLE[m][1]} {m.capitalize()}:** " + " → ".join(routes[m][1]["segments"]))
+        st.markdown(f"**{ROUTE_STYLE[m][1]} {m.capitalize()}:** " + " → ".join(routes[m]["info"]["segments"]))
 
     with st.expander("How does this work?"):
         st.markdown(
