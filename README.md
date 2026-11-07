@@ -16,7 +16,7 @@ CSC 241 Artificial Intelligence final project, Fall 2026. SDG 11.2 (safe transpo
 | 5. Find the best route for each preference | `routing.py` | **A\* search** with an admissible heuristic (III) |
 | 6. Web app with a map | `app.py` | Deployment |
 | 7. Panic button, "Are you okay?" check-in, low-battery warnings (simulated) | `safety_tools.py` | n/a (demo) |
-| 8. Hammy 🐹, the little-brother companion chat | `hammy.py` | **Rule-based agent** (knowledge representation) |
+| 8. Hammy 🐹, the little-brother companion: a 3D boy (three.js) you can type or talk to (browser speech-to-text and text-to-speech) | `hammy.py`, `hammy_widget.py` | **Rule-based agent** (knowledge representation) |
 
 ## Run it
 

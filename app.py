@@ -25,7 +25,7 @@ from streamlit_folium import st_folium
 
 from road_graph import build_graph
 from routing import MODES, a_star, attach_risk, describe_route
-import hammy
+from hammy_widget import hammy_widget
 from safety_tools import battery_warning, checkin_panel, panic_button, start_checkin
 
 st.set_page_config(page_title="Safe Route Lahore", page_icon="🛡️", layout="wide")
@@ -127,22 +127,6 @@ with left:
     st_folium(fmap, key="map", height=580, use_container_width=True, returned_objects=[])
     st.caption("Tick the boxes on the map to show or hide each route.")
 
-# ---------------- Hammy chat ----------------
-# A fragment re-runs only itself when a message is sent, so the map stays put.
-@st.fragment
-def hammy_chat():
-    st.markdown("#### 🐹 Talk to Hammy")
-    history = st.session_state.setdefault("hammy", [
-        ("assistant", "Salam apa! I'm Hammy, your little brother for the walk. Tell me if anything feels off. 💙")])
-    box = st.container(height=260)
-    message = st.chat_input("Message Hammy… (English or Roman Urdu)")
-    if message:
-        history.append(("user", message))
-        history.append(("assistant", hammy.reply(message)))
-    for role, text in history:
-        box.chat_message(role, avatar="🐹" if role == "assistant" else "🙋‍♀️").markdown(text)
-
-
 # ---------------- explanation ----------------
 with right:
     st.subheader(f"Routes at {slot_label}")
@@ -162,7 +146,8 @@ with right:
     for m in selected:
         st.markdown(f"**{ROUTE_STYLE[m][1]} {m.capitalize()}:** " + " → ".join(routes[m]["info"]["segments"]))
 
-    hammy_chat()
+    st.markdown("#### 🐹 Talk to Hammy (type or hold 🎤)")
+    hammy_widget()
 
     with st.expander("How does this work?"):
         st.markdown(
