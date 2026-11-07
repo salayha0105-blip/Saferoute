@@ -64,3 +64,9 @@ Read this when you're feeling better. Each part has a **one-line summary**, then
 
 - **"Why not ChatGPT/Claude?"** Scripted replies are free, work offline, and every answer can be checked for safety. An AI mode is planned as future work (`ai_reply()`).
 - **"What if two intents match?"** Intents are checked in priority order, so "I'm scared someone is following me" is treated as *followed*, the urgent one.
+
+### Hammy 2.0: the 3D boy with voice
+
+- **"Is the 3D model downloaded from somewhere?"** No. We built him in three.js from simple shapes (spheres and cylinders), so there is no copyright issue. He breathes, blinks, waves hello and moves his mouth while talking.
+- **"Is the voice AI?"** The listening and speaking use the browser's built-in Web Speech API (speech-to-text and text-to-speech). The *answers* still come from our rule-based agent in `hammy.py`, so every reply can be explained.
+- **Limits:** voice input works best in Chrome or Edge and needs microphone permission. Typing always works, and the voice sounds different on each device.
