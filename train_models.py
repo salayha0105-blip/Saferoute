@@ -4,7 +4,8 @@ Safe Route Lahore - Step 2: train and compare the safety models
 
 WHAT THIS FILE DOES:
   It teaches the computer to look at a street's features (lighting, shops,
-  cameras, crowd...) and guess its label: risky / moderate / safe.
+  cameras, police, guards, main road vs gali, distance to police/hospital...)
+  and guess its label: less safe / moderate / safer.
   We try THREE methods and compare them fairly:
 
     1. Rule-based baseline   - a few "common sense" if/else rules I wrote by hand.
@@ -47,7 +48,7 @@ from sklearn.naive_bayes import GaussianNB
 from sklearn.tree import DecisionTreeClassifier, plot_tree
 
 DATA_FILE = "safe_route_synthetic.csv"
-LABELS = ["risky", "moderate", "safe"]   # fixed order for every table and chart
+LABELS = ["less safe", "moderate", "safer"]   # fixed order for every table and chart
 SEED = 42
 
 # ---------------------------------------------------------------------------
@@ -60,8 +61,8 @@ FEATURES = [
     "hour", "weekend_yn",
     "footpath_yn", "safe_city_camera_yn", "private_cctv_count",
     "police_yn", "guards_yn", "dead_frontage_yn", "isolated_spot_yn",
-    "ride_stand_yn", "lighting_0to2", "shops_open", "per_minute",
-    "women_per_minute",
+    "ride_stand_yn", "lighting_0to2", "shops_open", "women_per_minute",
+    "main_road_yn", "gali_yn", "dist_police_m", "dist_hospital_m",
 ]
 SLOT_TO_HOUR = {"6pm": 18, "9pm": 21, "11pm": 23}
 
@@ -76,14 +77,14 @@ def load_data():
 # Method 1: the rule-based baseline (no learning at all)
 # ---------------------------------------------------------------------------
 # These are the rules a sensible person might write without any data:
-#   - dark street, or a hidden corner with almost nobody around -> risky
+#   - dark street, or a hidden corner with no other women around -> less safe
 #   - bright street with shops open and women around             -> safe
 #   - anything else                                              -> moderate
 def rule_based_baseline(row):
-    if row["lighting_0to2"] == 0 or (row["isolated_spot_yn"] == 1 and row["per_minute"] < 5):
-        return "risky"
+    if row["lighting_0to2"] == 0 or (row["isolated_spot_yn"] == 1 and row["women_per_minute"] == 0):
+        return "less safe"
     if row["lighting_0to2"] == 2 and row["shops_open"] >= 3 and row["women_per_minute"] >= 2:
-        return "safe"
+        return "safer"
     return "moderate"
 
 
@@ -147,19 +148,19 @@ def main():
     #             counts as much as the big ones. Better than accuracy when
     #             classes are unbalanced.
     # Risky recall = of all truly risky street-times, how many did we catch?
-    #             This matters most: calling a risky street "safe" is the
+    #             This matters most: calling a less-safe street "safer" is the
     #             worst mistake for our users.
     metrics = {"tree_depth": depth, "depth_search_macro_f1": depth_scores, "models": {}}
     fig, axes = plt.subplots(1, 3, figsize=(15, 4.5))
     for ax, (name, pred) in zip(axes, predictions.items()):
         cm = confusion_matrix(y, pred, labels=LABELS)
-        risky_recall = cm[0, 0] / cm[0].sum()
-        risky_called_safe = int(cm[0, 2])
+        less_safe_recall = cm[0, 0] / cm[0].sum()
+        less_safe_called_safer = int(cm[0, 2])
         metrics["models"][name] = {
             "accuracy": round(accuracy_score(y, pred), 3),
             "macro_f1": round(f1_score(y, pred, average="macro"), 3),
-            "risky_recall": round(float(risky_recall), 3),
-            "risky_called_safe": risky_called_safe,
+            "less_safe_recall": round(float(less_safe_recall), 3),
+            "less_safe_called_safer": less_safe_called_safer,
         }
         ax.imshow(cm, cmap="Blues")
         ax.set_xticks(range(3), LABELS)
@@ -205,16 +206,16 @@ def main():
 
     # ---- segment risk table for the route planner ----
     # For every segment and slot we average the tree's probabilities over the
-    # 10 nights. risk = P(risky) + 0.5 * P(moderate), a number from 0 (safe)
-    # to 1 (risky). The route planner uses this as the "danger" of a street.
+    # 10 nights. risk = P(less safe) + 0.5 * P(moderate), a number from 0
+    # (safer) to 1 (less safe). The route planner uses this as the "danger" of a street.
     proba = pd.DataFrame(final_tree.predict_proba(X), columns=final_tree.classes_)
     proba["segment_id"] = data["segment_id"]
     proba["slot"] = data["slot"]
     proba["women_per_minute"] = data["women_per_minute"]
     proba["lighting_0to2"] = data["lighting_0to2"]
     table = proba.groupby(["segment_id", "slot"]).mean().reset_index()
-    table["risk"] = (table["risky"] + 0.5 * table["moderate"]).round(3)
-    table = table.rename(columns={"risky": "p_risky", "moderate": "p_moderate", "safe": "p_safe"})
+    table["risk"] = (table["less safe"] + 0.5 * table["moderate"]).round(3)
+    table = table.rename(columns={"less safe": "p_less_safe", "moderate": "p_moderate", "safer": "p_safer"})
     table.round(3).to_csv("segment_risk.csv", index=False)
     print("\nSaved results/, models/decision_tree.joblib and segment_risk.csv")
 
