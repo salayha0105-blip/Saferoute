@@ -44,10 +44,23 @@ Read this when you're feeling better. Each part has a **one-line summary**, then
 - **"How do you know your A\* is correct?"** For every one of the 465 start/goal pairs, the code checks that our A\* cost equals networkx's Dijkstra cost.
 - **"Is A\* better than Dijkstra here?"** Same answer, less work: A\* expanded about 10 junctions on average vs 16 for Dijkstra.
 - **"Why not the genetic algorithm from your plan?"** On a 31-node map, A\* is exact and instant. A GA gives good but not guaranteed answers and needs tuning. We kept the GA plan's idea of 3 preference weights.
-- **The best demo example (11 PM, Hafeez Centre → Tipu Road north, the app's default; tick all three boxes):** the fastest route is 1,499 m through lane L4 (risk 0.46). The balanced route is 1,790 m via Ghalib Road and MM Alam (risk 0.21). The safety-first route is 1,928 m via Tipu Road (risk 0.18). More safety costs more walking, and that's the **trade-off**.
+- **The best demo example (11 PM, Sir Syed / first side road → Tehzeeb Bakers, the app's default; tick all three boxes on the map):** fastest is 1,102 m through lanes (risk 0.63). Balanced is 1,128 m via Sir Syed and Ghalib Road (risk 0.45), just 26 m more. Safety-first is 1,346 m via Dopatta Gali (risk 0.32). More safety costs more walking, and that's the **trade-off**.
 - **"Why can't one route be fastest AND safest?"** Sometimes it is: then all ticked routes overlap and the app says so. When the shortcut uses a less-safe street, no route can be both, so the user picks the trade-off.
 
 ## 6. `app.py`: the demo
 **In one line:** pick From, To, time and mode, and the app shows a map with coloured streets, the route, and why it was chosen.
 
 - To deploy it: push this folder to GitHub, sign in at share.streamlit.io, choose New app, and pick `app.py`. It's free.
+
+## 7. `safety_tools.py`: panic button, check-in, battery (all simulated)
+**In one line:** demo pop-ups that show what a real app would do. Nothing is actually sent.
+
+- **"Why the PSCA Women Safety app and not regular police?"** It's Punjab Safe Cities' service built for women's emergencies, so an alert reaches people trained for exactly this.
+- **"How does the 'Are you okay?' timer work without reloading the map?"** It's a Streamlit *fragment* that re-runs only itself every second.
+- **"Why warn at 15% battery?"** If the phone dies, the app can't help at all, so at 15% we share the last location while we still can.
+
+## 8. `hammy.py`: Hammy 🐹, the little-brother companion
+**In one line:** a *rule-based agent*: IF the message contains certain keywords (e.g. "peecha", "following") THEN pick a matching reply that comforts her *and* gives a concrete action.
+
+- **"Why not ChatGPT/Claude?"** Scripted replies are free, work offline, and every answer can be checked for safety. An AI mode is planned as future work (`ai_reply()`).
+- **"What if two intents match?"** Intents are checked in priority order, so "I'm scared someone is following me" is treated as *followed*, the urgent one.

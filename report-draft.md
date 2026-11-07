@@ -43,7 +43,14 @@ We chose the decision tree because the app must *explain* its recommendations, a
 | 6 PM | Balanced | +11% | 0.15 (fastest: 0.29) |
 
 A\* matched Dijkstra's optimal cost on every pair while expanding 10 junctions on average instead of 16.
-**Worked example (11 PM, Hafeez Centre → Tipu Road north):** *fastest* is 1,499 m through Dopatta Gali and lane L4 (average risk 0.46). *Balanced* is 1,790 m along Ghalib (Hafeez Centre) Road and MM Alam Road (risk 0.21). *Safety-first* is 1,928 m and also avoids the northern road CR3 by using Tipu Road (risk 0.18).
+**Worked example (11 PM, Sir Syed Road / first side road → Tehzeeb Bakers on MM Alam):** *fastest* is 1,102 m through lanes L1 and L2 (average risk 0.63). *Balanced* is 1,128 m along Sir Syed and Ghalib (Hafeez Centre) Road (risk 0.45), only 26 m longer. *Safety-first* is 1,346 m via Dopatta Gali (risk 0.32).
+
+## 4b. App features for women
+- **Route options** (fastest / balanced / safety-first) toggled on the map.
+- **🆘 Panic button** showing 15 (Police), 1122 (Rescue) and 1043 (Punjab Women's Helpline), and sharing the last location with trusted contacts. *(simulated)*
+- **"Are you okay?" check-in** if she goes off route: no answer in 60 s alerts trusted contacts, and another 60 s alerts the PSCA Women Safety app with her last known location. *(simulated)*
+- **Low-battery care:** a reminder at 30%, and auto-sharing her location at 15%, because a dead phone means the app can't help.
+- **Hammy 🐹**, a rule-based "little brother" chat that comforts *and* gives actionable advice in English or Roman Urdu.
 
 ## 5. Failure cases and limitations
 1. **Synthetic data:** the model learns our assumptions. High accuracy shows the pipeline works, not that it is accurate in real life.
@@ -59,4 +66,4 @@ A\* matched Dijkstra's optimal cost on every pair while expanding 10 junctions o
 - **Responsibility:** safety is the duty of the city and of harassers, not of women's route choices. The tool supports choice and does not shift blame.
 
 ## 7. Future work
-Real field-audit and survey data; matching every OSM street (not only our 43 segments); a weekday/weekend toggle; an SOS/emergency feature; expansion beyond Gulberg III.
+Real field-audit and survey data; real integrations for the alerts (SMS, PSCA Women Safety app); an AI mode for Hammy; matching every OSM street (not only our 43 segments); a weekday/weekend toggle; an SOS/emergency feature; expansion beyond Gulberg III.
