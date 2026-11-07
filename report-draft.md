@@ -8,9 +8,9 @@ Women in Lahore often feel unsafe walking alone after dark. Gallup (2025) found 
 
 ## 2. Data
 - **Area:** Gulberg III, bounded by Main Boulevard, Tipu Road, the northern curved road and Noor Jahan Road. It is split into 43 street segments: 28 road segments and 15 lanes.
-- **Features**, which mirror our field-audit sheet: footpath, Safe City camera, private CCTV count, police, guards, dead frontage, isolated spot, ride stand, lighting (0–2), shops open, people per minute and women per minute, recorded at 6, 9 and 11 PM.
-- **Synthetic generation (approved by the instructor):** each segment gets a street type (main road, commercial, secondary, lane). Fixed features are drawn once per segment from type-specific probabilities, and time-varying features are drawn per night from Poisson distributions whose means fall as the night goes on. A hidden safety score is built from weights that follow Safetipin's audit parameters. **Five simulated raters** add Gaussian noise (σ = 0.6) and round to a 1–5 scale. The mean rating is then labelled: risky < 2.5 ≤ moderate ≤ 3.5 < safe.
-- **Size:** 43 × 3 × 10 nights = **1,290 rows**. Labels: 43% risky, 20% moderate, 37% safe. Seed 42.
+- **Features**, which mirror our field-audit sheet: footpath, Safe City camera, private CCTV count, police, guards, dead frontage, isolated spot, ride stand, lighting (0–2), shops open and women per minute, recorded at 6, 9 and 11 PM, plus main road vs gali and the real distance to the nearest police station and hospital (OpenStreetMap). The crowd count was deliberately left out: a big crowd is not always safer for women (e.g. harassment in crowded markets).
+- **Synthetic generation (approved by the instructor):** each segment gets a street type (main road, commercial, secondary, lane). Fixed features are drawn once per segment from type-specific probabilities, and time-varying features are drawn per night from Poisson distributions whose means fall as the night goes on. A hidden safety score is built from weights that follow Safetipin's audit parameters. **Five simulated raters** add Gaussian noise (σ = 0.6) and round to a 1–5 scale. The mean rating is then labelled: less safe < 2.5 ≤ moderate ≤ 3.5 < safer.
+- **Size:** 43 × 3 × 10 nights = **1,290 rows**. Labels: 44% less safe, 16% moderate, 40% safer. We never label a street "safe", only "safer". Seed 42.
 
 ## 3. Methods and why we chose them
 | Task | Method | Alternatives considered |
@@ -27,9 +27,9 @@ We chose the decision tree because the app must *explain* its recommendations, a
 
 | Model | Accuracy | Macro-F1 | Risky recall |
 |---|---|---|---|
-| Rule-based baseline | 0.58 | 0.58 | 0.29 |
-| Decision tree | **0.82** | **0.78** | **0.85** |
-| Naive Bayes | 0.80 | 0.78 | 0.76 |
+| Rule-based baseline | 0.62 | 0.61 | 0.40 |
+| Decision tree | **0.88** | **0.83** | 0.93 |
+| Naive Bayes | 0.86 | 0.78 | **0.94** |
 
 *(Insert `results/confusion_matrices.png` and `results/decision_tree.png`.)*
 
@@ -37,24 +37,24 @@ We chose the decision tree because the app must *explain* its recommendations, a
 
 | Slot | Mode | Extra distance | Avg. risk |
 |---|---|---|---|
-| 11 PM | Fastest | 0% | 0.41 |
-| 11 PM | Balanced | +7% | 0.30 |
-| 11 PM | Safety-first | +14% | 0.27 |
-| 6 PM | Balanced | +10% | 0.14 (fastest: 0.27) |
+| 11 PM | Fastest | 0% | 0.37 |
+| 11 PM | Balanced | +10% | 0.23 |
+| 11 PM | Safety-first | +20% | 0.20 |
+| 6 PM | Balanced | +11% | 0.15 (fastest: 0.29) |
 
 A\* matched Dijkstra's optimal cost on every pair while expanding 10 junctions on average instead of 16.
 **Worked example (11 PM, Hafeez Centre → Tipu Road north):** *fastest* is 1,499 m through Dopatta Gali and lane L4 (average risk 0.46). *Balanced* is 1,790 m along Ghalib (Hafeez Centre) Road and MM Alam Road (risk 0.21). *Safety-first* is 1,928 m and also avoids the northern road CR3 by using Tipu Road (risk 0.18).
 
 ## 5. Failure cases and limitations
 1. **Synthetic data:** the model learns our assumptions. High accuracy shows the pipeline works, not that it is accurate in real life.
-2. **Shortcut feature:** people per minute carries 65% of the tree's importance. It acts as a stand-in for street type, so cameras and police got zero importance even though the generator uses them. With real data, correlated features would need careful analysis.
-3. **The tree called a truly risky street-time "safe" 3 times out of 555**, while Naive Bayes never did. In a safety app this error matters most, so a cautious ensemble is worth testing.
+2. **Shortcut feature:** main road vs gali carries 66% of the tree's importance (gali adds 17%). Street type decides most other features in our generator, so cameras, guards and police presence got almost zero importance even though the formula uses them. With real data, correlated features would need careful analysis.
+3. **Both the tree and Naive Bayes called a truly less-safe street-time "safer" once** (out of about 570). In a safety app this error matters most, so a cautious ensemble is worth testing.
 4. **Map accuracy:** street shapes come from OpenStreetMap, but our segment junctions were traced from a phone map and snapped onto OSM, so which real lane each L1–L15 refers to is approximate. OSM also had small gaps (e.g. Ghalib Road where it crosses MM Alam's dual carriageway), which we bridged along the same named street.
 5. **Coverage:** one neighbourhood and three time slots. There is no weekday/weekend toggle in the app yet.
 
 ## 6. Ethics
-- **Labelling areas "risky" can stigmatise neighbourhoods** and the people who live there. We label *conditions* (dark, empty, no open shops) at specific times, not communities.
-- **False reassurance:** a "safe" label is never a guarantee. The app says so, and the data is clearly marked synthetic.
+- **Labelling areas "less safe" can stigmatise neighbourhoods** and the people who live there. We label *conditions* (dark, empty, no open shops) at specific times, not communities.
+- **False reassurance:** the app never says "safe", only "safer", because no street is guaranteed safe. It says so, and the data is clearly marked synthetic.
 - **Privacy:** the app collects no user location or ratings. The planned real data (field audit and anonymous survey) holds no personal identifiers.
 - **Responsibility:** safety is the duty of the city and of harassers, not of women's route choices. The tool supports choice and does not shift blame.
 

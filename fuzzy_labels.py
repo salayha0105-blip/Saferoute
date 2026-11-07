@@ -4,7 +4,7 @@ Safe Route Lahore - Step 4: fuzzy logic labels (course Week XI)
 
 WHAT THIS FILE DOES:
   Turns numbers into the kind of words people use, e.g.
-  "safe until 9 PM, risky after".
+  "safer until 9 PM, less safe after".
 
 WHY FUZZY LOGIC (and not a hard cut-off):
   With a hard rule like "risk > 0.5 = risky", a street with risk 0.49 is
@@ -20,7 +20,8 @@ HOW IT WORKS (a Sugeno-style fuzzy system, written by hand so every step is visi
        "AND" = take the smaller membership (the standard fuzzy AND = min).
   3. DEFUZZIFY: weighted average of the rule outputs, weighted by how
        strongly each rule fired. Result: one danger score 0-10.
-  4. Turn the score into a word: safe / be careful / risky.
+  4. Turn the score into a word: safer / be careful / less safe.
+     (Never "safe": no street is guaranteed safe.)
 """
 
 
@@ -84,25 +85,25 @@ def danger_score(risk, women_per_minute):
 # --- Step 4: words ------------------------------------------------------------
 def danger_word(score):
     if score < 4.0:
-        return "safe"
+        return "safer"
     if score < 6.5:
         return "be careful"
-    return "risky"
+    return "less safe"
 
 
 def night_phrase(words_by_slot):
     """Summarise one segment's words at 6, 9 and 11 PM into one sentence.
-    words_by_slot example: {"6pm": "safe", "9pm": "safe", "11pm": "risky"}"""
+    words_by_slot example: {"6pm": "safer", "9pm": "safer", "11pm": "less safe"}"""
     w6, w9, w11 = words_by_slot["6pm"], words_by_slot["9pm"], words_by_slot["11pm"]
     if w6 == w9 == w11:
         return f"{w6} all evening"
-    if w6 != "risky" and w9 == "risky":
-        return "risky after 9 PM"
-    if w9 != "risky" and w11 == "risky":
-        return "risky after 11 PM"
-    if w6 == "safe" and w9 == "be careful":
+    if w6 != "less safe" and w9 == "less safe":
+        return "less safe after 9 PM"
+    if w9 != "less safe" and w11 == "less safe":
+        return "less safe after 11 PM"
+    if w6 == "safer" and w9 == "be careful":
         return "be careful after 9 PM"
-    if w9 == "safe" and w11 == "be careful":
+    if w9 == "safer" and w11 == "be careful":
         return "be careful after 11 PM"
     return f"6 PM {w6}, 9 PM {w9}, 11 PM {w11}"
 

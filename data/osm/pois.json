@@ -1,0 +1,410 @@
+[
+ {
+  "kind": "hospital",
+  "name": "متحده مسیحي روغتون.",
+  "lat": 31.508682,
+  "lon": 74.340491
+ },
+ {
+  "kind": "police",
+  "name": "آفس قربان لائن",
+  "lat": 31.533256,
+  "lon": 74.357377
+ },
+ {
+  "kind": "hospital",
+  "name": "Hameed Latif ",
+  "lat": 31.512479,
+  "lon": 74.328471
+ },
+ {
+  "kind": "hospital",
+  "name": "ادریس پولی کلینیک",
+  "lat": 31.525877,
+  "lon": 74.320433
+ },
+ {
+  "kind": "hospital",
+  "name": "Naz Hospital",
+  "lat": 31.539465,
+  "lon": 74.319771
+ },
+ {
+  "kind": "hospital",
+  "name": "Wapda Hospital",
+  "lat": 31.523824,
+  "lon": 74.322809
+ },
+ {
+  "kind": "hospital",
+  "name": "Alnoor Clinical Laboratory",
+  "lat": 31.534592,
+  "lon": 74.328401
+ },
+ {
+  "kind": "hospital",
+  "name": "Rasheed Hospital",
+  "lat": 31.500376,
+  "lon": 74.319231
+ },
+ {
+  "kind": "hospital",
+  "name": "Dr. Nighat Tahira Consultant Acupuncturist",
+  "lat": 31.499935,
+  "lon": 74.319051
+ },
+ {
+  "kind": "hospital",
+  "name": "Hearing Clinic",
+  "lat": 31.506367,
+  "lon": 74.350388
+ },
+ {
+  "kind": "police",
+  "name": "Ichra Police Station",
+  "lat": 31.530351,
+  "lon": 74.322854
+ },
+ {
+  "kind": "hospital",
+  "name": "Al-Rehman Hospital",
+  "lat": 31.491196,
+  "lon": 74.33736
+ },
+ {
+  "kind": "hospital",
+  "name": "Ammar Medical Complex",
+  "lat": 31.535033,
+  "lon": 74.343032
+ },
+ {
+  "kind": "hospital",
+  "name": "Cavalry Hospital Lahore",
+  "lat": 31.501927,
+  "lon": 74.362769
+ },
+ {
+  "kind": "hospital",
+  "name": "Fatima Memorial Hospital",
+  "lat": 31.53562,
+  "lon": 74.327981
+ },
+ {
+  "kind": "hospital",
+  "name": "مید سېټي روغتون",
+  "lat": 31.537601,
+  "lon": 74.337364
+ },
+ {
+  "kind": "hospital",
+  "name": "Omar Hospital",
+  "lat": 31.537085,
+  "lon": 74.338056
+ },
+ {
+  "kind": "hospital",
+  "name": "O M C Hospital",
+  "lat": 31.536591,
+  "lon": 74.338909
+ },
+ {
+  "kind": "hospital",
+  "name": "Punjab Medical Center",
+  "lat": 31.534408,
+  "lon": 74.34481
+ },
+ {
+  "kind": "hospital",
+  "name": "Akram Complex Hospital",
+  "lat": 31.53345,
+  "lon": 74.343651
+ },
+ {
+  "kind": "hospital",
+  "name": "Hijaz Hospital Lahore",
+  "lat": 31.515313,
+  "lon": 74.345647
+ },
+ {
+  "kind": "hospital",
+  "name": "Hameed Latif Hospital",
+  "lat": 31.511867,
+  "lon": 74.327565
+ },
+ {
+  "kind": "hospital",
+  "name": "Medicare Hospital",
+  "lat": 31.513193,
+  "lon": 74.327633
+ },
+ {
+  "kind": "hospital",
+  "name": "Surgimed Hospital Lahore",
+  "lat": 31.538094,
+  "lon": 74.351275
+ },
+ {
+  "kind": "hospital",
+  "name": "زینب میموریل ہسپتال",
+  "lat": 31.504124,
+  "lon": 74.329527
+ },
+ {
+  "kind": "hospital",
+  "name": "Rasheed Hospital",
+  "lat": 31.488699,
+  "lon": 74.380243
+ },
+ {
+  "kind": "hospital",
+  "name": "CMH Lahore",
+  "lat": 31.539165,
+  "lon": 74.371175
+ },
+ {
+  "kind": "hospital",
+  "name": "Prime Care Hospital",
+  "lat": 31.493618,
+  "lon": 74.375473
+ },
+ {
+  "kind": "hospital",
+  "name": "Amanat Eye Hospital",
+  "lat": 31.518321,
+  "lon": 74.340407
+ },
+ {
+  "kind": "hospital",
+  "name": "Bari Clinic & Hospital",
+  "lat": 31.502177,
+  "lon": 74.344827
+ },
+ {
+  "kind": "hospital",
+  "name": "IOM Health Assessment Centre",
+  "lat": 31.501405,
+  "lon": 74.342553
+ },
+ {
+  "kind": "hospital",
+  "name": "Shaukat Khanum Lab",
+  "lat": 31.50182,
+  "lon": 74.363298
+ },
+ {
+  "kind": "hospital",
+  "name": "Lahore Health Care",
+  "lat": 31.501819,
+  "lon": 74.363465
+ },
+ {
+  "kind": "hospital",
+  "name": "Fazal Cardiac Hospital",
+  "lat": 31.508778,
+  "lon": 74.345803
+ },
+ {
+  "kind": "hospital",
+  "name": "د پنجاب ذهني روغتیا انسټیټیوټ",
+  "lat": 31.535197,
+  "lon": 74.334801
+ },
+ {
+  "kind": "hospital",
+  "name": "Hospital Hudson Silva Lions Eye Hospital",
+  "lat": 31.522935,
+  "lon": 74.344399
+ },
+ {
+  "kind": "hospital",
+  "name": "شادمان جنرل ہسپتال",
+  "lat": 31.533759,
+  "lon": 74.328435
+ },
+ {
+  "kind": "hospital",
+  "name": "Amina Medical Complex",
+  "lat": 31.535353,
+  "lon": 74.328617
+ },
+ {
+  "kind": "hospital",
+  "name": "Pakistan Society for Rehabilitation of The Disabled",
+  "lat": 31.528909,
+  "lon": 74.322554
+ },
+ {
+  "kind": "hospital",
+  "name": "Shaukat Khanum Laboratory",
+  "lat": 31.487508,
+  "lon": 74.380823
+ },
+ {
+  "kind": "hospital",
+  "name": "Mian Medical Complex",
+  "lat": 31.535014,
+  "lon": 74.339978
+ },
+ {
+  "kind": "hospital",
+  "name": "Rana Laser Ent Centre",
+  "lat": 31.536489,
+  "lon": 74.339028
+ },
+ {
+  "kind": "hospital",
+  "name": "Dr. Zahid Hussain",
+  "lat": 31.50319,
+  "lon": 74.323924
+ },
+ {
+  "kind": "hospital",
+  "name": "Dr. Altaf Cheema",
+  "lat": 31.499356,
+  "lon": 74.320338
+ },
+ {
+  "kind": "hospital",
+  "name": "ډاکټر آصف رانا",
+  "lat": 31.510299,
+  "lon": 74.328087
+ },
+ {
+  "kind": "police",
+  "name": "Army Checkpoint",
+  "lat": 31.505062,
+  "lon": 74.367792
+ },
+ {
+  "kind": "police",
+  "name": "Checkpoint",
+  "lat": 31.504805,
+  "lon": 74.378151
+ },
+ {
+  "kind": "hospital",
+  "name": "Al Mairah Dental and Cosmetics Clinic",
+  "lat": 31.499526,
+  "lon": 74.366683
+ },
+ {
+  "kind": "hospital",
+  "name": null,
+  "lat": 31.500347,
+  "lon": 74.36189
+ },
+ {
+  "kind": "hospital",
+  "name": "Pak Hospital",
+  "lat": 31.531993,
+  "lon": 74.324599
+ },
+ {
+  "kind": "hospital",
+  "name": "پاک ہسپتال",
+  "lat": 31.531745,
+  "lon": 74.323423
+ },
+ {
+  "kind": "hospital",
+  "name": "سروسز ہسپتال",
+  "lat": 31.539106,
+  "lon": 74.333608
+ },
+ {
+  "kind": "hospital",
+  "name": "Hassan Medical Center",
+  "lat": 31.488479,
+  "lon": 74.378979
+ },
+ {
+  "kind": "hospital",
+  "name": "Punjab Institute of Cardiology",
+  "lat": 31.537861,
+  "lon": 74.33553
+ },
+ {
+  "kind": "hospital",
+  "name": "WAPDA Hospital",
+  "lat": 31.523798,
+  "lon": 74.322748
+ },
+ {
+  "kind": "hospital",
+  "name": "Masood Hospital",
+  "lat": 31.505293,
+  "lon": 74.330423
+ },
+ {
+  "kind": "hospital",
+  "name": null,
+  "lat": 31.504215,
+  "lon": 74.329412
+ },
+ {
+  "kind": "hospital",
+  "name": "یونائیٹڈ کرسچن ہسپتال",
+  "lat": 31.508408,
+  "lon": 74.341097
+ },
+ {
+  "kind": "police",
+  "name": "Cantt Police Station",
+  "lat": 31.525795,
+  "lon": 74.375953
+ },
+ {
+  "kind": "hospital",
+  "name": "Combined Military Hospital",
+  "lat": 31.54158,
+  "lon": 74.371944
+ },
+ {
+  "kind": "hospital",
+  "name": "الشوکات میڈیکل اینڈ کڈنی سینٹر",
+  "lat": 31.510155,
+  "lon": 74.348937
+ },
+ {
+  "kind": "police",
+  "name": "Gulberg Police Station",
+  "lat": 31.511195,
+  "lon": 74.342761
+ },
+ {
+  "kind": "hospital",
+  "name": "Medivision Poly Clinic",
+  "lat": 31.501923,
+  "lon": 74.363121
+ },
+ {
+  "kind": "hospital",
+  "name": "Cavalry Hospital",
+  "lat": 31.501928,
+  "lon": 74.362778
+ },
+ {
+  "kind": "hospital",
+  "name": "Aadil Hospital",
+  "lat": 31.489139,
+  "lon": 74.380276
+ },
+ {
+  "kind": "hospital",
+  "name": "Akram Eye Hospital",
+  "lat": 31.489832,
+  "lon": 74.378588
+ },
+ {
+  "kind": "hospital",
+  "name": "Prime Care Hospital & Medical Center",
+  "lat": 31.493611,
+  "lon": 74.375467
+ },
+ {
+  "kind": "hospital",
+  "name": "Rasheed Hospital",
+  "lat": 31.488738,
+  "lon": 74.380254
+ }
+]

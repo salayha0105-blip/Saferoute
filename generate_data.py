@@ -18,11 +18,22 @@ HOW IT WORKS (5 steps, each one is a function below):
      (lighting, shops open, how busy it is, how many women are around).
   4. Turn those features into a hidden "safety score", then pretend 5 women
      rated the street (each a little differently) and average their ratings.
-  5. Turn the average rating into a label: risky / moderate / safe.
+  5. Turn the average rating into a label: less safe / moderate / safer.
+     (We never say "safe": no street is guaranteed safe, only safer.)
+
+VERSION 2 (7 Nov 2026), agreed with Snaf:
+  - The crowd count (people + vehicles per minute) was REMOVED: a big crowd
+    is not always safer for women. We keep "women_per_minute" (other women around).
+  - ADDED main road vs gali, and the REAL walking-free straight-line distance
+    from each segment to the nearest police station and hospital
+    (OpenStreetMap, data/osm/pois.json).
 
 Run it with:   python generate_data.py
 It creates:    safe_route_synthetic.csv   (43 segments x 3 slots x 10 nights = 1,290 rows)
 """
+
+import json
+import math
 
 import numpy as np
 import pandas as pd
@@ -127,12 +138,6 @@ AVG_SHOPS_OPEN = {
     "secondary":     (4,    2,    1),
     "lane":          (0.5,  0.2,  0.05),
 }
-AVG_PEOPLE_PER_MIN = {   # people + vehicles passing in one minute
-    "main_road":     (60,   45,   25),
-    "commercial":    (45,   50,   30),
-    "secondary":     (20,   12,   5),
-    "lane":          (4,    2,    1),
-}
 AVG_WOMEN_PER_MIN = {
     "main_road":     (6,    3,    1),
     "commercial":    (8,    6,    2),
@@ -153,14 +158,11 @@ def make_changing_features(street_type, slot, is_weekend):
     lighting = int(np.clip(round(lighting), 0, 2))
 
     shops = rng.poisson(AVG_SHOPS_OPEN[street_type][s] * boost)
-    people = rng.poisson(AVG_PEOPLE_PER_MIN[street_type][s] * boost)
     women = rng.poisson(AVG_WOMEN_PER_MIN[street_type][s] * boost)
-    women = min(women, people)   # can't have more women than total people
 
     return {
         "lighting_0to2": lighting,
         "shops_open": int(shops),
-        "per_minute": int(people),
         "women_per_minute": int(women),
     }
 
@@ -174,14 +176,16 @@ def make_changing_features(street_type, slot, is_weekend):
 # Plus signs = makes a street feel safer, minus signs = less safe.
 
 def hidden_safety_score(row):
-    s = 1.4                                              # starting point
+    s = 1.2                                              # starting point
     s += 0.5 * row["lighting_0to2"]                      # light helps a lot
     s += 0.08 * min(row["shops_open"], 10)               # open shops = "eyes on the street"
     s += 0.3 * row["safe_city_camera_yn"]
     s += 0.05 * min(row["private_cctv_count"], 6)
     s += 0.4 * row["police_yn"] + 0.2 * row["guards_yn"] # security presence
     s += 0.2 * row["footpath_yn"] + 0.15 * row["ride_stand_yn"]
-    s += 0.25 * min(row["per_minute"] / 40, 1)           # busy streets (capped)
+    s += 0.3 * row["main_road_yn"] - 0.3 * row["gali_yn"]  # main roads preferred over galis
+    s += 0.3 * (1 - min(row["dist_police_m"] / 1500, 1)) # closer police station = safer
+    s += 0.2 * (1 - min(row["dist_hospital_m"] / 1500, 1))  # closer hospital = safer
     s += 0.6 * min(row["women_per_minute"] / 5, 1)       # other women around = big effect
     s -= 0.5 * row["dead_frontage_yn"]                   # blank walls, nobody watching
     s -= 0.6 * row["isolated_spot_yn"]                   # hidden corners
@@ -203,19 +207,43 @@ def simulate_ratings(score):
 # ---------------------------------------------------------------------------
 def rating_to_label(mean_rating):
     if mean_rating < 2.5:
-        return "risky"
+        return "less safe"
     elif mean_rating <= 3.5:
         return "moderate"
     else:
-        return "safe"
+        return "safer"
 
 
 # ---------------------------------------------------------------------------
 # PUT IT ALL TOGETHER
 # ---------------------------------------------------------------------------
+def distances_to_help():
+    """Real straight-line distance (metres) from the middle of each segment to
+    the nearest police station and the nearest hospital/clinic.
+    Uses data/road_shapes.json (real street shapes) and data/osm/pois.json
+    (real places from OpenStreetMap)."""
+    with open("data/road_shapes.json") as f:
+        shapes = json.load(f)["segments"]
+    with open("data/osm/pois.json") as f:
+        pois = json.load(f)
+
+    def metres(a, b):   # flat-earth distance, accurate at this small scale
+        return math.hypot((a[0] - b[0]) * 111_000, (a[1] - b[1]) * 94_650)
+
+    out = {}
+    for seg in shapes:
+        mid = seg["shape"][len(seg["shape"]) // 2]       # a point halfway along the street
+        for kind in ("police", "hospital"):
+            d = min(metres(mid, (p["lat"], p["lon"])) for p in pois if p["kind"] == kind)
+            key = (seg["segment_id"], kind)
+            out[key] = min(out.get(key, d), d)           # segments split in 2 pieces: keep the closer
+    return out
+
+
 def main():
     # Read our real list of 43 segments (we only need id and street name).
     segments = pd.read_csv(AUDIT_SHEET)[["segment_id", "street", "stretch"]]
+    help_dist = distances_to_help()
 
     rows = []
     for _, seg in segments.iterrows():
@@ -234,6 +262,10 @@ def main():
                     "slot": slot,
                 }
                 row.update(fixed)
+                row["main_road_yn"] = int(street_type in ("main_road", "commercial"))
+                row["gali_yn"] = int(street_type == "lane")
+                row["dist_police_m"] = round(help_dist[(seg["segment_id"], "police")])
+                row["dist_hospital_m"] = round(help_dist[(seg["segment_id"], "hospital")])
                 row.update(make_changing_features(street_type, slot, is_weekend))
 
                 score = hidden_safety_score(row)
