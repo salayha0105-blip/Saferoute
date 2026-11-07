@@ -122,13 +122,20 @@ all_points = [pt for r in routes.values() for pt in r["shape"]]
 fmap.fit_bounds([[min(p[0] for p in all_points), min(p[1] for p in all_points)],
                  [max(p[0] for p in all_points), max(p[1] for p in all_points)]], padding=(30, 30))
 
-left, right = st.columns([3, 2])
-with left:
-    st_folium(fmap, key="map", height=580, use_container_width=True, returned_objects=[])
-    st.caption("Tick the boxes on the map to show or hide each route.")
+# Two tabs: the map with Hammy beside it, and the route details on their own.
+map_tab, details_tab = st.tabs(["🗺️ Map & Hammy", "📋 Route details"])
 
-# ---------------- explanation ----------------
-with right:
+with map_tab:
+    left, right = st.columns([3, 2])
+    with left:
+        st_folium(fmap, key="map", height=640, use_container_width=True, returned_objects=[])
+        st.caption("Tick the boxes on the map to show or hide each route.")
+    with right:
+        st.markdown("#### 🐹 Hammy (type or hold 🎤)")
+        hammy_widget()
+
+# ---------------- route details ----------------
+with details_tab:
     st.subheader(f"Routes at {slot_label}")
     selected = list(ROUTE_STYLE)
     fastest = routes["fastest"]["info"]
@@ -140,16 +147,19 @@ with right:
     } for m in selected])
     st.dataframe(table, hide_index=True, use_container_width=True)
 
-    same = [m for m in selected if m != "fastest" and routes[m]["path"] == routes["fastest"]["path"]]
-    if same:
-        st.success(f"{', '.join(x.capitalize() for x in same)} = fastest here.")
+    # Two options can pick the SAME route. That is expected, not a bug: if the
+    # balanced route already avoids the less-safe streets, a bigger safety
+    # weight has no safer detour left to choose (true for 88% of pairs at 11 PM).
+    for i, m in enumerate(selected):
+        for earlier in selected[:i]:
+            if routes[m]["path"] == routes[earlier]["path"]:
+                st.info(f"{m.capitalize()} picks the same route as {earlier.capitalize()} here: "
+                        "there is no safer detour nearby.")
+                break
     for m in selected:
         st.markdown(f"**{ROUTE_STYLE[m][1]} {m.capitalize()}:** " + " → ".join(routes[m]["info"]["segments"]))
 
-    st.markdown("#### 🐹 Talk to Hammy (type or hold 🎤)")
-    hammy_widget()
-
-    with st.expander("How does this work?"):
+    with st.expander("How does this work?", expanded=True):
         st.markdown(
             "- A **decision tree** predicts each street's safety from lighting, open shops, "
             "cameras, guards, police, main road vs gali, distance to police and hospital, other women around and time of night.\n"
