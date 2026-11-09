@@ -33,9 +33,9 @@ st.set_page_config(page_title="Safe Route Lahore", page_icon="🛡️", layout="
 # Each route option has its own colour and line width.
 ROUTE_STYLE = {
     #  mode:          (colour,    emoji, line width)
-    "fastest":       ("#222222", "⬛", 11),
-    "balanced":      ("#1f5fd1", "🟦", 7),
-    "safety-first":  ("#8e3fd6", "🟪", 4),
+    "fastest":       ("#222222", "⬛", 7),
+    "balanced":      ("#1f5fd1", "🟦", 5),
+    "safety-first":  ("#8e3fd6", "🟪", 3),
 }
 SLOT_NAMES = {"6 PM": "6pm", "9 PM": "9pm", "11 PM": "11pm"}
 
@@ -72,10 +72,25 @@ def compute_routes(start, goal, slot):
         shape = []
         for a, b in zip(path, path[1:]):
             pts = list(G[a][b]["shape"])
-            if pts and pts[0] != G.nodes[a]["pos"] and pts[-1] == G.nodes[a]["pos"]:
-                pts = pts[::-1]                   # make the street run in walking direction
-            shape += pts
-        out[mode] = {"path": path, "info": info, "shape": shape}
+            # Make the street run in walking direction: the end nearest to junction
+            # `a` goes first. (Comparing exact points failed because of rounding,
+            # which drew streets backwards and made the line double back on itself.)
+            ax, ay = G.nodes[a]["pos"]
+            near = lambda p: (p[0] - ax) ** 2 + (p[1] - ay) ** 2
+            if near(pts[-1]) < near(pts[0]):
+                pts = pts[::-1]
+            if shape and pts and near(pts[0]) < 1e-9 and shape[-1] == pts[0]:
+                pts = pts[1:]                         # don't repeat the shared junction point
+            shape += [tuple(p) for p in pts]
+        # Remove "spurs" (A -> B -> back to A): OSM sometimes has a tiny dead-end
+        # bit, which would look like a doubled line on the map.
+        clean = []
+        for pt in shape:
+            if len(clean) >= 2 and clean[-2] == pt:
+                clean.pop()
+            else:
+                clean.append(pt)
+        out[mode] = {"path": path, "info": info, "shape": clean}
     return out, G.nodes[start]["pos"], G.nodes[goal]["pos"], G.nodes["Hafeez road bend"]["pos"]
 
 
@@ -112,7 +127,8 @@ for mode in sorted(ROUTE_STYLE, key=lambda m: -ROUTE_STYLE[m][2]):
     label = (f'<span style="color:{colour};font-size:18px">&#9632;</span> '
              f'{mode.capitalize()}')
     layer = folium.FeatureGroup(name=label, show=(mode == "balanced"))
-    folium.PolyLine(routes[mode]["shape"], color=colour, weight=width, opacity=0.9,
+    folium.PolyLine(routes[mode]["shape"], color=colour, weight=width, opacity=0.85,
+                    line_cap="round", line_join="round", smooth_factor=1.5,
                     tooltip=f"{mode}: {routes[mode]['info']['length_m']} m").add_to(layer)
     layer.add_to(fmap)
 folium.Marker(start_pos, tooltip="Start", icon=folium.Icon(color="green", icon="play")).add_to(fmap)
