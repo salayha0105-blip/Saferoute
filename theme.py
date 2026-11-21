@@ -82,8 +82,7 @@ h1, h2, h3, h4, h5, [data-testid="stHeading"] *, .stTabs button p { font-family:
 [class*="st-key-card_"] [data-testid="stMarkdownContainer"] p { margin-bottom: 0; }
 [class*="st-key-card_"] .stElementContainer:has(.card-h) { margin-bottom: 2px; }
 .brand { display: flex; align-items: center; gap: 10px; margin: 0 0 12px; }
-.brand .logo { width: 44px; height: 44px; border-radius: 14px; display: flex; align-items: center; justify-content: center;
-  font-size: 24px; background: linear-gradient(135deg, #7c5cff, #ff4f7b); box-shadow: 0 6px 16px rgba(124, 92, 255, .35); }
+.brand .logo { width: 46px; height: 46px; border-radius: 14px; flex: none; box-shadow: 0 6px 16px rgba(255, 79, 123, .35); }
 .brand .name { font: 700 1.25rem "Fredoka", sans-serif; color: var(--navy); line-height: 1.1; }
 .brand .tag { font-size: .78rem; color: var(--navy-soft); font-weight: 700; }
 
@@ -167,8 +166,18 @@ def sky_banner(slot_label):
         unsafe_allow_html=True)
 
 
+def _icon_uri():
+    """The app icon (an "S" drawn as a road on pink) as an inline image."""
+    import base64
+    import os
+    path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", "icon.svg")
+    with open(path, "rb") as f:
+        return "data:image/svg+xml;base64," + base64.b64encode(f.read()).decode()
+
+
 def sidebar_brand():
-    st.markdown('<div class="brand"><div class="logo">🛡️</div><div><div class="name">Safe Route Lahore</div>'
+    st.markdown(f'<div class="brand"><img class="logo" src="{_icon_uri()}" alt="Safe Route logo"><div>'
+                '<div class="name">Safe Route Lahore</div>'
                 '<div class="tag">Your companion for safer night walks</div></div></div>', unsafe_allow_html=True)
 
 

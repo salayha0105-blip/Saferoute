@@ -29,7 +29,10 @@ from map_component import safer_map, street_name, walk_notes
 from safety_tools import battery_warning, checkin_panel, panic_button, start_checkin
 from theme import apply_theme, sidebar_brand, sky_banner, summary_strip
 
-st.set_page_config(page_title="Safe Route Lahore", page_icon="🛡️", layout="wide")
+import os
+
+ICON = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", "icon.png")   # "S" drawn as a road
+st.set_page_config(page_title="Safe Route Lahore", page_icon=ICON, layout="wide")
 apply_theme()
 
 # Each route option has its own colour and line width.
