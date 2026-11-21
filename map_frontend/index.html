@@ -130,9 +130,24 @@ function loadShown() {
 function saveShown() { try { localStorage.setItem("saferoute-shown", JSON.stringify(shown)); } catch (_) {} }
 
 /* ---------------- set up the map once ---------------- */
+let areaBounds = null;
+// Fit the whole pilot area, leaving room on the right for the route panel.
+function lockView() {
+  if (!map || !areaBounds) return;
+  const narrow = window.innerWidth < 460;
+  map.fitBounds(areaBounds, {animate: false, paddingTopLeft: [20, narrow ? 20 : 60],
+                             paddingBottomRight: [narrow ? 20 : 200, narrow ? 80 : 70]});
+  map.setMaxBounds(map.getBounds().pad(0.05));
+}
 function init(d) {
-  map = L.map("map", {zoomControl: true, attributionControl: true, zoomSnap: 0.25, fadeAnimation: true})
+  // The map is LOCKED on the pilot area (Gulberg III), the only area we have data for:
+  // no zooming, no dragging, so it always looks the same when presenting.
+  map = L.map("map", {zoomControl: false, attributionControl: true, zoomSnap: 0.05, fadeAnimation: true,
+                      dragging: false, scrollWheelZoom: false, doubleClickZoom: false, touchZoom: false,
+                      boxZoom: false, keyboard: false})
          .setView(d.centre, 16);
+  areaBounds = L.latLngBounds(d.streets.flat());
+  lockView();
   // Standard OpenStreetMap tiles: free, no API key (the same map the old folium version used).
   const tiles = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 19,
@@ -249,14 +264,8 @@ function update(d) {
   const origin = fromGoal ? d.goal.name : d.start.name;
   toast(`${fromGoal ? "🏠" : "🚶‍♀️"} Drawing from <b>${origin}</b>…`);
 
-  // glide the camera to fit every route, then grow them
-  const all = d.routes.flatMap(r => r.shape);
-  const bounds = L.latLngBounds(all).pad(0.12);
-  const pad = {paddingTopLeft: [50, 100], paddingBottomRight: [220, 90]};
-  if (window.innerWidth < 460) { pad.paddingBottomRight = [30, 90]; }
-  const needMove = !map.getBounds().contains(bounds) || map.getZoom() < map.getBoundsZoom(bounds) - 1;
-  if (needMove) map.flyToBounds(bounds, Object.assign({duration: 0.8, easeLinearity: 0.2}, pad));
-  setTimeout(() => { if (my === gen) grow(d, fromGoal, my); }, needMove ? 820 : 200);
+  // the camera stays still (locked on the pilot area); the routes just grow
+  setTimeout(() => { if (my === gen) grow(d, fromGoal, my); }, 250);
 }
 
 function fadeOut(layer) {
@@ -395,7 +404,7 @@ function resize(fallback) {
   curH = h;
   document.getElementById("map").style.height = h + "px";
   ST.height(h + 4);
-  if (map) map.invalidateSize();
+  if (map) { map.invalidateSize(); map.setMaxBounds(null); lockView(); }
 }
 try { window.parent.addEventListener("resize", () => resize(curH || 560)); } catch (_) {}
 setInterval(() => resize(curH || 560), 1000);                  // e.g. after switching tabs
