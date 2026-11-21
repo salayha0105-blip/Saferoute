@@ -50,7 +50,7 @@ HTML = r"""
   * { box-sizing:border-box; font-family:"Nunito", system-ui, sans-serif; }
   body { margin:0; background:transparent; color:var(--ink); }
   .wrap { display:flex; flex-direction:column; gap:10px; }
-  #stage { width:100%; height:330px; flex:none; overflow:hidden; position:relative; border-radius:26px;
+  #stage { width:100%; height:260px; flex:none; overflow:hidden; position:relative; border-radius:26px;
            background: radial-gradient(circle at 50% 42%, #fff4fb 0%, #ffe3ef 38%, #eadfff 72%, rgba(234,223,255,0) 100%); }
   #stage canvas { display:block; }
   #name { position:absolute; top:12px; left:14px; font:600 18px "Fredoka", sans-serif; color:var(--accent);
@@ -62,7 +62,7 @@ HTML = r"""
   #bubble.on { opacity:1; transform:none; }
   .chat { background:var(--card); border-radius:22px; padding:12px; box-shadow:0 8px 24px rgba(124,92,255,.12);
           flex:1; display:flex; flex-direction:column; min-width:0; }
-  #log { flex:none; overflow-y:auto; height:150px; padding:4px; scroll-behavior:smooth; }
+  #log { flex:none; overflow-y:auto; height:120px; padding:4px; scroll-behavior:smooth; }
   .msg { padding:8px 12px; border-radius:16px; margin:5px 0; max-width:90%; line-height:1.4; font-size:14px; animation:in .25s ease-out; }
   @keyframes in { from { opacity:0; transform:translateY(6px) } to { opacity:1; transform:none } }
   .him { background:var(--him); border-bottom-left-radius:4px; }
@@ -186,10 +186,24 @@ function setStatus(s) { document.getElementById("status").textContent = s; }
 // star patch). Original design made only from basic shapes. "Toon" shading
 // and a thin dark outline make him look hand-drawn instead of plastic.
 let wave = 0, hop = 0, happy = 0;
+// Fit Hammy and the chat into the space left on the screen (no page scroll).
+function fit() {
+  try {
+    const fe = window.frameElement, top = fe.getBoundingClientRect().top;
+    if (top <= 0) return;
+    const avail = Math.max(420, window.parent.innerHeight - top - 24);
+    const chat = document.querySelector(".chat").offsetHeight;
+    document.getElementById("stage").style.height = Math.max(200, Math.min(360, avail - chat - 10)) + "px";
+    const h = Math.min(avail, document.querySelector(".wrap").offsetHeight + 4) + "px";
+    fe.style.height = h; const box = fe.closest(".stElementContainer") || fe.parentElement;
+    for (const [k, v] of [["height", h], ["min-height", "0"], ["flex", "0 0 " + h]]) box.style.setProperty(k, v, "important");   // the iframe and Streamlit's box around it
+  } catch (_) {}
+}
+fit(); setTimeout(fit, 400); setTimeout(fit, 1500);
 (function build() {
   if (!window.THREE) { setStatus("🐹 (3D needs internet)"); return; }
   const stage = document.getElementById("stage");
-  const W = stage.clientWidth, H = stage.clientHeight;
+  const W = stage.clientWidth, H = stage.clientHeight; let H0 = H;
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(26, W / H, 0.1, 100);
   camera.position.set(0, 1.25, 7.2); camera.lookAt(0, 1.12, 0);
@@ -329,6 +343,9 @@ let wave = 0, hop = 0, happy = 0;
     if (wave > 0) { wave -= dt; arms[1].rotation.z = -2.4 + Math.sin(t * 11) * 0.4; }
     else arms[1].rotation.z += (0.35 - arms[1].rotation.z) * 0.1;
     arms[0].rotation.z = -0.35 - (hop > 0 ? 0.9 * Math.sin((1 - hop) * Math.PI) : 0);
+    if (stage.clientHeight !== H0) {                 // the stage was resized to fit the screen
+      H0 = stage.clientHeight; renderer.setSize(stage.clientWidth, H0); camera.aspect = stage.clientWidth / H0; camera.updateProjectionMatrix();
+    }
     renderer.render(scene, camera);
     requestAnimationFrame(tick);
   }
@@ -350,7 +367,7 @@ add("him", GREETING);
 """
 
 
-def hammy_widget(height=610):
+def hammy_widget(height=480):
     """Show Hammy 2.0 in the Streamlit page."""
     intents = [[name, keywords, answers] for name, keywords, answers in INTENTS]
     html = (HTML.replace("__INTENTS__", json.dumps(intents))
