@@ -51,21 +51,34 @@ def _location_text(location):
     return f"{lat:.5f}, {lon:.5f} (Gulberg III)"
 
 
+def alert_card(level, icon, title, body, foot=""):
+    """A calm, serious alert card. level: 'calm' (teal), 'caution' (amber) or 'urgent' (red).
+    Safety messages use this instead of the playful style, so they read as reliable."""
+    foot_html = f'<div class="al-foot">{foot}</div>' if foot else ""
+    st.markdown(f'<div class="alert {level}"><div class="al-icon">{icon}</div>'
+                f'<div class="al-text"><div class="al-title">{title}</div>'
+                f'<div class="al-body">{body}</div>{foot_html}</div></div>', unsafe_allow_html=True)
+
+
 # ---------------------------------------------------------------------------
 # 1. Panic button
 # ---------------------------------------------------------------------------
-@st.dialog("🆘 Panic button (demo)")
+@st.dialog("Emergency alert", width="small")
 def _panic_dialog(location):
-    st.error("In a real app, this would happen immediately:")
-    for number, name in EMERGENCY_NUMBERS:
-        st.markdown(f"📞 **{number}**: {name}")
-    st.markdown(f"📍 Your last location **{_location_text(location)}** sent to: "
-                + ", ".join(_contacts()))
+    alert_card("urgent", "🆘", "Help is being alerted",
+               "In the real app, all of this happens the moment you press the button.")
+    steps = "".join(f'<li><span class="num">{number}</span> {name} <span class="ok">calling…</span></li>'
+                    for number, name in EMERGENCY_NUMBERS)
+    st.markdown(f'<ul class="steps">{steps}<li><span class="num">📍</span> Live location sent to '
+                f'<b>{", ".join(_contacts())}</b><br><small>{_location_text(location)}</small></li></ul>',
+                unsafe_allow_html=True)
+    st.markdown('<div class="calm-note">Stay where it is lit and people are around. '
+                'Keep the call open. Help knows where you are.</div>', unsafe_allow_html=True)
     st.caption("Simulation only: nobody was actually called or messaged.")
 
 
 def panic_button(location):
-    if st.button("🆘 PANIC", type="primary", use_container_width=True):
+    if st.button("🆘  PANIC: get help now", type="primary", use_container_width=True, key="panic"):
         _panic_dialog(location)
 
 
@@ -86,36 +99,38 @@ def checkin_panel(location):
     elapsed = time.time() - state["started"]
 
     if state.get("answered"):
-        st.success("Hammy: Okay, glad you're fine! I'll keep an eye on your route. 💙")
+        alert_card("calm", "✓", "Glad you're okay",
+                   "Hammy keeps watching your route. Nobody was alerted.")
         if st.button("Close", key="close_ok"):
             _reset_checkin()
             st.rerun()
         return
 
-    st.warning("🐹 **Hammy:** You've gone off your route. **Are you okay?**")
-    c1, c2 = st.columns(2)
-    if c1.button("✅ I'm okay", key="ok"):
-        state["answered"] = True
-        st.rerun(scope="fragment")
-    if c2.button("🆘 I need help", key="help"):
-        state["started"] -= 2 * wait              # jump straight to the last step
-        st.rerun(scope="fragment")
-
     if elapsed < wait:
-        st.progress(elapsed / wait, text=f"Waiting for an answer: {int(wait - elapsed)} s left")
-    if elapsed >= wait:
-        st.error(f"⚠️ No answer. Trusted contacts ({', '.join(_contacts())}) alerted with your "
-                 f"last known location: {_location_text(location)}")
-    if wait <= elapsed < 2 * wait:
-        st.progress((elapsed - wait) / wait,
-                    text=f"Still no answer: alerting the Women Safety app in {int(2 * wait - elapsed)} s")
-    if elapsed >= 2 * wait:
-        st.error(f"🚨 PSCA Women Safety app alerted (Punjab Safe Cities) with your last known "
-                 f"location: {_location_text(location)}")
-        st.caption("Simulation only: no real alert was sent.")
-        if st.button("End demo", key="end_checkin"):
-            _reset_checkin()
-            st.rerun()
+        alert_card("caution", "!", "You've left your route. Are you okay?",
+                   f"If you don't answer in <b>{int(wait - elapsed)} s</b>, your trusted contacts "
+                   f"({', '.join(_contacts())}) get your last location.")
+        st.progress(elapsed / wait)
+    elif elapsed < 2 * wait:
+        alert_card("urgent", "📍", "No answer: trusted contacts alerted",
+                   f"{', '.join(_contacts())} received your last known location: {_location_text(location)}. "
+                   f"The PSCA Women Safety app is alerted in <b>{int(2 * wait - elapsed)} s</b>.")
+        st.progress((elapsed - wait) / wait)
+    else:
+        alert_card("urgent", "🚨", "PSCA Women Safety app alerted",
+                   f"Punjab Safe Cities has your last known location: {_location_text(location)}.",
+                   "Simulation only: no real alert was sent.")
+    c1, c2, c3 = st.columns([1, 1, 1])
+    if elapsed < 2 * wait:
+        if c1.button("✓ I'm okay", key="ok", use_container_width=True):
+            state["answered"] = True
+            st.rerun(scope="fragment")
+        if c2.button("🆘 I need help", key="help", type="primary", use_container_width=True):
+            state["started"] -= 2 * wait              # jump straight to the last step
+            st.rerun(scope="fragment")
+    elif c1.button("End demo", key="end_checkin", use_container_width=True):
+        _reset_checkin()
+        st.rerun()
 
 
 def start_checkin(fast):
@@ -127,9 +142,10 @@ def start_checkin(fast):
 # ---------------------------------------------------------------------------
 def battery_warning(battery, location):
     if battery <= 15:
-        st.error(f"🔋 **{battery}%**: Your last location ({_location_text(location)}) was "
-                 f"shared with {', '.join(_contacts())} automatically. Once your phone dies, "
-                 "Safe Route **can't help you**. Please charge it or tell someone where you are.")
+        alert_card("urgent", "🔋", f"Battery {battery}%: location shared",
+                   f"Your last location ({_location_text(location)}) was shared with "
+                   f"{', '.join(_contacts())} automatically. Once your phone dies, Safe Route can't help, "
+                   "so please charge it or tell someone where you are.")
     elif battery <= 30:
-        st.warning(f"🔋 **{battery}%**: Hammy says: please charge your phone soon. "
-                   "If it dies, the app can't watch over your route.")
+        alert_card("caution", "🔋", f"Battery {battery}%: please charge soon",
+                   "If your phone dies, the app can't watch over your route or alert anyone.")

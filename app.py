@@ -25,9 +25,9 @@ import streamlit as st
 from road_graph import build_graph
 from routing import MODES, a_star, attach_risk, describe_route
 from hammy_widget import hammy_widget
-from map_component import safer_map, walk_notes
+from map_component import safer_map, street_name, walk_notes
 from safety_tools import battery_warning, checkin_panel, panic_button, start_checkin
-from theme import apply_theme, sky_banner
+from theme import apply_theme, sidebar_brand, sky_banner, summary_strip
 
 st.set_page_config(page_title="Safe Route Lahore", page_icon="🛡️", layout="wide")
 apply_theme()
@@ -64,13 +64,16 @@ def swap_places():
     st.session_state.from_sel, st.session_state.to_sel = st.session_state.to_sel, st.session_state.from_sel
 
 
-st.sidebar.title("🛡️ Safe Route Lahore")
-st.sidebar.caption("Pilot area: Gulberg III. Prototype using SYNTHETIC data. "
-                   "Tip: you can also click any dot on the map.")
-start = st.sidebar.selectbox("🚶‍♀️ From", nodes, key="from_sel")
-st.sidebar.button("⇅ Swap", on_click=swap_places)
-goal = st.sidebar.selectbox("🏠 To", nodes, key="to_sel")
-slot_label = st.sidebar.radio("🌙 Time of night", list(SLOT_NAMES), index=2, horizontal=True)
+# The sidebar is a stack of clear cards: plan the walk first, then the safety tools.
+with st.sidebar:
+    sidebar_brand()
+    with st.container(key="card_plan"):
+        st.markdown('<div class="card-h">🧭 Plan your walk</div>', unsafe_allow_html=True)
+        start = st.selectbox("From", nodes, key="from_sel")
+        goal = st.selectbox("To", nodes, key="to_sel")
+        st.button("⇅ Swap", on_click=swap_places, use_container_width=True)
+        slot_label = st.radio("Time of night", list(SLOT_NAMES), index=2, horizontal=True)
+        st.caption("Tip: you can also tap any dot on the map.")
 
 # Which end should the routes grow from? The one the user changed last.
 prev = st.session_state.get("prev_pair")
@@ -143,20 +146,37 @@ else:
 balanced_shape = routes["balanced"]["shape"]
 last_location = tuple(balanced_shape[len(balanced_shape) // 2]) if balanced_shape else tuple(pos[start])
 
-st.sidebar.divider()
-st.sidebar.markdown("**🛟 Safety tools (demo)**")
 with st.sidebar:
-    panic_button(last_location)
-contacts_text = st.sidebar.text_input("Trusted contacts", "Ammi, Best friend")
-st.session_state.contacts = [c.strip() for c in contacts_text.split(",") if c.strip()]
-battery = st.sidebar.slider("Phone battery (simulated)", 0, 100, 80, format="%d%%")
-fast = st.sidebar.toggle("Fast demo (10 s instead of 60 s)", value=True)
-if st.sidebar.button("Simulate going off route"):
-    start_checkin(fast)
+    with st.container(key="card_sos"):
+        st.markdown('<div class="card-h sos">Emergency</div>'
+                    '<div class="card-p">One tap alerts the police, rescue and your trusted contacts '
+                    'with your live location.</div>', unsafe_allow_html=True)
+        panic_button(last_location)
+        st.markdown('<div class="hotlines"><span><b>15</b> Police</span><span><b>1122</b> Rescue</span>'
+                    '<span><b>1043</b> Women\'s Helpline</span></div>', unsafe_allow_html=True)
+    with st.container(key="card_contacts"):
+        st.markdown('<div class="card-h">👥 Trusted contacts</div>', unsafe_allow_html=True)
+        contacts_text = st.text_input("Who should know where you are?", "Ammi, Best friend",
+                                      help="Separate names with commas.")
+        st.markdown('<div class="card-p">🔒 Only used on this screen. Never saved or uploaded.</div>',
+                    unsafe_allow_html=True)
+    st.session_state.contacts = [c.strip() for c in contacts_text.split(",") if c.strip()]
+    with st.container(key="card_checkin"):
+        st.markdown('<div class="card-h">🛡️ Walk check-in</div>'
+                    '<div class="card-p">If you leave your route, Hammy asks if you are okay. '
+                    'No answer: your contacts are alerted, then the PSCA Women Safety app.</div>',
+                    unsafe_allow_html=True)
+        battery = st.slider("Phone battery", 0, 100, 80, format="%d%%",
+                            help="Simulated. At 15% your location is shared automatically.")
+        fast = st.toggle("Fast demo (10 s instead of 60 s)", value=True)
+        if st.button("Test: I went off route", use_container_width=True):
+            start_checkin(fast)
+    st.markdown('<div class="side-foot">Prototype for CSC 241 using <b>synthetic</b> data. '
+                'In real danger, call <b>15</b> right away.</div>', unsafe_allow_html=True)
 
-# Alerts live in one fixed box, so showing or hiding one never moves (or
-# reloads) the map below it.
-with st.container():
+# Alerts live in one fixed, floating box, so showing or hiding one never
+# moves (or reloads) the map, and the page still fits on one screen.
+with st.container(key="alerts"):     # floats in the top-right corner, never pushes the map down
     battery_warning(battery, last_location)
     checkin_panel(last_location)
 
@@ -181,6 +201,9 @@ map_data = {
 map_tab, details_tab = st.tabs(["🗺️ Map & Hammy", "📋 Route details"])
 
 with map_tab:
+    summary_strip(routes, same_place, slot_label, st.session_state.contacts, battery,
+                  worst=(street_name(routes["safety-first"]["info"]["worst_segment"][0]),
+                         routes["safety-first"]["info"]["worst_segment"][2]) if not same_place else None)
     left, right = st.columns([3, 2])
     with left:
         safer_map(map_data, height=560)   # the map stretches itself to fit the screen
