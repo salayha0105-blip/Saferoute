@@ -385,7 +385,7 @@ function fitHeight(fallback) {
     if (!fe || !fe.offsetParent) return fallback;            // tab hidden right now
     const top = fe.getBoundingClientRect().top;
     if (top <= 0) return fallback;
-    return Math.round(Math.max(360, Math.min(1000, window.parent.innerHeight - top - 24)));
+    return Math.round(Math.max(300, Math.min(1000, window.parent.innerHeight - top - 24)));
   } catch (_) { return fallback; }
 }
 let curH = 0;

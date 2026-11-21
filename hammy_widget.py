@@ -191,9 +191,9 @@ function fit() {
   try {
     const fe = window.frameElement, top = fe.getBoundingClientRect().top;
     if (top <= 0) return;
-    const avail = Math.max(420, window.parent.innerHeight - top - 24);
+    const avail = Math.max(330, window.parent.innerHeight - top - 24);
     const chat = document.querySelector(".chat").offsetHeight;
-    document.getElementById("stage").style.height = Math.max(200, Math.min(360, avail - chat - 10)) + "px";
+    document.getElementById("stage").style.height = Math.max(150, Math.min(360, avail - chat - 10)) + "px";
     const h = Math.min(avail, document.querySelector(".wrap").offsetHeight + 4) + "px";
     fe.style.height = h; const box = fe.closest(".stElementContainer") || fe.parentElement;
     for (const [k, v] of [["height", h], ["min-height", "0"], ["flex", "0 0 " + h]]) box.style.setProperty(k, v, "important");   // the iframe and Streamlit's box around it
