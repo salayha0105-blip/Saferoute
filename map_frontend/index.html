@@ -133,9 +133,10 @@ function saveShown() { try { localStorage.setItem("saferoute-shown", JSON.string
 function init(d) {
   map = L.map("map", {zoomControl: true, attributionControl: true, zoomSnap: 0.25, fadeAnimation: true})
          .setView(d.centre, 16);
-  const tiles = L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
-    maxZoom: 19, subdomains: "abcd",
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+  // Standard OpenStreetMap tiles: free, no API key (the same map the old folium version used).
+  const tiles = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
   }).addTo(map);
   // If the map pictures can't load (no internet), still draw our own streets.
   map.createPane("streets").style.zIndex = 350;      // above the map pictures, below the routes
