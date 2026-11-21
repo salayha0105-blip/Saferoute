@@ -51,24 +51,28 @@ h1, h2, h3, h4, h5, [data-testid="stHeading"] *, .stTabs button p { font-family:
 
 /* cards for alerts and tables */
 [data-testid="stAlert"], [data-testid="stDataFrame"], [data-testid="stExpander"] { border-radius: 16px; }
-.block-container { padding-top: 3.2rem; }
-[data-testid="stHeader"] { background: transparent; }
+/* Everything fits on one screen: small top gap, no header bar, no page scroll. */
+.block-container { padding-top: 0.8rem !important; padding-bottom: 0 !important; }
+[data-testid="stHeader"] { display: none; }
+.stTabs [role="tabpanel"] { padding-top: 0.6rem; }
+[data-testid="stMainBlockContainer"] > div { gap: 0.6rem; }
 
 /* the sky banner */
-.sky { position: relative; overflow: hidden; border-radius: 26px; padding: 22px 28px; margin-bottom: 14px; color: #fff;
+.sky { position: relative; overflow: hidden; border-radius: 22px; padding: 12px 22px; margin-bottom: 4px; color: #fff;
+       display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
        box-shadow: 0 14px 34px rgba(124, 92, 255, .25); }
-.sky h1 { font-family: "Fredoka", sans-serif !important; margin: 0; padding: 0; font-size: 2.1rem; color: #fff; line-height: 1.15; }
-.sky p { margin: 4px 0 0; font-size: 1.02rem; opacity: .95; }
-.sky .chip { display: inline-block; margin-top: 10px; background: rgba(255,255,255,.22); border-radius: 999px;
+.sky h1 { font-family: "Fredoka", sans-serif !important; margin: 0; padding: 0; font-size: 1.55rem; color: #fff; line-height: 1.15; white-space: nowrap; }
+.sky p { margin: 0; font-size: .95rem; opacity: .95; flex: 1; min-width: 200px; }
+.sky .chip { display: inline-block; margin-right: 44px; background: rgba(255,255,255,.22); border-radius: 999px;
              padding: 4px 12px; font-weight: 800; font-size: .85rem; backdrop-filter: blur(4px); }
-.sky .moon { position: absolute; right: 34px; top: 18px; font-size: 54px; filter: drop-shadow(0 0 18px rgba(255,236,170,.9)); }
+.sky .moon { position: absolute; right: 18px; top: 50%; transform: translateY(-50%); font-size: 32px; filter: drop-shadow(0 0 18px rgba(255,236,170,.9)); }
 .sky .star { position: absolute; width: 3px; height: 3px; border-radius: 50%; background: #fff;
              animation: twinkle 2.4s ease-in-out infinite alternate; }
 @keyframes twinkle { from { opacity: .15; transform: scale(.6); } to { opacity: 1; transform: scale(1.2); } }
 .sky.s6pm  { background: linear-gradient(120deg, #ff9a5a 0%, #ff6f91 55%, #c86bfa 100%); }
 .sky.s9pm  { background: linear-gradient(120deg, #ff6f91 0%, #a35cff 55%, #5b5bf0 100%); }
 .sky.s11pm { background: linear-gradient(120deg, #3b3aa8 0%, #5b3fd6 50%, #b04fd8 100%); }
-@media (max-width: 640px) { .sky h1 { font-size: 1.6rem; } .sky .moon { font-size: 38px; right: 16px; } }
+@media (max-width: 640px) { .sky h1 { font-size: 1.6rem; } .sky .moon { font-size: 26px; right: 12px; } .sky .chip { display: none; } }
 </style>
 """
 

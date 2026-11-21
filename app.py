@@ -183,8 +183,7 @@ map_tab, details_tab = st.tabs(["🗺️ Map & Hammy", "📋 Route details"])
 with map_tab:
     left, right = st.columns([3, 2])
     with left:
-        safer_map(map_data, height=600)
-        st.caption("Tap the coloured pills to show or hide routes. Press 🌙 **Walk me home** for a little surprise.")
+        safer_map(map_data, height=560)   # the map stretches itself to fit the screen
     with right:
         hammy_widget()
 

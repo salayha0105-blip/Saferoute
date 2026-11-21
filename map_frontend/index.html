@@ -377,18 +377,40 @@ function confetti() {
 }
 
 /* ---------------- Streamlit sends data here ---------------- */
+// Make the map exactly as tall as the space left on the screen, so the page
+// itself never needs to scroll. (Falls back to the height Python sent.)
+function fitHeight(fallback) {
+  try {
+    const fe = window.frameElement;
+    if (!fe || !fe.offsetParent) return fallback;            // tab hidden right now
+    const top = fe.getBoundingClientRect().top;
+    if (top <= 0) return fallback;
+    return Math.round(Math.max(360, Math.min(1000, window.parent.innerHeight - top - 24)));
+  } catch (_) { return fallback; }
+}
+let curH = 0;
+function resize(fallback) {
+  const h = fitHeight(fallback);
+  if (h === curH) return;
+  curH = h;
+  document.getElementById("map").style.height = h + "px";
+  ST.height(h + 4);
+  if (map) map.invalidateSize();
+}
+try { window.parent.addEventListener("resize", () => resize(curH || 560)); } catch (_) {}
+setInterval(() => resize(curH || 560), 1000);                  // e.g. after switching tabs
+
 window.addEventListener("message", (e) => {
   if (!e.data || e.data.type !== "streamlit:render") return;
   const d = e.data.args.data;
-  document.getElementById("map").style.height = d.height + "px";
-  if (!map) { init(d); }
+  if (!map) { document.getElementById("map").style.height = d.height + "px"; init(d); }
   data = d;
-  ST.height(d.height + 4);
+  resize(d.height);
   const sig = [d.start.name, d.goal.name, d.slot].join("|");
   if (sig !== lastSig) { lastSig = sig; update(d); }
   map.invalidateSize();
 });
 ST.ready();
-ST.height(604);
+ST.height(564);
 </script>
 </body></html>
