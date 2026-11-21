@@ -1,0 +1,8 @@
+# Bright, friendly look for Safe Route Lahore (always light, even if the
+# phone or laptop is in dark mode, so the map and colours stay cheerful).
+[theme]
+base = "light"
+primaryColor = "#ff4f7b"
+backgroundColor = "#fff8f1"
+secondaryBackgroundColor = "#fdeee6"
+textColor = "#2b2140"

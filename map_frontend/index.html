@@ -1,0 +1,393 @@
+<!doctype html>
+<!--
+  Safe Route Lahore - the smooth map (a custom Streamlit component)
+  =================================================================
+  WHY THIS EXISTS:
+    The old map (folium + st_folium) was rebuilt from scratch on every change,
+    so the map flashed black and the route just "appeared". This page is
+    loaded ONCE and stays alive. When From / To / time changes, Streamlit
+    only sends it new data, and this page:
+      1. slides the start / destination pins to their new places,
+      2. glides the camera to the new area,
+      3. GROWS each route from the point you picked last
+         (picked From -> grows from the start; picked To -> grows from the destination).
+  EXTRA:
+    - Click any dot on the map to set it as your start or destination.
+    - "Walk me home": a little walker follows the safety-first route while
+      Hammy talks you through each street, then celebrates when you arrive.
+  It talks to Streamlit with the small official message protocol
+  (componentReady / render / setFrameHeight / setComponentValue).
+-->
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="leaflet.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#2b2140; --muted:#7a6f8f; --rose:#ff4f7b; --glass:rgba(255,255,255,.88); --cream:#fff6ee; }
+  html, body { margin:0; padding:0; background:transparent; font-family:"Nunito", system-ui, sans-serif; color:var(--ink); }
+  #wrap { position:relative; border-radius:22px; overflow:hidden; box-shadow:0 10px 30px rgba(120,60,140,.18); background:var(--cream); }
+  #map { width:100%; height:600px; background:#f6efe6; }
+  .leaflet-container { font-family:"Nunito", system-ui, sans-serif; }
+  .leaflet-control-zoom a { border-radius:12px !important; color:var(--ink); }
+  .leaflet-control-zoom { border:none !important; box-shadow:0 4px 14px rgba(0,0,0,.12) !important; border-radius:12px !important; overflow:hidden; }
+
+  /* route chooser (top right) */
+  #routes { position:absolute; top:12px; right:12px; z-index:500; background:var(--glass); backdrop-filter:blur(8px);
+            border-radius:18px; padding:8px; box-shadow:0 6px 20px rgba(80,40,120,.15); display:flex; flex-direction:column; gap:6px; min-width:180px; }
+  #routes .title { font-family:"Fredoka", sans-serif; font-weight:600; font-size:13px; color:var(--muted); padding:0 6px; }
+  .pill { display:flex; align-items:center; gap:8px; border:2px solid transparent; border-radius:14px; padding:6px 10px; cursor:pointer;
+          background:#fff; transition:transform .15s, border-color .2s, opacity .2s; user-select:none; font-size:14px; font-weight:700; }
+  .pill:hover { transform:translateY(-1px); }
+  .pill .dot { width:16px; height:16px; border-radius:50%; flex:none; border:3px solid #fff; box-shadow:0 0 0 1.5px #0002; }
+  .pill .km { margin-left:auto; font-weight:600; color:var(--muted); font-size:12px; }
+  .pill.off { opacity:.45; background:transparent; }
+  .pill.off .dot { background:transparent !important; border:2px solid #b9b0c8; }
+
+  /* little banner that says where the route grows from */
+  #toast { position:absolute; top:12px; left:60px; z-index:500; background:var(--glass); backdrop-filter:blur(8px);
+           border-radius:16px; padding:8px 14px; font-weight:700; font-size:14px; box-shadow:0 6px 20px rgba(80,40,120,.15);
+           max-width:calc(100% - 320px); transition:opacity .4s, transform .4s; }
+  #toast.hide { opacity:0; transform:translateY(-8px); pointer-events:none; }
+
+  /* pins */
+  .pin { width:40px; height:40px; border-radius:50% 50% 50% 4px; transform:rotate(-45deg); display:flex; align-items:center; justify-content:center;
+         box-shadow:0 6px 14px rgba(0,0,0,.25); border:3px solid #fff; }
+  .pin span { transform:rotate(45deg); font-size:19px; }
+  .pin.start { background:linear-gradient(135deg,#2dd4bf,#14b8a6); }
+  .pin.goal  { background:linear-gradient(135deg,#ff7aa2,#ff4f7b); }
+  .drop { animation:drop .55s cubic-bezier(.2,1.6,.4,1); }
+  @keyframes drop { from { transform:translateY(-40px) scale(.6); opacity:0 } to { transform:none; opacity:1 } }
+
+  /* the glowing tip of a growing route */
+  .tip { width:16px; height:16px; border-radius:50%; background:#fff; border:4px solid currentColor;
+         box-shadow:0 0 0 6px color-mix(in srgb, currentColor 30%, transparent), 0 0 18px currentColor; }
+
+  /* places you can click */
+  .place-pop .leaflet-popup-content-wrapper { border-radius:16px; }
+  .place-pop .leaflet-popup-content { margin:12px 14px; font-size:14px; }
+  .place-pop b { font-family:"Fredoka", sans-serif; font-size:15px; }
+  .place-pop .btns { display:flex; gap:6px; margin-top:8px; }
+  .place-pop button { border:none; border-radius:12px; padding:7px 10px; font:700 13px "Nunito", sans-serif; cursor:pointer; color:#fff; }
+  .place-pop .from { background:#14b8a6; } .place-pop .to { background:#ff4f7b; }
+
+  /* Walk me home */
+  #walk { position:absolute; bottom:18px; left:50%; transform:translateX(-50%); z-index:500; border:none; cursor:pointer;
+          font:600 16px "Fredoka", sans-serif; color:#fff; padding:12px 22px; border-radius:999px;
+          background:linear-gradient(135deg,#7c5cff,#ff4f7b); box-shadow:0 10px 24px rgba(124,92,255,.4); transition:transform .15s; }
+  #walk:hover { transform:translateX(-50%) translateY(-2px) scale(1.03); }
+  #walk:disabled { opacity:.6; cursor:default; }
+  .walker { width:38px; height:38px; border-radius:50%; background:#fff; display:flex; align-items:center; justify-content:center;
+            font-size:22px; box-shadow:0 0 0 4px #ffd166, 0 0 24px 8px rgba(255,209,102,.85); animation:bob .5s ease-in-out infinite alternate; }
+  @keyframes bob { from { transform:translateY(0) } to { transform:translateY(-4px) } }
+  .footstep { width:6px; height:6px; border-radius:50%; background:#ffd166; box-shadow:0 0 8px #ffb020; animation:fade 2.4s forwards; }
+  @keyframes fade { to { opacity:0; transform:scale(.3) } }
+
+  #arrive { position:absolute; inset:0; z-index:700; display:flex; align-items:center; justify-content:center; pointer-events:none; }
+  #arrive .card { pointer-events:auto; background:#fff; border-radius:24px; padding:22px 26px; text-align:center; max-width:330px;
+                  box-shadow:0 20px 50px rgba(124,92,255,.35); animation:pop .5s cubic-bezier(.2,1.5,.4,1); cursor:pointer; }
+  #arrive .big { font-size:46px; }
+  #arrive h3 { font-family:"Fredoka", sans-serif; margin:6px 0 4px; font-size:22px; }
+  #arrive p { margin:0; color:var(--muted); font-size:14px; }
+  @keyframes pop { from { transform:scale(.6); opacity:0 } to { transform:none; opacity:1 } }
+  .confetti { position:absolute; z-index:650; font-size:22px; pointer-events:none; animation:fly 1.8s ease-out forwards; }
+  @keyframes fly { to { transform:translate(var(--dx), var(--dy)) rotate(var(--r)); opacity:0 } }
+
+  @media (max-width:460px) { #toast { max-width:calc(100% - 90px); top:auto; bottom:76px; left:12px; } #routes { min-width:0; } .pill .km { display:none; } }
+</style></head>
+<body>
+<div id="wrap">
+  <div id="map"></div>
+  <div id="routes"><div class="title">Show routes</div></div>
+  <div id="toast" class="hide"></div>
+  <button id="walk" title="Watch a walker follow the safety-first route">🌙 Walk me home</button>
+  <div id="arrive"></div>
+</div>
+<script src="leaflet.js"></script>
+<script>
+/* ---------------- tiny Streamlit bridge ---------------- */
+const ST = {
+  send(type, extra) { window.parent.postMessage(Object.assign({isStreamlitMessage: true, type}, extra || {}), "*"); },
+  ready() { this.send("streamlit:componentReady", {apiVersion: 1}); },
+  height(h) { this.send("streamlit:setFrameHeight", {height: h}); },
+  value(v) { this.send("streamlit:setComponentValue", {value: v, dataType: "json"}); },
+};
+// Talk to Hammy (another widget on the same page) without reloading anything.
+let hammy = null; try { hammy = new BroadcastChannel("saferoute-hammy"); } catch (_) {}
+const tellHammy = (text, mood) => { try { hammy && hammy.postMessage({text, mood: mood || "talk"}); } catch (_) {} };
+
+/* ---------------- state ---------------- */
+let map, data = null, lastSig = null, gen = 0;
+let startPin = null, goalPin = null, placesLayer = null, streetsLayer = null;
+const lines = {};          // mode -> {casing, line, full}
+const shown = loadShown();
+const easeInOut = t => t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+const easeOut = t => 1 - Math.pow(1 - t, 3);
+
+function loadShown() {
+  try { const s = JSON.parse(localStorage.getItem("saferoute-shown")); if (s) return s; } catch (_) {}
+  return {"fastest": true, "balanced": false, "safety-first": true};
+}
+function saveShown() { try { localStorage.setItem("saferoute-shown", JSON.stringify(shown)); } catch (_) {} }
+
+/* ---------------- set up the map once ---------------- */
+function init(d) {
+  map = L.map("map", {zoomControl: true, attributionControl: true, zoomSnap: 0.25, fadeAnimation: true})
+         .setView(d.centre, 16);
+  const tiles = L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
+    maxZoom: 19, subdomains: "abcd",
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+  }).addTo(map);
+  // If the map pictures can't load (no internet), still draw our own streets.
+  map.createPane("streets").style.zIndex = 350;      // above the map pictures, below the routes
+  streetsLayer = L.layerGroup();
+  for (const s of d.streets) {
+    L.polyline(s, {pane: "streets", color: "#ffffff", weight: 10, opacity: 1, interactive: false}).addTo(streetsLayer);
+    L.polyline(s, {pane: "streets", color: "#eadcf2", weight: 1.5, opacity: 1, interactive: false}).addTo(streetsLayer);
+  }
+  let errors = 0;
+  tiles.on("tileerror", () => { if (++errors === 3) streetsLayer.addTo(map); });
+
+  // every junction is a clickable dot: "Start here" / "Go here"
+  placesLayer = L.layerGroup().addTo(map);
+  for (const p of d.places) {
+    const m = L.circleMarker(p.pos, {radius: 6, color: "#7c5cff", weight: 2, fillColor: "#fff", fillOpacity: 1});
+    m.bindTooltip(p.name, {direction: "top", offset: [0, -6]});
+    m.on("click", () => {
+      const html = `<b>${p.name}</b><div class="btns">
+        <button class="from">🚶‍♀️ Start here</button><button class="to">🏠 Go here</button></div>`;
+      const pop = L.popup({className: "place-pop", closeButton: false, offset: [0, -4]}).setLatLng(p.pos).setContent(html).openOn(map);
+      const el = pop.getElement();
+      el.querySelector(".from").onclick = () => { map.closePopup(); ST.value({action: "from", place: p.name, nonce: Date.now()}); };
+      el.querySelector(".to").onclick = () => { map.closePopup(); ST.value({action: "to", place: p.name, nonce: Date.now()}); };
+    });
+    m.addTo(placesLayer);
+  }
+
+  // route chooser pills
+  const box = document.getElementById("routes");
+  for (const r of d.routes) {
+    const pill = document.createElement("div");
+    pill.className = "pill"; pill.dataset.mode = r.mode;
+    pill.innerHTML = `<span class="dot" style="background:${r.colour}"></span><span>${r.label}</span><span class="km"></span>`;
+    pill.onclick = () => { shown[r.mode] = !shown[r.mode]; saveShown(); applyShown(); };
+    box.appendChild(pill);
+  }
+  document.getElementById("walk").onclick = walkHome;
+}
+
+function applyShown() {
+  document.querySelectorAll(".pill").forEach(p => p.classList.toggle("off", !shown[p.dataset.mode]));
+  for (const [mode, l] of Object.entries(lines)) {
+    for (const layer of [l.casing, l.line, l.tip]) {
+      if (!layer) continue;
+      if (shown[mode] && !map.hasLayer(layer)) layer.addTo(map);
+      if (!shown[mode] && map.hasLayer(layer)) map.removeLayer(layer);
+    }
+  }
+  // keep thin lines on top of thick ones, so every colour stays visible
+  [...data.routes].sort((a, b) => b.width - a.width).forEach(r => lines[r.mode] && map.hasLayer(lines[r.mode].line) && lines[r.mode].line.bringToFront());
+}
+
+/* ---------------- helpers ---------------- */
+const metres = (a, b) => map.distance(a, b);
+function cumulative(pts) {
+  const acc = [0];
+  for (let i = 1; i < pts.length; i++) acc.push(acc[i - 1] + metres(pts[i - 1], pts[i]));
+  return acc;
+}
+// the part of a line from its beginning up to `d` metres along it
+function prefix(pts, acc, d) {
+  if (d >= acc[acc.length - 1]) return pts.slice();
+  let i = 1; while (acc[i] < d) i++;
+  const f = (d - acc[i - 1]) / ((acc[i] - acc[i - 1]) || 1);
+  const a = pts[i - 1], b = pts[i];
+  return pts.slice(0, i).concat([[a[0] + (b[0] - a[0]) * f, a[1] + (b[1] - a[1]) * f]]);
+}
+function slidePin(pin, to, ms) {
+  const from = pin.getLatLng(), t0 = performance.now();
+  (function step(now) {
+    const t = Math.min(1, (now - t0) / ms), e = easeInOut(t);
+    pin.setLatLng([from.lat + (to[0] - from.lat) * e, from.lng + (to[1] - from.lng) * e]);
+    if (t < 1) requestAnimationFrame(step);
+  })(t0);
+}
+function pinIcon(kind) {
+  const emoji = kind === "start" ? "🚶‍♀️" : "🏠";
+  return L.divIcon({className: "", iconSize: [40, 40], iconAnchor: [20, 44],
+    html: `<div class="drop"><div class="pin ${kind}"><span>${emoji}</span></div></div>`});
+}
+function toast(html, ms) {
+  const t = document.getElementById("toast");
+  t.innerHTML = html; t.classList.remove("hide");
+  clearTimeout(toast.timer); if (ms) toast.timer = setTimeout(() => t.classList.add("hide"), ms);
+}
+
+/* ---------------- a new From / To / time arrived ---------------- */
+function update(d) {
+  const my = ++gen;                                  // cancels older animations
+  stopWalk();
+  // pins: slide if they moved, drop in the first time
+  if (!startPin) { startPin = L.marker(d.start.pos, {icon: pinIcon("start"), zIndexOffset: 1000}).addTo(map); }
+  else slidePin(startPin, d.start.pos, 650);
+  if (!goalPin) { goalPin = L.marker(d.goal.pos, {icon: pinIcon("goal"), zIndexOffset: 1000}).addTo(map); }
+  else slidePin(goalPin, d.goal.pos, 650);
+  startPin.bindTooltip("Start: " + d.start.name); goalPin.bindTooltip("Destination: " + d.goal.name);
+
+  // old routes fade away
+  for (const [mode, l] of Object.entries(lines)) {
+    for (const layer of [l.casing, l.line, l.tip]) if (layer) fadeOut(layer);
+    delete lines[mode];
+  }
+  document.querySelectorAll(".pill").forEach(p => {
+    const r = d.routes.find(r => r.mode === p.dataset.mode);
+    p.querySelector(".km").textContent = r ? (r.length_m / 1000).toFixed(2) + " km" : "";
+  });
+  if (!d.routes[0].shape.length) { toast(d.message || "Pick two different places 🙂"); return; }
+
+  const fromGoal = d.grow_from === "goal";
+  const origin = fromGoal ? d.goal.name : d.start.name;
+  toast(`${fromGoal ? "🏠" : "🚶‍♀️"} Drawing from <b>${origin}</b>…`);
+
+  // glide the camera to fit every route, then grow them
+  const all = d.routes.flatMap(r => r.shape);
+  const bounds = L.latLngBounds(all).pad(0.12);
+  const pad = {paddingTopLeft: [50, 100], paddingBottomRight: [220, 90]};
+  if (window.innerWidth < 460) { pad.paddingBottomRight = [30, 90]; }
+  const needMove = !map.getBounds().contains(bounds) || map.getZoom() < map.getBoundsZoom(bounds) - 1;
+  if (needMove) map.flyToBounds(bounds, Object.assign({duration: 0.8, easeLinearity: 0.2}, pad));
+  setTimeout(() => { if (my === gen) grow(d, fromGoal, my); }, needMove ? 820 : 200);
+}
+
+function fadeOut(layer) {
+  if (!map.hasLayer(layer)) return;
+  const el = layer.getElement ? layer.getElement() : null;
+  if (el) { el.style.transition = "opacity .35s"; el.style.opacity = 0; }
+  setTimeout(() => map.removeLayer(layer), 380);
+}
+
+function grow(d, fromGoal, my) {
+  const sorted = [...d.routes].sort((a, b) => b.width - a.width);   // widest first
+  const anims = [];
+  for (const r of sorted) {
+    const pts = fromGoal ? [...r.shape].reverse() : r.shape;
+    const acc = cumulative(pts);
+    const casing = L.polyline([pts[0]], {color: "#fff", weight: r.width + 5, opacity: .95, lineCap: "round", lineJoin: "round", interactive: false});
+    const line = L.polyline([pts[0]], {color: r.colour, weight: r.width, opacity: .95, lineCap: "round", lineJoin: "round"});
+    line.bindTooltip(`${r.label}: ${r.length_m} m`, {sticky: true});
+    const tip = L.marker(pts[0], {interactive: false, icon: L.divIcon({className: "", iconSize: [16, 16],
+                html: `<div class="tip" style="color:${r.colour}"></div>`})});
+    lines[r.mode] = {casing, line, tip};
+    anims.push({r, pts, acc, casing, line, tip});
+  }
+  // applyShown adds the visible ones and puts the coloured lines above every white casing
+  applyShown();
+
+  const longest = Math.max(...anims.map(a => a.acc[a.acc.length - 1]));
+  const ms = Math.min(2600, Math.max(1300, longest * 1.4));
+  const t0 = performance.now();
+  (function frame(now) {
+    if (my !== gen) return;
+    const t = Math.min(1, (now - t0) / ms);
+    for (const a of anims) {
+      const total = a.acc[a.acc.length - 1];
+      const part = prefix(a.pts, a.acc, easeInOut(t) * longest > total ? total : easeInOut(t) * longest);
+      a.casing.setLatLngs(part); a.line.setLatLngs(part);
+      a.tip.setLatLng(part[part.length - 1]);
+    }
+    if (t < 1) requestAnimationFrame(frame);
+    else {
+      for (const a of anims) { if (map.hasLayer(a.tip)) map.removeLayer(a.tip); lines[a.r.mode].tip = null; }
+      const safer = d.routes.find(r => r.mode === "safety-first"), fast = d.routes.find(r => r.mode === "fastest");
+      const extra = safer.length_m - fast.length_m;
+      toast(extra > 0
+        ? `💜 Safety-first is <b>${extra} m</b> longer. Average risk <b>${safer.avg_risk.toFixed(2)}</b> instead of ${fast.avg_risk.toFixed(2)}.`
+        : `💜 Here the fastest way is already the safety-first way.`, 7000);
+    }
+  })(t0);
+}
+
+/* ---------------- Walk me home (the surprise) ---------------- */
+let walk = null;
+function stopWalk() {
+  if (!walk) return;
+  walk.stopped = true; if (walk.marker) map.removeLayer(walk.marker);
+  walk = null; document.getElementById("walk").disabled = false;
+}
+function walkHome() {
+  if (!data || !data.routes[0].shape.length) return;
+  stopWalk();
+  const r = data.routes.find(r => r.mode === "safety-first");
+  const pts = r.shape, acc = cumulative(pts), total = acc[acc.length - 1];
+  const btn = document.getElementById("walk"); btn.disabled = true;
+  const marker = L.marker(pts[0], {zIndexOffset: 2000, interactive: false,
+    icon: L.divIcon({className: "", iconSize: [38, 38], iconAnchor: [19, 19], html: '<div class="walker">🚶‍♀️</div>'})}).addTo(map);
+  walk = {marker, stopped: false};
+  const me = walk;
+  // when to say each line: the distance along the route of each street's first junction
+  const notes = data.walk_notes.map(n => {
+    let best = 0, bestD = Infinity;
+    pts.forEach((p, i) => { const dd = metres(p, n.pos); if (dd < bestD) { bestD = dd; best = i; } });
+    return {at: acc[best], text: n.text, said: false};
+  });
+  const ms = Math.min(22000, Math.max(9000, total * 12));
+  const t0 = performance.now(); let lastStep = 0;
+  tellHammy(`Let's go apa! I'll walk with you the safety-first way 💜`, "cheer");
+  (function frame(now) {
+    if (me.stopped) return;
+    const t = Math.min(1, (now - t0) / ms), d = t * total;
+    const part = prefix(pts, acc, d), here = part[part.length - 1];
+    marker.setLatLng(here);
+    if (now - lastStep > 260) {                     // little glowing footsteps behind her
+      lastStep = now;
+      const fs = L.marker(here, {interactive: false, icon: L.divIcon({className: "", iconSize: [6, 6], html: '<div class="footstep"></div>'})}).addTo(map);
+      setTimeout(() => map.hasLayer(fs) && map.removeLayer(fs), 2400);
+    }
+    for (const n of notes) if (!n.said && d >= n.at) { n.said = true; toast("🐹 " + n.text, 3500); tellHammy(n.text, "talk"); }
+    if (t < 1) requestAnimationFrame(frame);
+    else arrived(me);
+  })(t0);
+}
+function arrived(me) {
+  if (me.stopped) return;
+  const who = data.contacts.length ? data.contacts.join(" & ") : "your family";
+  const box = document.getElementById("arrive");
+  box.innerHTML = `<div class="card"><div class="big">🏠💛</div><h3>You reached home safer!</h3>
+                   <p>Hammy told <b>${who}</b> you're home.<br><small>(demo, nothing was sent)</small></p></div>`;
+  box.querySelector(".card").onclick = () => { box.innerHTML = ""; };
+  setTimeout(() => { box.innerHTML = ""; }, 7000);
+  confetti();
+  tellHammy(`Pahunch gayi! You're home, apa 💛 I told ${who}.`, "cheer");
+  document.getElementById("walk").disabled = false;
+  setTimeout(() => { if (walk === me) { map.removeLayer(me.marker); walk = null; } }, 2500);
+}
+function confetti() {
+  const wrap = document.getElementById("wrap");
+  const p = map.latLngToContainerPoint(data.goal.pos);
+  const bits = ["💛", "✨", "⭐", "💜", "🌙", "💖", "✨", "⭐"];
+  for (let i = 0; i < 22; i++) {
+    const s = document.createElement("div");
+    s.className = "confetti"; s.textContent = bits[i % bits.length];
+    const a = Math.random() * Math.PI * 2, dist = 70 + Math.random() * 130;
+    s.style.left = p.x + "px"; s.style.top = (p.y - 20) + "px";
+    s.style.setProperty("--dx", Math.cos(a) * dist + "px"); s.style.setProperty("--dy", (Math.sin(a) * dist - 60) + "px");
+    s.style.setProperty("--r", (Math.random() * 360 - 180) + "deg");
+    wrap.appendChild(s); setTimeout(() => s.remove(), 1900);
+  }
+}
+
+/* ---------------- Streamlit sends data here ---------------- */
+window.addEventListener("message", (e) => {
+  if (!e.data || e.data.type !== "streamlit:render") return;
+  const d = e.data.args.data;
+  document.getElementById("map").style.height = d.height + "px";
+  if (!map) { init(d); }
+  data = d;
+  ST.height(d.height + 4);
+  const sig = [d.start.name, d.goal.name, d.slot].join("|");
+  if (sig !== lastSig) { lastSig = sig; update(d); }
+  map.invalidateSize();
+});
+ST.ready();
+ST.height(604);
+</script>
+</body></html>

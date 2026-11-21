@@ -8,34 +8,36 @@ Live version:         deployed on share.streamlit.io from the GitHub repo.
 WHAT THE USER DOES:
   1. Picks where they start and where they're going.
   2. Picks the time (6, 9 or 11 PM).
-  3. Ticks one or more route options in the map's corner. Each has its own
-     colour, and only ticked routes are shown:
-        Fastest       (black)  - shortest distance, ignores safety
+     (or clicks any dot on the map and presses "Start here" / "Go here").
+  3. Taps the route pills in the map's corner to show or hide each option:
+        Fastest       (grey)   - shortest distance, ignores safety
         Balanced      (blue)   - a less-safe street counts as up to 4x longer
         Safety-first  (purple) - a less-safe street counts as up to 11x longer
 
-Ticking a route is handled by the map itself (a Leaflet layer control), so
-it is instant. Only changing From / To / time recomputes the routes.
+The map is a custom component (map_component.py + map_frontend/) that stays
+loaded the whole time: changing From / To / time only sends it new data, and
+the routes GROW from the place picked last. No black flash, no reload.
 """
 
-import folium
 import pandas as pd
 import streamlit as st
-from streamlit_folium import st_folium
 
 from road_graph import build_graph
 from routing import MODES, a_star, attach_risk, describe_route
 from hammy_widget import hammy_widget
+from map_component import safer_map, walk_notes
 from safety_tools import battery_warning, checkin_panel, panic_button, start_checkin
+from theme import apply_theme, sky_banner
 
 st.set_page_config(page_title="Safe Route Lahore", page_icon="🛡️", layout="wide")
+apply_theme()
 
 # Each route option has its own colour and line width.
 ROUTE_STYLE = {
     #  mode:          (colour,    emoji, line width)
-    "fastest":       ("#222222", "⬛", 7),
-    "balanced":      ("#1f5fd1", "🟦", 5),
-    "safety-first":  ("#8e3fd6", "🟪", 3),
+    "fastest":       ("#8a8fa3", "⬜", 9),
+    "balanced":      ("#2e8bff", "🟦", 6),
+    "safety-first":  ("#9b4dff", "🟪", 4),
 }
 SLOT_NAMES = {"6 PM": "6pm", "9 PM": "9pm", "11 PM": "11pm"}
 
@@ -46,18 +48,41 @@ def load_risk():
 
 
 # ---------------- sidebar: the user's choices ----------------
-st.sidebar.title("🛡️ Safe Route Lahore")
-st.sidebar.caption("Pilot area: Gulberg III. Prototype using SYNTHETIC data.")
 nodes = sorted(build_graph().nodes)
-start = st.sidebar.selectbox("From", nodes, index=nodes.index("Sir Syed / first side road"))
-goal = st.sidebar.selectbox("To", nodes, index=nodes.index("Tehzeeb Bakers (MM Alam)"))
-slot_label = st.sidebar.radio("Time of night", list(SLOT_NAMES), index=2, horizontal=True)
+st.session_state.setdefault("from_sel", "Sir Syed / first side road")
+st.session_state.setdefault("to_sel", "Tehzeeb Bakers (MM Alam)")
+
+# A click on the map ("Start here" / "Go here") arrives as the map's value.
+# Apply it BEFORE the dropdowns are drawn, so they show the new place.
+click = st.session_state.get("safer_map")
+if click and click.get("nonce") != st.session_state.get("last_click"):
+    st.session_state.last_click = click["nonce"]
+    st.session_state["from_sel" if click["action"] == "from" else "to_sel"] = click["place"]
+
+
+def swap_places():
+    st.session_state.from_sel, st.session_state.to_sel = st.session_state.to_sel, st.session_state.from_sel
+
+
+st.sidebar.title("🛡️ Safe Route Lahore")
+st.sidebar.caption("Pilot area: Gulberg III. Prototype using SYNTHETIC data. "
+                   "Tip: you can also click any dot on the map.")
+start = st.sidebar.selectbox("🚶‍♀️ From", nodes, key="from_sel")
+st.sidebar.button("⇅ Swap", on_click=swap_places)
+goal = st.sidebar.selectbox("🏠 To", nodes, key="to_sel")
+slot_label = st.sidebar.radio("🌙 Time of night", list(SLOT_NAMES), index=2, horizontal=True)
+
+# Which end should the routes grow from? The one the user changed last.
+prev = st.session_state.get("prev_pair")
+if prev and goal != prev[1] and start == prev[0]:
+    st.session_state.grow_from = "goal"
+elif prev and start != prev[0]:
+    st.session_state.grow_from = "start"
+st.session_state.prev_pair = (start, goal)
+grow_from = st.session_state.get("grow_from", "start")
 
 segment_risk = load_risk()
-
-if start == goal:
-    st.info("Pick two different places.")
-    st.stop()
+sky_banner(slot_label)
 
 
 # ---------------- compute every route ----------------
@@ -91,15 +116,32 @@ def compute_routes(start, goal, slot):
             else:
                 clean.append(pt)
         out[mode] = {"path": path, "info": info, "shape": clean}
-    return out, G.nodes[start]["pos"], G.nodes[goal]["pos"], G.nodes["Hafeez road bend"]["pos"]
+    notes = walk_notes(G, out["safety-first"]["path"], slot.upper().replace("PM", " PM"))
+    return out, notes
 
 
-routes, start_pos, goal_pos, centre = compute_routes(start, goal, SLOT_NAMES[slot_label])
+@st.cache_data
+def map_basics():
+    """Things the map needs once: every junction and every street shape."""
+    G = build_graph()
+    places = [{"name": n, "pos": list(G.nodes[n]["pos"])} for n in sorted(G.nodes)]
+    streets = [[list(p) for p in d["shape"]] for *_, d in G.edges(data=True)]
+    return places, streets, list(G.nodes["Hafeez road bend"]["pos"])
+
+
+places, streets, centre = map_basics()
+pos = {p["name"]: p["pos"] for p in places}
+same_place = start == goal
+if same_place:
+    routes, notes = {m: {"path": [start], "info": {"length_m": 0, "avg_risk": 0.0, "segments": []},
+                         "shape": []} for m in MODES}, []
+else:
+    routes, notes = compute_routes(start, goal, SLOT_NAMES[slot_label])
 
 # ---------------- safety tools (simulated) ----------------
 # "Last known location" for the demo: halfway along the balanced route.
 balanced_shape = routes["balanced"]["shape"]
-last_location = tuple(balanced_shape[len(balanced_shape) // 2])
+last_location = tuple(balanced_shape[len(balanced_shape) // 2]) if balanced_shape else tuple(pos[start])
 
 st.sidebar.divider()
 st.sidebar.markdown("**🛟 Safety tools (demo)**")
@@ -112,31 +154,28 @@ fast = st.sidebar.toggle("Fast demo (10 s instead of 60 s)", value=True)
 if st.sidebar.button("Simulate going off route"):
     start_checkin(fast)
 
-battery_warning(battery, last_location)
-checkin_panel(last_location)
+# Alerts live in one fixed box, so showing or hiding one never moves (or
+# reloads) the map below it.
+with st.container():
+    battery_warning(battery, last_location)
+    checkin_panel(last_location)
 
 # ---------------- map ----------------
-# All three routes are drawn as separate layers. The tick boxes in the
-# map's corner (a Leaflet "layer control") show or hide them INSIDE THE
-# BROWSER, so ticking a box is instant: no reloading, no "running...".
-fmap = folium.Map(location=centre, zoom_start=16, tiles=None)
-folium.TileLayer("OpenStreetMap", control=False).add_to(fmap)   # base map, not a tick box
-# Widest line first, so when routes share a street you still see every colour.
-for mode in sorted(ROUTE_STYLE, key=lambda m: -ROUTE_STYLE[m][2]):
-    colour, _, width = ROUTE_STYLE[mode]
-    label = (f'<span style="color:{colour};font-size:18px">&#9632;</span> '
-             f'{mode.capitalize()}')
-    layer = folium.FeatureGroup(name=label, show=(mode == "balanced"))
-    folium.PolyLine(routes[mode]["shape"], color=colour, weight=width, opacity=0.85,
-                    line_cap="round", line_join="round", smooth_factor=1.5,
-                    tooltip=f"{mode}: {routes[mode]['info']['length_m']} m").add_to(layer)
-    layer.add_to(fmap)
-folium.Marker(start_pos, tooltip="Start", icon=folium.Icon(color="green", icon="play")).add_to(fmap)
-folium.Marker(goal_pos, tooltip="Destination", icon=folium.Icon(color="red", icon="flag")).add_to(fmap)
-folium.LayerControl(collapsed=False, position="topright").add_to(fmap)
-all_points = [pt for r in routes.values() for pt in r["shape"]]
-fmap.fit_bounds([[min(p[0] for p in all_points), min(p[1] for p in all_points)],
-                 [max(p[0] for p in all_points), max(p[1] for p in all_points)]], padding=(30, 30))
+map_data = {
+    "routes": [{"mode": m, "label": m.capitalize(), "colour": ROUTE_STYLE[m][0], "width": ROUTE_STYLE[m][2],
+                "length_m": routes[m]["info"]["length_m"], "avg_risk": routes[m]["info"]["avg_risk"], "shape": [list(p) for p in routes[m]["shape"]]}
+               for m in MODES],
+    "start": {"name": start, "pos": pos[start]},
+    "goal": {"name": goal, "pos": pos[goal]},
+    "grow_from": grow_from,
+    "slot": slot_label,
+    "centre": centre,
+    "places": places,
+    "streets": streets,
+    "walk_notes": notes,
+    "contacts": st.session_state.contacts,
+    "message": "Pick two different places 🙂" if same_place else "",
+}
 
 # Two tabs: the map with Hammy beside it, and the route details on their own.
 map_tab, details_tab = st.tabs(["🗺️ Map & Hammy", "📋 Route details"])
@@ -144,15 +183,16 @@ map_tab, details_tab = st.tabs(["🗺️ Map & Hammy", "📋 Route details"])
 with map_tab:
     left, right = st.columns([3, 2])
     with left:
-        st_folium(fmap, key="map", height=640, use_container_width=True, returned_objects=[])
-        st.caption("Tick the boxes on the map to show or hide each route.")
+        safer_map(map_data, height=600)
+        st.caption("Tap the coloured pills to show or hide routes. Press 🌙 **Walk me home** for a little surprise.")
     with right:
-        st.markdown("#### 🐹 Hammy (type or hold 🎤)")
         hammy_widget()
 
 # ---------------- route details ----------------
 with details_tab:
     st.subheader(f"Routes at {slot_label}")
+    if same_place:
+        st.info("Pick two different places.")
     selected = list(ROUTE_STYLE)
     fastest = routes["fastest"]["info"]
     table = pd.DataFrame([{
