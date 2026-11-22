@@ -61,7 +61,7 @@ FEATURES = [
     "hour", "weekend_yn",
     "footpath_yn", "safe_city_camera_yn", "private_cctv_count",
     "police_yn", "guards_yn", "dead_frontage_yn", "isolated_spot_yn",
-    "ride_stand_yn", "lighting_0to2", "shops_open", "women_per_minute",
+    "ride_stand_yn", "lighting_0to2", "shops_open",
     "main_road_yn", "gali_yn", "dist_police_m", "dist_hospital_m",
 ]
 SLOT_TO_HOUR = {"6pm": 18, "9pm": 21, "11pm": 23}
@@ -77,13 +77,13 @@ def load_data():
 # Method 1: the rule-based baseline (no learning at all)
 # ---------------------------------------------------------------------------
 # These are the rules a sensible person might write without any data:
-#   - dark street, or a hidden corner with no other women around -> less safe
-#   - bright street with shops open and women around             -> safe
+#   - dark street, or a hidden corner with no shop open -> less safe
+#   - bright street with several shops open             -> safer
 #   - anything else                                              -> moderate
 def rule_based_baseline(row):
-    if row["lighting_0to2"] == 0 or (row["isolated_spot_yn"] == 1 and row["women_per_minute"] == 0):
+    if row["lighting_0to2"] == 0 or (row["isolated_spot_yn"] == 1 and row["shops_open"] == 0):
         return "less safe"
-    if row["lighting_0to2"] == 2 and row["shops_open"] >= 3 and row["women_per_minute"] >= 2:
+    if row["lighting_0to2"] == 2 and row["shops_open"] >= 3:
         return "safer"
     return "moderate"
 
@@ -211,12 +211,13 @@ def main():
     proba = pd.DataFrame(final_tree.predict_proba(X), columns=final_tree.classes_)
     proba["segment_id"] = data["segment_id"]
     proba["slot"] = data["slot"]
-    proba["women_per_minute"] = data["women_per_minute"]
     proba["lighting_0to2"] = data["lighting_0to2"]
     table = proba.groupby(["segment_id", "slot"]).mean().reset_index()
     table["risk"] = (table["less safe"] + 0.5 * table["moderate"]).round(3)
     table = table.rename(columns={"less safe": "p_less_safe", "moderate": "p_moderate", "safer": "p_safer"})
-    table.round(3).to_csv("segment_risk.csv", index=False)
+    from fuzzy_labels import label_all_segments    # Step 4: fuzzy score + ranges
+    table = label_all_segments(table.round(3))
+    table.to_csv("segment_risk.csv", index=False)
     print("\nSaved results/, models/decision_tree.joblib and segment_risk.csv")
 
 

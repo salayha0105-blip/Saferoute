@@ -191,8 +191,8 @@ def summary_strip(routes, same_place, slot_label, contacts, battery, worst=None)
         cards = [
             ("🛡️", "#efeaff", "Safety-first route", f"{safe['length_m'] / 1000:.2f} km",
              f"+{extra} m vs fastest" if extra > 0 else "Same as the fastest way"),
-            ("📉", "#e6f7f3", f"Risk at {slot_label}", f"{safe['avg_risk']:.2f} average",
-             f"Fastest way: {fast['avg_risk']:.2f} (lower is safer)"),
+            ("📈", "#e6f7f3", f"Safety at {slot_label}", f"{safe['avg_safety']:.2f} · {safe['band']}",
+             f"Fastest way: {fast['avg_safety']:.2f} · {fast['band']}"),
             ("⚠️", "#fff3dc", "Take care on", (worst[0][0].upper() + worst[0][1:]) if worst else "-", worst[1] if worst else ""),
         ]
     who = ", ".join(contacts) if contacts else "No contacts yet"

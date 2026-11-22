@@ -2,6 +2,8 @@
 
 Dr. Sidra approved generated data on 6 Nov 2026. This spec says *what* the generator should do. You write the code yourself, which keeps you under the 30% AI-use limit. All numbers are starting guesses: change any that don't match what you know about Gulberg, and note the change in your report.
 
+> **Update 22 Nov 2026:** the crowd count (`per_minute`) and `women_per_minute` were both dropped from the final generator (`generate_data.py`, version 3). They are still listed in a few places below only as history; the code is the source of truth.
+
 Output: `safe_route_synthetic.csv`, with one row per **segment × time slot × night**.
 43 segments × 3 slots (6, 9, 11 PM) × 10 nights = **1,290 rows**. Use a fixed seed (`np.random.seed(42)`).
 
@@ -44,9 +46,6 @@ Mean values are shown below. Add random noise around them: Poisson for counts, a
 | per_minute (people + vehicles) | 6 PM | 60 | 45 | 20 | 4 |
 | | 9 PM | 45 | 50 | 12 | 2 |
 | | 11 PM | 25 | 30 | 5 | 1 |
-| women_per_minute | 6 PM | 6 | 8 | 2 | 0.5 |
-| | 9 PM | 3 | 6 | 1 | 0.2 |
-| | 11 PM | 1 | 2 | 0.3 | 0.05 |
 
 Also add `weekend_yn`: on 3 of the 10 nights, raise shops and crowds by about 20% for commercial roads.
 
@@ -62,7 +61,6 @@ s = 1.4
   + 0.4 * police + 0.2 * guards
   + 0.2 * footpath + 0.15 * ride_stand
   + 0.25 * min(per_minute / 40, 1)
-  + 0.6 * min(women_per_minute / 5, 1)
   - 0.5 * dead_frontage - 0.6 * isolated_spot
   - 0.3 if slot == 11 PM
 s = clip(s, 1, 5)
@@ -78,7 +76,7 @@ The rater noise is important: it stops the decision tree from just copying the f
 
 - Label balance: aim for roughly 25–45% in each class. If one class is tiny, adjust the constant 1.2.
 - Lanes at 11 PM should be mostly risky, and MM Alam at 6 PM mostly safe. If not, a weight is off.
-- Plot `mean_rating` against lighting and against women_per_minute. Both should slope upward.
+- Plot `mean_rating` against lighting and against shops_open. Both should slope upward.
 - **Real spot check (strongly recommended):** walk 5–10 segments once and compare them with the generated values. Report where they differ.
 
 ## Step 6: Be honest in the report

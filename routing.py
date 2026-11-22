@@ -7,7 +7,9 @@ WHAT THIS FILE DOES:
 
 THE KEY IDEA - "cost" of walking a street:
       cost = length_in_metres * (1 + safety_weight * risk)
-  - risk comes from the decision tree (0 = safe, 1 = risky) for that time slot.
+  - risk = 1 - safety score, where the safety score (0-1) comes from the
+    decision tree's prediction passed through our fuzzy rules (fuzzy_labels.py)
+    for that time slot. 0 = safer, 1 = risky.
   - safety_weight decides how much the user cares about safety:
         fastest      weight 0   -> cost is just distance (normal shortest path)
         balanced     weight 3   -> a fully risky street "feels" 4x as long
@@ -37,20 +39,23 @@ from itertools import combinations
 import networkx as nx
 import pandas as pd
 
+from fuzzy_labels import safety_band
 from road_graph import build_graph, distance_m
 
 MODES = {"fastest": 0, "balanced": 3, "safety-first": 10}
 
 
 def attach_risk(G, segment_risk, slot):
-    """Copy each segment's predicted risk (for the chosen time slot) onto the
-    graph edges, so the search can read it."""
+    """Copy each segment's fuzzy safety score (for the chosen time slot) onto
+    the graph edges, so the search can read it. The search works with
+    risk = 1 - safety (lower is better)."""
     risk = segment_risk[segment_risk["slot"] == slot].set_index("segment_id")
     for u, v, data in G.edges(data=True):
         row = risk.loc[data["segment_id"]]
-        data["risk"] = float(row["risk"])
+        data["safety"] = float(row["safety_0to1"])
+        data["risk"] = round(1 - data["safety"], 3)
+        data["band"] = row["band"]
         data["night_phrase"] = row["night_phrase"]
-        data["fuzzy_word"] = row["fuzzy_word"]
     return G
 
 
@@ -104,10 +109,13 @@ def describe_route(G, path):
             worst = (d["segment_id"], d["risk"], d["night_phrase"])
     # merge repeated ids (a segment split in two halves shows once)
     segments = [s for i, s in enumerate(steps) if i == 0 or s != steps[i - 1]]
+    avg_risk = round(risk_metres / length, 3) if length else 0.0
     return {
         "segments": segments,
         "length_m": round(length),
-        "avg_risk": round(risk_metres / length, 3) if length else 0.0,
+        "avg_risk": avg_risk,
+        "avg_safety": round(1 - avg_risk, 3),          # shown in the app, with its range
+        "band": safety_band(1 - avg_risk),
         "worst_segment": worst,
     }
 
@@ -137,6 +145,7 @@ def evaluate(segment_risk, slot="11pm"):
                 "length_m": info["length_m"],
                 "extra_distance_pct": round(100 * (info["length_m"] - base_len) / base_len, 1),
                 "avg_risk": info["avg_risk"],
+                "avg_safety": info["avg_safety"],
                 "worst_risk": round(info["worst_segment"][1], 3),
                 "junctions_expanded": expanded,
             })
@@ -146,7 +155,7 @@ def evaluate(segment_risk, slot="11pm"):
     for start, goal in combinations(G.nodes, 2):
         dijkstra_expanded.append(_dijkstra_expanded(G, start, goal, MODES["balanced"]))
     summary = table.groupby("mode")[["length_m", "extra_distance_pct", "avg_risk",
-                                     "worst_risk", "junctions_expanded"]].mean().round(3)
+                                     "avg_safety", "worst_risk", "junctions_expanded"]].mean().round(3)
     summary = summary.loc[list(MODES)]
     return table, summary, sum(dijkstra_expanded) / len(dijkstra_expanded)
 
@@ -193,4 +202,4 @@ if __name__ == "__main__":
     for mode, w in MODES.items():
         path, _ = a_star(G, "Sir Syed / first side road", "Tehzeeb Bakers (MM Alam)", w)
         info = describe_route(G, path)
-        print(f"  {mode:13s} {info['length_m']:5d} m  avg risk {info['avg_risk']:.2f}  via {' > '.join(info['segments'])}")
+        print(f"  {mode:13s} {info['length_m']:5d} m  safety {info['avg_safety']:.2f} ({info['band']})  via {' > '.join(info['segments'])}")

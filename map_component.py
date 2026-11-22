@@ -45,7 +45,7 @@ def street_name(segment_id):
 
 def walk_notes(G, path, slot_label):
     """One short line from Hammy at the start of each new street on the route.
-    Uses the same decision-tree risk and fuzzy words as the rest of the app."""
+    Uses the same fuzzy safety ranges as the rest of the app."""
     notes, last = [], None
     for u, v in zip(path, path[1:]):
         d = G[u][v]
@@ -54,10 +54,13 @@ def walk_notes(G, path, slot_label):
             continue
         last = name
         name = name[0].upper() + name[1:]
-        if d["fuzzy_word"] == "less safe":
-            text = f"{name} is less safe at {slot_label}. Walk briskly and stay where it's lit, I'm right here 💛"
-        elif d["fuzzy_word"] == "be careful":
-            text = f"{name}: be a little careful at {slot_label}. Keep your phone handy 📱"
+        band = d["band"]
+        if band == "Avoid":
+            text = f"{name} is one to avoid at {slot_label} if you can. Walk briskly, stay where it's lit, I'm right here 💛"
+        elif band == "Risky":
+            text = f"{name} is risky at {slot_label}. Stay on the lit side and keep your phone handy 📱"
+        elif band == "Be careful":
+            text = f"{name}: be a little careful at {slot_label} 👀"
         else:
             text = f"{name} is one of the safer streets at {slot_label} ✨"
         notes.append({"pos": list(G.nodes[u]["pos"]), "text": text})

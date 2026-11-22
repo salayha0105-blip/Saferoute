@@ -15,7 +15,7 @@ HOW IT WORKS (5 steps, each one is a function below):
   2. Give every segment its FIXED features (things that don't change at night,
      like "is there a footpath?").
   3. For each night and each time slot, make the CHANGING features
-     (lighting, shops open, how busy it is, how many women are around).
+     (lighting and how many shops are open).
   4. Turn those features into a hidden "safety score", then pretend 5 women
      rated the street (each a little differently) and average their ratings.
   5. Turn the average rating into a label: less safe / moderate / safer.
@@ -23,10 +23,15 @@ HOW IT WORKS (5 steps, each one is a function below):
 
 VERSION 2 (7 Nov 2026), agreed with Snaf:
   - The crowd count (people + vehicles per minute) was REMOVED: a big crowd
-    is not always safer for women. We keep "women_per_minute" (other women around).
+    is not always safer for women.
   - ADDED main road vs gali, and the REAL walking-free straight-line distance
     from each segment to the nearest police station and hospital
     (OpenStreetMap, data/osm/pois.json).
+
+VERSION 3 (22 Nov 2026), agreed with Snaf:
+  - "women_per_minute" (other women around) was DROPPED as well. Every
+    feature now describes the STREET (light, shops, cameras, police, guards,
+    road type, distance to help), not the people on it.
 
 Run it with:   python generate_data.py
 It creates:    safe_route_synthetic.csv   (43 segments x 3 slots x 10 nights = 1,290 rows)
@@ -138,15 +143,9 @@ AVG_SHOPS_OPEN = {
     "secondary":     (4,    2,    1),
     "lane":          (0.5,  0.2,  0.05),
 }
-AVG_WOMEN_PER_MIN = {
-    "main_road":     (6,    3,    1),
-    "commercial":    (8,    6,    2),
-    "secondary":     (2,    1,    0.3),
-    "lane":          (0.5,  0.2,  0.05),
-}
 
 def make_changing_features(street_type, slot, is_weekend):
-    """Make lighting, shops, crowd and women counts for one slot on one night."""
+    """Make lighting and open-shop counts for one slot on one night."""
     s = SLOTS.index(slot)   # 0 for 6pm, 1 for 9pm, 2 for 11pm
 
     # Weekends: commercial streets are about 20% busier.
@@ -158,12 +157,10 @@ def make_changing_features(street_type, slot, is_weekend):
     lighting = int(np.clip(round(lighting), 0, 2))
 
     shops = rng.poisson(AVG_SHOPS_OPEN[street_type][s] * boost)
-    women = rng.poisson(AVG_WOMEN_PER_MIN[street_type][s] * boost)
 
     return {
         "lighting_0to2": lighting,
         "shops_open": int(shops),
-        "women_per_minute": int(women),
     }
 
 
@@ -186,7 +183,6 @@ def hidden_safety_score(row):
     s += 0.3 * row["main_road_yn"] - 0.3 * row["gali_yn"]  # main roads preferred over galis
     s += 0.3 * (1 - min(row["dist_police_m"] / 1500, 1)) # closer police station = safer
     s += 0.2 * (1 - min(row["dist_hospital_m"] / 1500, 1))  # closer hospital = safer
-    s += 0.6 * min(row["women_per_minute"] / 5, 1)       # other women around = big effect
     s -= 0.5 * row["dead_frontage_yn"]                   # blank walls, nobody watching
     s -= 0.6 * row["isolated_spot_yn"]                   # hidden corners
     if row["slot"] == "11pm":

@@ -310,7 +310,7 @@ function grow(d, fromGoal, my) {
       const safer = d.routes.find(r => r.mode === "safety-first"), fast = d.routes.find(r => r.mode === "fastest");
       const extra = safer.length_m - fast.length_m;
       toast(extra > 0
-        ? `💜 Safety-first is <b>${extra} m</b> longer. Average risk <b>${safer.avg_risk.toFixed(2)}</b> instead of ${fast.avg_risk.toFixed(2)}.`
+        ? `💜 Safety-first is <b>${extra} m</b> longer. Safety <b>${safer.avg_safety.toFixed(2)} (${safer.band})</b> instead of ${fast.avg_safety.toFixed(2)} (${fast.band}).`
         : `💜 Here the fastest way is already the safety-first way.`, 7000);
     }
   })(t0);
