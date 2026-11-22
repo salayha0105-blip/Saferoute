@@ -46,7 +46,7 @@ INTENTS = [
     ("alone", ["alone", "akeli", "akela", "lonely", "nobody", "koi nahi"], [
         "You're not alone, I'm here! 🐹 Tell me about your day while you walk. Also, maybe share your route with "
         "Ammi or a friend so someone knows where you are.",
-        "Main hoon na! Let's talk till you reach. Stay where there are other women or open shops if you can.",
+        "Main hoon na! Let's talk till you reach. Stay where it's lit and shops are open if you can.",
     ]),
     ("lost", ["lost", "rasta", "where am i", "kidhar", "wrong way", "off route"], [
         "No problem, let's fix it. 🗺️ Go back to the last main road you remember and check the blue line on the map. "

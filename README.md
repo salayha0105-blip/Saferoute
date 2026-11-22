@@ -14,26 +14,27 @@ CSC 241 Artificial Intelligence final project, Fall 2026. SDG 11.2 (safe transpo
 | 1. Generate 1,290 rows of street features and simulated ratings | `generate_data.py` | n/a (data) |
 | 2. Predict each street's safety | `train_models.py` | **Decision tree** (XII) vs **Naive Bayes** (probabilistic reasoning) vs rule-based baseline |
 | 3. Turn the map into a graph | `road_graph.py` | Knowledge representation: state space (III) |
-| 4. Turn predictions into words ("less safe after 9 PM") | `fuzzy_labels.py` | **Fuzzy logic**, Sugeno inference (XI) |
+| 4. Blend the prediction with lighting into a safety score (0-1), shown as a range: Safer / Be careful / Risky / Avoid | `fuzzy_labels.py` | **Fuzzy logic**, Sugeno inference (XI) |
 | 5. Find the best route for each preference | `routing.py` | **A\* search** with an admissible heuristic (III) |
 | 6. Web app with a map | `app.py` | Deployment |
 | 7. Panic button, "Are you okay?" check-in, low-battery warnings (simulated) | `safety_tools.py` | n/a (demo) |
 | 8. Hammy 🐹, the little-brother companion: a 3D boy (three.js) you can type or talk to (browser speech-to-text and text-to-speech) | `hammy.py`, `hammy_widget.py` | **Rule-based agent** (knowledge representation) |
+| 9. **SIMULATED** survey of 50 women (design sanity check, not real answers) | `simulated_survey.py`, `survey/` | n/a (data) |
 
 ## Run it
 
 ```bash
 pip install -r requirements.txt
 python generate_data.py      # -> safe_route_synthetic.csv
-python train_models.py       # -> results/, models/, segment_risk.csv
-python fuzzy_labels.py       # adds fuzzy words to segment_risk.csv
+python train_models.py       # -> results/, models/, segment_risk.csv (with fuzzy safety score + range)
+python simulated_survey.py   # -> survey/, results/survey_* (SIMULATED survey)
 python routing.py            # -> results/routing_*.csv/json
 # (only to rebuild real street shapes: pip install osmnx, then)
 # python tools/build_road_shapes.py   # -> data/road_shapes.json
 streamlit run app.py         # opens the app in your browser
 ```
 
-Everything uses a fixed random seed (42), so the results are the same on every run.
+Everything uses a fixed random seed (42 for the street data, 7 for the survey), so the results are the same on every run.
 
 ## Key results
 
@@ -41,27 +42,43 @@ Models were tested with 5-fold **GroupKFold** by segment, so each model is alway
 
 | Model | Accuracy | Macro-F1 | "Less safe" recall | Less-safe streets called "safer" |
 |---|---|---|---|---|
-| Rule-based baseline | 0.62 | 0.61 | 0.40 | 7 |
-| **Decision tree (depth 4)** | **0.88** | **0.83** | **0.93** | 1 |
-| Naive Bayes | 0.86 | 0.78 | 0.94 | 1 |
+| Rule-based baseline | 0.62 | 0.61 | 0.38 | 8 |
+| Decision tree (depth 5, used in the app because it is explainable) | 0.79 | 0.73 | 0.86 | 15 |
+| **Naive Bayes** | **0.84** | **0.77** | **0.94** | **0** |
+
+Out of 586 less-safe street-times. After dropping "women around" (22 Nov), Naive Bayes beats the tree. See the report for why we still show the tree.
+
+## Safety ranges
+
+The app shows each street and route as a safety score from 0 to 1, in one of four ranges:
+
+| Score | Range |
+|---|---|
+| 0.70 – 1.00 | 🟢 **Safer** |
+| 0.50 – 0.70 | 🟡 **Be careful** |
+| 0.30 – 0.50 | 🟠 **Risky** |
+| 0.00 – 0.30 | 🔴 **Avoid** |
+
+The score comes from **fuzzy logic** (`fuzzy_labels.py`): the decision tree's risk (low / medium / high) and the street's lighting (dark / bright) are fuzzified, 6 rules like *IF risk medium AND dark THEN safety 0.40* fire with min-AND, and a weighted average (Sugeno) gives one crisp score. The ranges are only the last, display step. A\* then uses risk = 1 − safety.
 
 Routing results are averaged over all 465 start/goal pairs:
 
-| 11 PM | Extra distance vs fastest | Average risk on route |
+| 11 PM | Extra distance vs fastest | Average safety on route |
 |---|---|---|
-| Fastest | 0% | 0.37 |
-| Balanced | +10% | 0.23 |
-| Safety-first | +20% | 0.20 |
+| Fastest | 0% | 0.67 (Be careful) |
+| Balanced | +7% | 0.76 (Safer) |
+| Safety-first | +11% | 0.78 (Safer) |
 
 On average, A\* expanded **10 junctions vs Dijkstra's 16** and found routes of identical cost (checked automatically for every pair).
 
 ## Dataset
 
 `safe_route_synthetic.csv` has one row per segment × time slot (6, 9, 11 PM) × night (10 nights).
-The columns match our field-audit sheet (`audit-sheet.csv`): footpath, Safe City camera, private CCTV, police, guards, dead frontage, isolated spot, ride stand, lighting (0–2), shops open and women per minute, plus **main road vs gali** and the **real distance to the nearest police station and hospital** (from OpenStreetMap, `data/osm/pois.json`). The crowd count was dropped, because a big crowd is not always safer for women. Each row also has 5 simulated 1–5 ratings, their mean, and a label (less safe < 2.5 ≤ moderate ≤ 3.5 < safer).
+The columns match our field-audit sheet (`audit-sheet.csv`): footpath, Safe City camera, private CCTV, police, guards, dead frontage, isolated spot, ride stand, lighting (0–2) and shops open, plus **main road vs gali** and the **real distance to the nearest police station and hospital** (from OpenStreetMap, `data/osm/pois.json`). The crowd count and "women around" were dropped (7 and 22 Nov), so every feature describes the street, not the people on it. Each row also has 5 simulated 1–5 ratings, their mean, and a label (less safe < 2.5 ≤ moderate ≤ 3.5 < safer).
 
 ## Limitations
 
 - The data is synthetic, so the models learn **our assumptions**, not the real world.
 - Street shapes come from **OpenStreetMap** (© OpenStreetMap contributors, ODbL), downloaded by a GitHub Action (`.github/workflows/fetch-osm.yml`) and snapped to our segments by `tools/build_road_shapes.py`. Which real lane each L1–L15 matches is approximate, because the lanes were traced from a phone map.
+- The **survey is SIMULATED** too (`survey/SIMULATED_SURVEY.md`): 50 made-up respondents, aimed at published Lahore figures where they exist. It is a design sanity check, not evidence of how real women feel.
 - Covers only one neighbourhood (43 segments) and three time slots.

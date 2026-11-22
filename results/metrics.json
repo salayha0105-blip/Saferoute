@@ -1,51 +1,50 @@
 {
-  "tree_depth": 4,
+  "tree_depth": 5,
   "depth_search_macro_f1": {
-    "2": 0.74,
-    "3": 0.823,
-    "4": 0.833,
-    "5": 0.821,
-    "6": 0.82,
-    "7": 0.827,
-    "8": 0.804
+    "2": 0.653,
+    "3": 0.71,
+    "4": 0.706,
+    "5": 0.73,
+    "6": 0.733,
+    "7": 0.732,
+    "8": 0.721
   },
   "models": {
     "Rule-based baseline": {
-      "accuracy": 0.616,
-      "macro_f1": 0.611,
-      "less_safe_recall": 0.395,
-      "less_safe_called_safer": 7
+      "accuracy": 0.622,
+      "macro_f1": 0.605,
+      "less_safe_recall": 0.377,
+      "less_safe_called_safer": 8
     },
     "Decision tree": {
-      "accuracy": 0.878,
-      "macro_f1": 0.832,
-      "less_safe_recall": 0.925,
-      "less_safe_called_safer": 1
+      "accuracy": 0.785,
+      "macro_f1": 0.731,
+      "less_safe_recall": 0.855,
+      "less_safe_called_safer": 15
     },
     "Naive Bayes": {
-      "accuracy": 0.86,
-      "macro_f1": 0.777,
-      "less_safe_recall": 0.935,
-      "less_safe_called_safer": 1
+      "accuracy": 0.844,
+      "macro_f1": 0.771,
+      "less_safe_recall": 0.942,
+      "less_safe_called_safer": 0
     }
   },
   "feature_importance": {
-    "main_road_yn": 0.66,
-    "gali_yn": 0.173,
-    "isolated_spot_yn": 0.11,
-    "women_per_minute": 0.031,
-    "shops_open": 0.018,
-    "dist_police_m": 0.004,
-    "hour": 0.003,
-    "dist_hospital_m": 0.002,
-    "weekend_yn": 0.0,
-    "lighting_0to2": 0.0,
-    "ride_stand_yn": 0.0,
+    "main_road_yn": 0.633,
+    "gali_yn": 0.158,
+    "shops_open": 0.047,
+    "lighting_0to2": 0.044,
+    "police_yn": 0.04,
+    "dist_hospital_m": 0.034,
+    "hour": 0.028,
+    "dist_police_m": 0.006,
+    "private_cctv_count": 0.006,
+    "weekend_yn": 0.004,
     "dead_frontage_yn": 0.0,
-    "police_yn": 0.0,
-    "guards_yn": 0.0,
-    "private_cctv_count": 0.0,
+    "ride_stand_yn": 0.0,
     "safe_city_camera_yn": 0.0,
-    "footpath_yn": 0.0
+    "footpath_yn": 0.0,
+    "guards_yn": 0.0,
+    "isolated_spot_yn": 0.0
   }
 }

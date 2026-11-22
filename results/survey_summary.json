@@ -1,0 +1,42 @@
+{
+  "WARNING": "SIMULATED survey. No real person answered. For a design sanity check only.",
+  "respondents": 50,
+  "factor_mean_1to5": {
+    "Good street lighting": 4.48,
+    "Main road (not a gali)": 4.22,
+    "Shops open": 4.12,
+    "Police nearby": 3.86,
+    "Safe City camera": 3.72,
+    "Security guards": 3.52,
+    "Footpath": 3.32,
+    "Private CCTV": 2.98,
+    "Hospital nearby": 2.8
+  },
+  "felt_safety_mean_1to5": {
+    "main_road 6pm": 3.86,
+    "main_road 9pm": 3.2,
+    "main_road 11pm": 2.5,
+    "gali 6pm": 2.76,
+    "gali 9pm": 2.08,
+    "gali 11pm": 1.56
+  },
+  "gali_9pm_very_unsafe_share": 0.26,
+  "harassed_last_12m_share": 0.72,
+  "knows_1043_share": 0.04,
+  "knows_psca_app_share": 0.18,
+  "would_use_app_mean_1to5": 4.02,
+  "targets": {
+    "harassed_last_12m": {
+      "aim": 0.8,
+      "basis": "source: Aurat Foundation Lahore study (82% at stops)"
+    },
+    "knows_1043": {
+      "aim": 0.05,
+      "basis": "source: Aurat Foundation Lahore study (98% unaware of helplines)"
+    },
+    "knows_psca_app": {
+      "aim": 0.15,
+      "basis": "assumption"
+    }
+  }
+}
